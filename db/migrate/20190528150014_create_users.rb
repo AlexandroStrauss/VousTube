@@ -5,12 +5,11 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email, null: false
       t.string :password_digest, null: false
       t.string :session_token, null: false
-      t.boolean :verified, null: false
+      t.boolean :verified
 
       t.timestamps 
     end
     add_index :users, :username, unique: true
-    add_index :users, :password_digest, unique: true
     add_index :users, :session_token, unique: true
   end
 end
