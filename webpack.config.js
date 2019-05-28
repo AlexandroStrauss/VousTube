@@ -23,4 +23,3 @@ module.exports = {
         extensions: ['.js', '.jsx', '*'],
     }
 };
-© 2019 GitHub, Inc.
