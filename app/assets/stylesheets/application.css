@@ -16,7 +16,7 @@
 
 /* @font-face {
     font-family: Gilroy;
-    src: 
+    src:
 } */
 body {
     font-family: 'Roboto', Arial, sans-serif;
@@ -31,7 +31,7 @@ head, .signup-form, .login-form {
     display: inline;
     border: 1px solid #055fd4;
     border-radius: 2px;
-    padding: 5px 11px 5px 11px; 
+    padding: 5px 11px 5px 11px;
 }
 
 .signin-btn a {
@@ -40,7 +40,7 @@ head, .signup-form, .login-form {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 14;
-    padding: 5px 11px 5px 11px; 
+    padding: 5px 11px 5px 11px;
 }
 
 a {
@@ -97,28 +97,48 @@ form .submit {
     color:#7f868a;
 }
 
+.toplevel-login {
+    position: relative;
+    /* background-size: 448px 500px;
+    background-repeat: no-repeat; */
+    overflow: hidden;
+        border: 1px solid #dadcdf;
+    border-radius: 5px;
+    width: 448px;
+    margin: 0 auto;
+
+}
+
+.toplevel-login > div {
+    transition: left 0.5s;
+
+}
 
 [class*="login-"] {
     display: flex;
-    background-size: 448px 500px;
-    background-repeat: no-repeat;
-    vertical-align: bottom;
-    overflow: hidden;
+    min-width: 448px;
+    min-height: 500px;
+    /* height: 416px; */
+    position: relative;
 
+    vertical-align: bottom;
+    /* overflow: hidden; */
 }
+
 .login-phase1 {
-    background-position: 0 0
+    left: 0;
+    background-position: 0 0;
 }
+
 .login-phase2 {
-    background-position: 448px 0;
+    left: -448px;
 }
 
 [class*="form-"] {
-    border: 1px solid #dadcdf;
-    border-radius: 5px;
     padding: 48px 40px 36px 40px;
-    width: 368px;
+    min-width: 448px;
     height: 416px;
+    box-sizing: border-box;
 }
 
 /* .welcoming {
@@ -134,8 +154,28 @@ form .submit {
     justify-content: flex-start;
 }
 
+.floating-label {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.floating-label > label {
+    position: absolute;
+    top: calc(50% - 6px);
+    opacity: 0;
+    transition: all .3s ease;
+}
+.floating-label input:focus {
+    padding: 28px 0px 12px 0px;
+}
+
+.floating-label input:focus + label{
+    transform: translateY(-10px);
+    opacity: .7;
+}
+
 .bottom-links {
     display: flex;
-    align-items: baseline;
+    align-items: bottom;
     justify-content: space-between;
 }

@@ -43,44 +43,47 @@ class LoginForm extends React.Component {
         })
 
         return (
-            <div className={this.state.phase ? "login-phase2" : "login-phase1"}>
-                <ul>
-                    {errors}
-                </ul>
+            <div className="toplevel-login">
+                <div className={this.state.phase ? "login-phase2" : "login-phase1"}>
+                    {/* <ul>
+                        {errors}
+                    </ul> */}
 
-                <div className="form-identifier">
-                    <p className="welcoming">Sign in</p>
-                    <p className="continue">to continue to VousTube</p>
+                    <div className="form-identifier">
+                        <p className="welcoming">Sign in</p>
+                        <p className="continue">to continue to VousTube</p>
 
-                    <form onSubmit={this.handleCheckSubmit} >
-                        <div className="identifier">
-                        <input type="text" value={this.state.identifier} onChange={this.update('identifier')} />
-                        <label>Email or username</label>
-                        </div>
+                        <form onSubmit={this.handleCheckSubmit} >
+                            <div className="floating-label">
+                                <input type="text" placeholder="Email or username" value={this.state.identifier} onChange={this.update('identifier')} />
+                                <label>Email or username</label>
+                            </div>
 
-                        <div className="bottom-links">
-                            <Link to="/signup">Create account</Link>
-                        <input type="submit" className="submit" value="Next" />
-                        </div>
+                            <div className="bottom-links">
+                                <Link to="/signup">Create account</Link>
+                                <input type="submit" className="submit" value="Next" />
+                            </div>
 
-                    </form>
+                        </form>
 
-                </div>
+                    </div>
 
-                <div className="form-password">
-                    <p className="welcoming">Welcome</p>
-                    <p className="identifier-info">{this.state.identifier}</p>
-                    <form onSubmit={this.handleSubmit} >
-                        <div className="password">
-                            <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
-                        <label>Enter your password</label>
-                        </div>
+                    <div className="form-password">
+                        <p className="welcoming">Welcome</p>
+                        <p className="identifier-info">{this.state.identifier}</p>
+                        <form onSubmit={this.handleSubmit} >
+                            <div className="floating-label">
+                                {/* <Link to="/login" onClick={this.setState({phase:false})}>Create account</Link> */}
+                                <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
+                            <label>Enter your password</label>
+                            </div>
 
-                        <div className="bottom-links">
-                        <p></p>
-                        <input type="submit" className="submit" value="Next" />
-                        </div>
-                    </form>
+                            <div className="bottom-links">
+                            <p></p>
+                            <input type="submit" className="submit" value="Next" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
