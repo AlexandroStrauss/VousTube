@@ -14,6 +14,10 @@
  *= require_self
  */
 
+/* @font-face {
+    font-family: Gilroy;
+    src: 
+} */
 body {
     font-family: 'Roboto', Arial, sans-serif;
     background-color: #fafafa
@@ -32,14 +36,11 @@ head, .signup-form, .login-form {
 
 .signin-btn a {
     text-decoration: none;
-        color: #055fd4;
-        text-transform: uppercase;
+    color: #055fd4;
+    text-transform: uppercase;
     font-weight: bold;
     font-size: 14;
-
     padding: 5px 11px 5px 11px; 
-
-
 }
 
 a {
@@ -56,10 +57,85 @@ input {
     border: 1px solid #d9dcdf;
     border-radius: 4px;
     padding: 13px 15px 13px 15px;
+    margin: 0 0 44px 0;
 }
 
-input:active {
+input:focus {
     border: 2px solid #055fd4;
     border-radius: 4px;
+}
 
+form .submit {
+    background-color: #1b73e7;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 10px 10px 28px;
+    min-width: 88px;
+    max-height: 36px;
+    text-align: center;
+}
+
+.welcoming {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+
+}
+
+.identifier, .password {
+    display: flex;
+    flex-flow: column-reverse;
+}
+
+.identifier, .password label, input {
+    transition: all 0.2s
+}
+
+.identifier, .password label {
+    color:#7f868a;
+}
+
+
+[class*="login-"] {
+    display: flex;
+    background-size: 448px 500px;
+    background-repeat: no-repeat;
+    vertical-align: bottom;
+    overflow: hidden;
+
+}
+.login-phase1 {
+    background-position: 0 0
+}
+.login-phase2 {
+    background-position: 448px 0;
+}
+
+[class*="form-"] {
+    border: 1px solid #dadcdf;
+    border-radius: 5px;
+    padding: 48px 40px 36px 40px;
+    width: 368px;
+    height: 416px;
+}
+
+/* .welcoming {
+    padding: 16px 0 0 0;
+} */
+[class*="form-"] p {
+    text-align: center;
+    padding: 8px 0 0 0;
+}
+
+.submit {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bottom-links {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }

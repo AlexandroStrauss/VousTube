@@ -9,8 +9,8 @@ class LoginForm extends React.Component {
         this.state = {
             identifier: "",
             password: "",
-            phase: false
-
+            phase: false,
+            showPwd: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleCheckSubmit = this.handleCheckSubmit.bind(this)
@@ -43,29 +43,43 @@ class LoginForm extends React.Component {
         })
 
         return (
-            <div className={this.state.phase ? "login-form-phase2" : "login-form-phase1"}>
+            <div className={this.state.phase ? "login-phase2" : "login-phase1"}>
                 <ul>
                     {errors}
                 </ul>
 
-                <div className="identifierForm">
-                    <h3>Sign in</h3>
-                    <h4>to continue to VousTube</h4>
+                <div className="form-identifier">
+                    <p className="welcoming">Sign in</p>
+                    <p className="continue">to continue to VousTube</p>
 
                     <form onSubmit={this.handleCheckSubmit} >
-                        <label>Email or username<input type="text" value={this.state.identifier} onChange={this.update('identifier')} /></label>
-                        <input type="submit" value="Next" />
+                        <div className="identifier">
+                        <input type="text" value={this.state.identifier} onChange={this.update('identifier')} />
+                        <label>Email or username</label>
+                        </div>
+
+                        <div className="bottom-links">
+                            <Link to="/signup">Create account</Link>
+                        <input type="submit" className="submit" value="Next" />
+                        </div>
+
                     </form>
 
-                    <Link to="/signup">Create account</Link>
                 </div>
 
-                <div className="passwordForm">
-                    <h3>Welcome</h3>
-                    <h4>{this.state.identifier}</h4>
+                <div className="form-password">
+                    <p className="welcoming">Welcome</p>
+                    <p className="identifier-info">{this.state.identifier}</p>
                     <form onSubmit={this.handleSubmit} >
-                        <label>Enter your password<input type="password" value={this.state.password} onChange={this.update('password')} /></label>
-                        <input type="submit" value="Log in" />
+                        <div className="password">
+                            <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
+                        <label>Enter your password</label>
+                        </div>
+
+                        <div className="bottom-links">
+                        <p></p>
+                        <input type="submit" className="submit" value="Next" />
+                        </div>
                     </form>
                 </div>
             </div>

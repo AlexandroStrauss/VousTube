@@ -10,7 +10,8 @@ class SignupForm extends React.Component {
         this.state = {
             username: "",
             email: "",
-            password: ""
+            password: "",
+            showPwd: false
         };
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -42,11 +43,20 @@ class SignupForm extends React.Component {
                     {errors}
                 </ul>
                 <form onSubmit={this.handleSubmit} >
-                    <label>Your name<input type="text" value={this.state.username} onChange={this.update('username')} /></label>
-                    <label>Your email address<input type="text" value={this.state.email} onChange={this.update('email')} /></label>
-                    <label>Password<input type="password" value={this.state.password} onChange={this.update('password')} /></label>
+                    <div className="username">
+                        <label>Your name</label>
+                        <input type="text" value={this.state.username} onChange={this.update('username')} />
+                    </div>
+
+                    <div className="email">
+                        <label>Your email address</label>
+                            <input type="text" value={this.state.email} onChange={this.update('email')} />
+                    </div>
+
+
+                    <label>Password<input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} /></label>
                     <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
-                    <input type="submit" value="Sign Up" onClick={this.handleSubmit} />
+                    <input type="submit" value="Next" onClick={this.handleSubmit} />
                 </form>
                 <Link to="/login">Sign in instead</Link>
             </div>
