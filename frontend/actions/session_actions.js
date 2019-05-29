@@ -13,10 +13,12 @@ export const logout = () => dispatch => APIUtil.logout()
 export const login = loginUser => dispatch => APIUtil.login(loginUser)
     .then(user => dispatch(receiveCurrentUser(user)));
 
-const receiveCurrentUser = currentUser => ({
+const receiveCurrentUser = currentUser => {
+    return {
     type: RECEIVE_CURRENT_USER,
     user: currentUser
-})
+}
+}
 
 const logoutCurrentUser = () => ({
     type: LOGOUT_CURRENT_USER

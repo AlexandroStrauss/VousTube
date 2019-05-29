@@ -1,15 +1,11 @@
-// should take in username, email, AND password
-
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
-class SignupForm extends React.Component {
-
+class LoginForm extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            username: "",
-            email: "",
+            identifier: "",
             password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -34,25 +30,29 @@ class SignupForm extends React.Component {
                 {error}
             </li>
         })
+        const user = this.props.currentUser
+
         return (
             <div>
-                <h3>Sign Up</h3>
+                <h3>Log In</h3>
                 <ul>
                     {errors}
                 </ul>
+
+                <div className="usernameForm"
                 <form onSubmit={this.handleSubmit} >
-                    <label>Your name<input type="text" value={this.state.username} onChange={this.update('username')} /></label>
-                    <label>Your email address<input type="text" value={this.state.email} onChange={this.update('email')} /></label>
-                    <label>Password<input type="password" value={this.state.password} onChange={this.update('password')} /></label>
-                    <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
+                    <label>Username:<input type="text" value={this.state.username} onChange={this.update('username')} /></label>
+                    <label>Password:<input type="password" value={this.state.password} onChange={this.update('password')} /></label>
                     <input type="submit" value={this.props.formType} />
                 </form>
-                <Link to="/login">Sign in instead</Link>
+
+                
+                <Link to="/signup">Sign Up</Link>
+
             </div>
         )
 
 
     }
-}
 
-export default SignupForm
+}
