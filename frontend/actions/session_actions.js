@@ -14,8 +14,7 @@ export const login = loginUser => dispatch => APIUtil.login(loginUser)
     .then(user => dispatch(receiveCurrentUser(user)));
 
 export const check = identifier => dispatch => APIUtil.check(identifier)
-    .then(user => dispatch(receiveCurrentUser(user)));
-    
+
 const receiveCurrentUser = currentUser => {
     return {
     type: RECEIVE_CURRENT_USER,
