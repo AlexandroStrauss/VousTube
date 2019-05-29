@@ -14,6 +14,14 @@ class User < ApplicationRecord
         user
     end
 
+    def self.indentifier_present?(identifier)
+        user = User.find_by(username: identifier)
+        user ||= User.find_by(email: identifier)
+        user?
+    end
+
+
+
     def is_password?(password)
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end

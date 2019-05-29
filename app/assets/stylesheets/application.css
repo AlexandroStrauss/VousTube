@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #fafafa
+}
+
+head, .signup-form, .login-form {
+    background-color: #ffffff
+}
+
+.signin-btn {
+    border: 1px solid blue;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 5px 11px 5px 11px; 
+}

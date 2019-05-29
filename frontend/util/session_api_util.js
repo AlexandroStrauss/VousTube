@@ -31,3 +31,15 @@ export const logout = () => {
         url: '/api/session'
     })
 }
+
+export const check = identifier => {
+    return $.ajax({
+        method: 'POST',
+        url: '/session',
+        data: {
+            user: {
+                identifier
+            }
+        }
+    })
+}

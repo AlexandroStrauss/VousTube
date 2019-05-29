@@ -35,8 +35,9 @@ class SignupForm extends React.Component {
             </li>
         })
         return (
-            <div>
+            <div className = "signup-form">
                 <h3>Sign Up</h3>
+                <h4>to continue to VousTube</h4>
                 <ul>
                     {errors}
                 </ul>
@@ -45,7 +46,7 @@ class SignupForm extends React.Component {
                     <label>Your email address<input type="text" value={this.state.email} onChange={this.update('email')} /></label>
                     <label>Password<input type="password" value={this.state.password} onChange={this.update('password')} /></label>
                     <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
-                    <input type="submit" value={this.props.formType} />
+                    <input type="submit" value="Sign Up" onClick={this.handleSubmit} />
                 </form>
                 <Link to="/login">Sign in instead</Link>
             </div>

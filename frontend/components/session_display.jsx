@@ -24,7 +24,7 @@ class SessionDisplay extends React.Component{
         } else {
             return (
                 <div className="signin-btn">
-                    <Link to={'/login'}>Log In</Link>
+                    <Link to={'/login'}>Sign In</Link>
                 </div>
             )
         }

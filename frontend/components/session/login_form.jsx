@@ -1,5 +1,7 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Route, Redirect, Link } from 'react-router-dom';
+import SignupFormContainer from '../users/signup_form_container';
+
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -30,25 +32,26 @@ class LoginForm extends React.Component {
                 {error}
             </li>
         })
-        const user = this.props.currentUser
+        const user = this.props.currentUser;
 
         return (
-            <div>
+            <div className="login-form">
                 <h3>Log In</h3>
                 <ul>
                     {errors}
                 </ul>
 
-                <div className="usernameForm"
-                <form onSubmit={this.handleSubmit} >
-                    <label>Username:<input type="text" value={this.state.username} onChange={this.update('username')} /></label>
+                {/* <div className="usernameForm">
+              x  <form onSubmit={this.handleSubmit} >
+                    <label>Username:<input type="text" value={this.state.username} onChange={this.update('identifier')} /></label>
                     <label>Password:<input type="password" value={this.state.password} onChange={this.update('password')} /></label>
                     <input type="submit" value={this.props.formType} />
-                </form>
+                </form> */}
 
                 
-                <Link to="/signup">Sign Up</Link>
+                <Link to="/signup">Create account</Link>
 
+            {/* </div> */}
             </div>
         )
 
@@ -56,3 +59,5 @@ class LoginForm extends React.Component {
     }
 
 }
+
+export default LoginForm
