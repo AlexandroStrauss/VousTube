@@ -1,21 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import * as sessionApiUtil from './util/session_api_util'
+import * as sessionApiUtil from './actions/session_actions'
 import configureStore from './store/store';
+import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const store = configureStore();
+    let store;
+    if (window.currentUser) {
+        const preloadedState = {
+            entities: {
+                users: { [window.currentUser.id]: window.currentUser }
+            },
+            session: { id: window.currentUser.id }
+        };
+
+        store = configureStore(preloadedState);
+        delete window.currentUser;
+    } else {
+        store = configureStore();
+    }
 
     // FOR TESTING O N L Y
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
     const root = document.getElementById('root');
-    ReactDOM.render(<h1>Welcome To V O U S T U B E</h1>, root);
+    ReactDOM.render(<Root store={store} />, root);
 });
 
 // FOR TESTING O N L Y
-window.login = sessionApiUtil.login;
-window.logout = sessionApiUtil.logout;
-window.signup = sessionApiUtil.signup;
+window.login = sessionApiUtil.login
+window.logout = sessionApiUtil.logout
+window.signup = sessionApiUtil.signup
