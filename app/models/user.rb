@@ -14,10 +14,10 @@ class User < ApplicationRecord
         user
     end
 
-    def self.indentifier_present?(identifier)
+    def self.identifier_present?(identifier)
         user = User.find_by(username: identifier)
         user ||= User.find_by(email: identifier)
-        user?
+        !!user
     end
 
 

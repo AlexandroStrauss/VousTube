@@ -11,6 +11,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def check #check if username/email exist in database
+        identifier = params[:user][:identifier]
         if User.identifier_present?(identifier)
             render json: {text: identifier}, status: 200
         else

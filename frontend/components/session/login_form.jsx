@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
     handleCheckSubmit(e) {
         e.preventDefault();
         const identifier = this.state.identifier;
-        this.props.check(identifier).then(this.setState({phase: true}))
+        this.props.check(identifier).then(() => this.setState({phase: true}))
     }
 
     render() {
