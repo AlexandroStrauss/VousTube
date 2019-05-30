@@ -1,0 +1,119 @@
+.signup-form {
+    padding: 48px 40px 36px 40px;
+
+}
+
+.toplevel-signup {
+            border: 1px solid #dadcdf;
+    border-radius: 5px;
+    width: 448px;
+    margin: 0 auto;
+
+}
+
+input {
+    border: 1px solid #d9dcdf;
+    border-radius: 4px;
+    padding: 13px 15px 13px 15px;
+    margin: 0 0 4px 0;
+ }
+
+input:focus {
+    border: 2px solid #055fd4;
+    border-radius: 4px;
+}
+
+form .submit {
+    background-color: #1b73e7;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 10px 10px 28px;
+    min-width: 88px;
+    max-height: 36px;
+    text-align: center;
+}
+
+.welcoming {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+
+}
+
+.identifier, .password {
+    display: flex;
+    flex-flow: column-reverse;
+}
+
+.identifier, .password label, input {
+    transition: all 0.2s
+}
+
+.identifier, .password label {
+    color:#7f868a;
+}
+
+.toplevel-login {
+    position: relative;
+    /* background-size: 448px 500px;
+    background-repeat: no-repeat; */
+    overflow: hidden;
+        border: 1px solid #dadcdf;
+    border-radius: 5px;
+    width: 448px;
+    margin: 0 auto;
+
+}
+
+
+.toplevel-login > div {
+    transition: left 0.5s;
+
+}
+
+[class*="login-"] {
+    display: flex;
+    min-width: 448px;
+    min-height: 500px;
+    /* height: 416px; */
+    position: relative;
+
+    vertical-align: bottom;
+    /* overflow: hidden; */
+}
+
+.login-phase1 {
+    left: 0;
+    background-position: 0 0;
+}
+
+.login-phase2 {
+    left: -448px;
+}
+
+[class*="form-"] {
+    padding: 48px 40px 36px 40px;
+    min-width: 448px;
+    height: 416px;
+    box-sizing: border-box;
+}
+
+[class*="-error"] > input {
+    border: 2px solid #d92f26;
+    border-radius: 4px;
+}
+
+.error {
+    display: flex; 
+    align-items: top; 
+    color: #d92f26;
+    font-size: 12px;
+}
+
+.bottom-links {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
