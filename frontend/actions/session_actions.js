@@ -5,13 +5,17 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const signup = signupUser => dispatch => APIUtil.signup(signupUser)
-    .then(user => dispatch(receiveCurrentUser(user)));
+    .then(user => (dispatch(receiveCurrentUser(user))
+    ), err => dispatch(receiveErrors(err.responseJSON)));
 
 export const logout = () => dispatch => APIUtil.logout()
     .then(() => dispatch(logoutCurrentUser()));
 
 export const login = loginUser => dispatch => APIUtil.login(loginUser)
-    .then(user => dispatch(receiveCurrentUser(user)));
+    .then(user => (dispatch(receiveCurrentUser(user))
+    ), err => (
+        dispatch(receiveErrors(err.responseJSON))
+        ));
 
 export const check = identifier => dispatch => APIUtil.check(identifier)
 

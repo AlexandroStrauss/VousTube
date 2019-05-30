@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
             login(@user)
             render :show
         else
-            render json: {error: "invalid username or password"}.to_json, status: 401
+            render json: ["Invalid credentials"], status: 401
         end
     end
 
@@ -15,16 +15,16 @@ class Api::SessionsController < ApplicationController
         if User.identifier_present?(identifier)
             render json: {text: identifier}, status: 200
         else
-            render json: {error: "could not find user"}.to_json, status: 404
+            render json: ["Could not find username or email"], status: 404
         end
     end
 
     def destroy
         if logged_in?
             logout
-            render json: {text: "logged out!"}.to_json
+            render json: ["logged out!"]
         else
-            render json: {error: "nobody logged in"}.to_json, status: 404
+            render json: ["Nobody logged in"], status: 404
         end
     end
 

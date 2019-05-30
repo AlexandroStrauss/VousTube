@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import SignupForm from "./signup_form";
 
 const mapStateToProps = state => ({
-    errors: Object.values(state.errors),
+    errors: state.errors.session,
     formType: 'signup'
 })
 

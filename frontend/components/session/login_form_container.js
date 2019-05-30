@@ -3,10 +3,12 @@ import LoginForm from "./login_form";
 import { login, check } from "../../actions/session_actions";
 
 
-const mapStateToProps = state => ({
-    errors: Object.values(state.errors),
+const mapStateToProps = state => {
+    return {
+    errors: state.errors.session,
     formType: 'login'
-})
+    }
+}
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     processForm: user => dispatch(login(user)),

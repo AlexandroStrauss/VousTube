@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faVideo, faBell, faComment, faTh } from '@fortawesome/free-solid-svg-icons'
 
 class SessionDisplay extends React.Component{
     constructor(props) {
@@ -23,8 +25,17 @@ class SessionDisplay extends React.Component{
             )
         } else {
             return (
+                <div className="nav-right-side">
+                <div className="nav-btns">
+                    <FontAwesomeIcon icon={faVideo} />
+                    <FontAwesomeIcon icon={faTh} />
+                    <FontAwesomeIcon icon={faComment} />
+                    <FontAwesomeIcon icon={faBell} />
+                </div>
                 <div className="signin-btn">
+                    <img src="/assets/signin_img.png" height="25" width="25" />
                     <Link to={'/login'}>Sign In</Link>
+                </div>
                 </div>
             )
         }

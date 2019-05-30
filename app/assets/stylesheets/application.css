@@ -14,24 +14,65 @@
  *= require_self
  */
 
-/* @font-face {
-    font-family: Gilroy;
-    src:
-} */
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background-color: #fafafa
+    /* background-color: #fafafa; */
+        background-color: #ffffff;
+
+    margin: 0;
+    padding: 0;
 }
 
-head, .signup-form, .login-form {
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 56px;
+    box-shadow: 0 6px 10px #f2f2f2;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar > input {
+    margin: 0;
+    border-radius: 0px;
+}
+
+.nav-right-side {
+    display: flex;
+}
+
+.nav-btns {
+    color: #606060;
+}
+
+.youtube-icon {
+    color: #ff0000;
+}
+/* head, .signup-form, .login-form {
     background-color: #ffffff
+} */
+
+.signup-form {
+            border: 1px solid #dadcdf;
+    border-radius: 5px;
+    width: 448px;
+    margin: 0 auto;
+
 }
 
 .signin-btn {
-    display: inline;
+    display: flex;
+    align-items: center;
     border: 1px solid #055fd4;
     border-radius: 2px;
     padding: 5px 11px 5px 11px;
+    margin: 0px 30px 0px 0px;
 }
 
 .signin-btn a {
@@ -109,6 +150,7 @@ form .submit {
 
 }
 
+
 .toplevel-login > div {
     transition: left 0.5s;
 
@@ -139,6 +181,18 @@ form .submit {
     min-width: 448px;
     height: 416px;
     box-sizing: border-box;
+}
+
+[class*="-error"] > input {
+    border: 2px solid #d92f26;
+    border-radius: 4px;
+}
+
+.error {
+    display: flex; 
+    align-items: baseline; 
+    color: #d92f26;
+    font-size: 12px;
 }
 
 /* .welcoming {

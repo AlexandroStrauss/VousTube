@@ -30,35 +30,32 @@ class SignupForm extends React.Component {
     }
 
     render() {
-        const errors = this.props.errors.map(error => {
-            <li>
-                {error}
-            </li>
-        })
         return (
+            <div className="toplevel-signup">
             <div className = "signup-form">
-                <h3>Sign Up</h3>
-                <h4>to continue to VousTube</h4>
-                <ul>
-                    {errors}
-                </ul>
+                
+                <p className="welcoming">Sign Up</p>
+                <p className="continue">to continue to VousTube</p>
                 <form onSubmit={this.handleSubmit} >
                     <div className="username">
                         <label>Your name</label>
-                        <input type="text" value={this.state.username} onChange={this.update('username')} />
+                        <input type="text" placeholder="Your name" value={this.state.username} onChange={this.update('username')} />
                     </div>
 
                     <div className="email">
                         <label>Your email address</label>
-                            <input type="text" value={this.state.email} onChange={this.update('email')} />
+                            <input type="email" placeholder="Your email address" value={this.state.email} onChange={this.update('email')} />
                     </div>
 
 
-                    <label>Password<input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} /></label>
+                    <label>Password<input type={this.state.showPwd ? "text" : "password"} placeholder="Password" value={this.state.password} onChange={this.update('password')} /></label>
                     <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
-                    <input type="submit" value="Next" onClick={this.handleSubmit} />
+                    <div className="bottom-links">
+                        <Link to="/login">Sign in instead</Link>
+                        <input type="submit" className="submit" value="Next" onClick={this.handleSubmit} />
+                    </div>
                 </form>
-                <Link to="/login">Sign in instead</Link>
+            </div>
             </div>
         )
 
