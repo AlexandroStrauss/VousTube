@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
-@import "login-signup";
-@import "nav-bar";
+@import "login_signup";
+@import "nav_bar";
 
 body {
     font-family: 'Roboto', Arial, sans-serif;
