@@ -52,6 +52,10 @@ class LoginForm extends React.Component {
             return false
         }
     }
+
+    flipBack() {
+        this.setState({ phase: false })
+    }
     
     pwdEmpty() {
         if (this.state.password === "" && this.state.submitted) {
@@ -91,6 +95,10 @@ class LoginForm extends React.Component {
                                 }
                             </div>
 
+                            <div className="space-maker">
+
+                            </div>
+
                             <div className="bottom-links">
                                 <Link to="/signup">Create account</Link>
                                 <input type="submit" className="submit" value="Next" />
@@ -100,15 +108,16 @@ class LoginForm extends React.Component {
 
                     <div className="form-password">
                         <p className="welcoming">Welcome</p>
-                        <div className="identifier-info">
+                        <button className="identifier-info">
                             <i class="material-icons md-16">account_circle</i>
-                            <p>{this.state.identifier}</p></div>
+                            <p>{this.state.identifier}</p>
+                        </button>
                         <form onSubmit={this.handleSubmit} >
                                 <div className={this.state.pwdError ? "floating-label-error" : "floating-label"}>
                                 
                                 {/* <Link to="/login" onClick={this.setState({phase:false})}>Create account</Link> */}
                                 <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
-                                <label>Enter your password</label>
+                                {/* <label>Enter your password</label> */}
                                 {this.state.pwdError ?
                                     (this.pwdEmpty() ?
                                         <div className="error">
@@ -123,9 +132,13 @@ class LoginForm extends React.Component {
                                     :
                                     <> </>
                                 }
+                            </div>
 
+                            <div className="space-maker">
 
                             </div>
+
+
 
                             <div className="bottom-links">
                             <p></p>

@@ -38,12 +38,15 @@ input {
     border: 1px solid #d9dcdf;
     border-radius: 4px;
     padding: 13px 15px 13px 15px;
+    width: 340px;
     margin: 0 0 4px 0;
  }
 
 input:focus {
     border: 2px solid #055fd4;
     border-radius: 4px;
+        width: 340px;
+
 }
 
 form .submit {
@@ -53,7 +56,7 @@ form .submit {
     font-size: 14px;
     font-weight: bold;
     padding: 8px 10px 10px 28px;
-    min-width: 88px;
+    max-width: 88px;
     max-height: 36px;
     text-align: center;
 }
@@ -178,4 +181,20 @@ form .submit {
 
 .chars-warning {
     font-size: 13px;
+}
+
+.form-identifier .continue {
+    padding: 8px 0 24px 0;
+}
+
+.space-maker {
+    height: 120px;
+}
+
+.identifier-info {
+    margin: 0 auto;
+    width: 168px;
+    border: 1px solid #dadcdf;
+    border-radius: 90%;
+
 }
