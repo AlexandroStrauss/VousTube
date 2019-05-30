@@ -1,6 +1,5 @@
-.signup-form {
+/* .signup-form {
     padding: 48px 40px 36px 40px;
-
 }
 
 input {
@@ -21,17 +20,12 @@ input {
     padding: 16px 0 0 0;
     margin: 0;
 }
-/* p {
-    margin: 0;
-    padding: 0;
-}
- */
+
 .toplevel-signup {
-            border: 1px solid #dadcdf;
+    border: 1px solid #dadcdf;
     border-radius: 5px;
     width: 448px;
     margin: 0 auto;
-
 }
 
 input {
@@ -45,8 +39,7 @@ input {
 input:focus {
     border: 2px solid #055fd4;
     border-radius: 4px;
-        width: 340px;
-
+    width: 340px;
 }
 
 form .submit {
@@ -83,31 +76,23 @@ form .submit {
 
 .toplevel-login {
     position: relative;
-    /* background-size: 448px 500px;
-    background-repeat: no-repeat; */
     overflow: hidden;
-        border: 1px solid #dadcdf;
+    border: 1px solid #dadcdf;
     border-radius: 5px;
     width: 448px;
     margin: 0 auto;
-
 }
-
 
 .toplevel-login > div {
     transition: left 0.5s;
-
 }
 
 [class*="login-"] {
     display: flex;
     min-width: 448px;
     min-height: 500px;
-    /* height: 416px; */
     position: relative;
-
     vertical-align: bottom;
-    /* overflow: hidden; */
 }
 
 .login-phase1 {
@@ -125,7 +110,6 @@ form .submit {
     height: 416px;
     box-sizing: border-box;
 }
-
 
 [class*="-error"] > input {
     border: 2px solid #d92f26;
@@ -170,6 +154,7 @@ form .submit {
     opacity: 0;
     transition: all .3s ease;
 }
+
 .floating-label input:focus {
     padding: 28px 0px 12px 0px;
 }
@@ -196,5 +181,4 @@ form .submit {
     width: 168px;
     border: 1px solid #dadcdf;
     border-radius: 90%;
-
-}
+} */
