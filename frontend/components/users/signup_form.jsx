@@ -66,7 +66,7 @@ class SignupForm extends React.Component {
             }
         } else {
         return (
-            <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
+            <p class="chars-warning">Use 8 or more characters with a mix of letters, numbers & symbols</p>
         )
         }
     }
@@ -85,7 +85,7 @@ class SignupForm extends React.Component {
                             
                             {this.isEmpty(this.state.username) ?
                                 <div className="error">
-                                    <i class="material-icons md-18">error</i>
+                                    <i class="material-icons md-12">error</i>
                                     <p>Enter a username</p>
                                 </div>
                                 :
@@ -98,7 +98,7 @@ class SignupForm extends React.Component {
                             <input type="email" placeholder="Your email address" value={this.state.email} onChange={this.update('email')} />
                             {this.isEmpty(this.state.email) ?
                                 <div className="error">
-                                    <i class="material-icons md-18">error</i>
+                                    <i class="material-icons md-12">error</i>
                                     <p>Choose an email address</p>
                                 </div>
                                 :

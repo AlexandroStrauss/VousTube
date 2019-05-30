@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route, Redirect, Link } from 'react-router-dom';
-import SignupFormContainer from '../users/signup_form_container';
-
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -13,12 +11,22 @@ class LoginForm extends React.Component {
             showPwd: false,
             idError: false,
             pwdError: false,
+            submitted: false,
+            checked: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCheckSubmit = this.handleCheckSubmit.bind(this);
     }
 
     update(field) {
+        if (this.identifierEmpty()) {
+            this.setState({checked: false})
+        }
+
+        if (this.pwdEmpty()) {
+            this.setState({submitted: false})
+        }
+
         return (e) => {
             this.setState({ [field]: e.target.value })
         }
@@ -27,23 +35,33 @@ class LoginForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => console.log('success'), err => this.setState({ pwdError: true }));
+        this.props.processForm(user).then(() => console.log('success'), err => this.setState({ pwdError: true, submitted: true}));
         <Redirect to={`/users/${user.id}`} />
     }
 
     handleCheckSubmit(e) {
         e.preventDefault();
         const identifier = this.state.identifier;
-        this.props.check(identifier).then(() => this.setState({phase: true}), err => this.setState({idError: true}));
+        this.props.check(identifier).then(() => this.setState({phase: true}), err => this.setState({idError: true, checked: true}));
+    }
+
+    identifierEmpty() {
+        if (this.state.identifier === "" && this.state.checked) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    pwdEmpty() {
+        if (this.state.password === "" && this.state.submitted) {
+            return true
+        } else {
+            return false
+        }
     }
 
     render() {
-        // // debugger
-        // let idError = false
-        // if (this.props.errors[0]) {
-        //     idError = true;
-        // }
-
         return (
             <div className="toplevel-login">
                 <div className={this.state.phase ? "login-phase2" : "login-phase1"}>
@@ -55,15 +73,21 @@ class LoginForm extends React.Component {
                         <form onSubmit={this.handleCheckSubmit} >
                             <div className={this.state.idError ? "floating-label-error" : "floating-label"}>
                                 <input type="text" placeholder="Email or username" value={this.state.identifier} onChange={this.update('identifier')} />
-                                <label>Email or username</label>
+                                {/* <label>Email or username</label> */}
 
-                                {this.state.idError ?
-                                    <div className="error">
-                                        <i class="material-icons">error</i>
-                                        <p>Could not find username or email</p>
-                                    </div>
+                                {this.state.idError ? 
+                                    (this.identifierEmpty() ?
+                                        <div className="error">
+                                            <i class="material-icons md-12">error</i>
+                                            <p>Enter an email or username</p>
+                                        </div>
                                     :
-                                    <> </>
+                                        <div className="error">
+                                            <i class="material-icons md-12">error</i>
+                                            <p>Couldn't find your email or username</p>
+                                        </div>)
+                                    :
+                                        <> </>
                                 }
                             </div>
 
@@ -76,7 +100,9 @@ class LoginForm extends React.Component {
 
                     <div className="form-password">
                         <p className="welcoming">Welcome</p>
-                        <p className="identifier-info">{this.state.identifier}</p>
+                        <div className="identifier-info">
+                            <i class="material-icons md-16">account_circle</i>
+                            <p>{this.state.identifier}</p></div>
                         <form onSubmit={this.handleSubmit} >
                                 <div className={this.state.pwdError ? "floating-label-error" : "floating-label"}>
                                 
@@ -84,13 +110,20 @@ class LoginForm extends React.Component {
                                 <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
                                 <label>Enter your password</label>
                                 {this.state.pwdError ?
-                                    <div className="error">
-                                        <img src="/assets/caution_symbol.png" height="20" width="20" />
-                                        <p>Wrong password. Try again.</p>
-                                    </div>
+                                    (this.pwdEmpty() ?
+                                        <div className="error">
+                                            <i class="material-icons md-12">error</i>
+                                            <p>Enter a password</p>
+                                        </div>
+                                        :
+                                        <div className="error">
+                                            <i class="material-icons md-12">error</i>
+                                            <p>Wrong password. Try again.</p>
+                                        </div>)
                                     :
                                     <> </>
                                 }
+
 
                             </div>
 

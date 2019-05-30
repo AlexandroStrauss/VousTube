@@ -129,15 +129,53 @@ form .submit {
     border-radius: 4px;
 }
 
+.bottom-links {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
 .error {
     display: flex; 
     align-items: top; 
     color: #d92f26;
     font-size: 12px;
+    padding: 8px 0 0 0;
+}
+.error > i {
+    padding: 0px 4px 0 0;
 }
 
-.bottom-links {
+.error > p {
+    margin: 0 0 12px 0;
+    padding: 0 0 0 0;
+}
+
+.identifier-info {
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
+}
+
+.floating-label {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.floating-label > label {
+    position: absolute;
+    top: calc(50% - 6px);
+    opacity: 0;
+    transition: all .3s ease;
+}
+.floating-label input:focus {
+    padding: 28px 0px 12px 0px;
+}
+
+.floating-label input:focus + label{
+    transform: translateY(-10px);
+    opacity: .7;
+}
+
+.chars-warning {
+    font-size: 13px;
 }

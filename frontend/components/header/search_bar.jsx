@@ -11,8 +11,6 @@ class SearchBar extends React.Component {
                 <input type="text" placeholder="Search"/>
                 <button className="searcher">
                     <FontAwesomeIcon icon={faSearch} />
-                    {/* <img src="/assets/signin_img.png" height="25" width="25" /> */}
-
                 </button>
             </div>
         )

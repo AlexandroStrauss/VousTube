@@ -14,6 +14,7 @@
  *= require_self
  */
 @import "login-signup";
+@import "nav-bar";
 
 body {
     font-family: 'Roboto', Arial, sans-serif;
@@ -33,49 +34,11 @@ header {
     box-shadow: 0 6px 10px #f2f2f2;
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar > input {
-    margin: 0;
-    border-radius: 0px;
-}
-
-.nav-right-side {
-    display: flex;
-}
-
-.nav-btns {
-    color: #606060;
-}
-
-.youtube-icon {
-    color: #ff0000;
-}
 /* head, .signup-form, .login-form {
     background-color: #ffffff
 } */
 
 
-.signin-btn {
-    display: flex;
-    align-items: center;
-    border: 1px solid #055fd4;
-    border-radius: 2px;
-    padding: 5px 11px 5px 11px;
-    margin: 0px 30px 0px 0px;
-}
-
-.signin-btn a {
-    text-decoration: none;
-    color: #055fd4;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 14;
-    padding: 5px 11px 5px 11px;
-}
 
 a {
     text-decoration: none;
@@ -93,7 +56,7 @@ a:active {
 } */
 [class*="form-"] p {
     text-align: center;
-    padding: 8px 0 0 0;
+    /* padding: 8px 0 0 0; */
 }
 
 .submit {
@@ -101,24 +64,10 @@ a:active {
     justify-content: flex-start;
 }
 
-.floating-label {
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.floating-label > label {
-    position: absolute;
-    top: calc(50% - 6px);
-    opacity: 0;
-    transition: all .3s ease;
-}
-.floating-label input:focus {
-    padding: 28px 0px 12px 0px;
-}
-
-.floating-label input:focus + label{
-    transform: translateY(-10px);
-    opacity: .7;
-}
 
 .material-icons.md-12 { font-size: 12px; }
+.material-icons.md-16 { font-size: 16px; }
+
+
+
+

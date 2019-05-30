@@ -1,0 +1,121 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 640px;
+}
+
+.search-bar > input {
+    margin: 0 0 0 38px;
+    border-color: #c6c6c6;
+    border-radius: 0px;
+    padding: 2px 6px;
+    font-size: 16px;
+    height: 28px;
+    width: 100%;
+    box-shadow: inset 0 0 4px #f3f3f3;
+}
+
+.search-bar > button {
+    /* border: none; */
+    border-color: #c6c6c6;
+    border-left: none;
+    outline: none;
+    cursor: pointer;
+    height: 34px;
+    max-width: 65px;
+    /* padding: 1px 7px 2px 2px; */
+    color: #828282;
+    background-color: #f8f8f8;
+    width: 50%;
+}
+
+.search-bar > button:hover {
+    border-color: #c6c6c6;
+    background-color: #f0f0f0;
+    color: black;
+    /* box-shadow: 0px 1px 1px #828282; */
+}
+
+.search-bar > input:focus {
+    border: 1px solid #3f51b5;
+}
+
+.nav-right-side {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.nav-btns {
+    color: #606060;
+}
+
+.youtube-icon {
+    color: #ff0000;
+}
+.signin-btn {
+    display: flex;
+    align-items: center;
+    border: 1px solid #055fd4;
+    border-radius: 2px;
+    /* padding: 2px 1px; */
+    margin: 0px 30px 0px 0px;
+        color: #055fd4;
+}
+
+.signin-btn a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14;
+    padding: 5px 11px 5px 5px;
+}
+
+.signin-btn i {
+    padding: 3px 4px;
+}
+
+.nav-btns {
+    display: flex;
+    align-items: center;
+}
+
+.nav-btns button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+        padding: 8px 16px;
+    color: #606060;
+}
+
+.left-nav-bar {
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0 0 0 16px;
+    color: #606060;
+}
+
+.left-nav-bar button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.left-nav-bar, .nav-right-side > button {
+      transition-duration: 0.4s;
+      /* color: #ff0000; */
+
+}
+
