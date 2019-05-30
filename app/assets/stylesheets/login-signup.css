@@ -3,6 +3,29 @@
 
 }
 
+input {
+    outline: none;
+}
+
+.signup-form > form {
+    padding: 24px 0 0 0;
+}
+
+
+.welcoming {
+    padding: 24px 0 0 0;
+    margin: 0;
+}
+
+.continue {
+    padding: 16px 0 0 0;
+    margin: 0;
+}
+/* p {
+    margin: 0;
+    padding: 0;
+}
+ */
 .toplevel-signup {
             border: 1px solid #dadcdf;
     border-radius: 5px;
@@ -99,6 +122,7 @@ form .submit {
     height: 416px;
     box-sizing: border-box;
 }
+
 
 [class*="-error"] > input {
     border: 2px solid #d92f26;

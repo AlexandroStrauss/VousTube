@@ -59,7 +59,7 @@ class LoginForm extends React.Component {
 
                                 {this.state.idError ?
                                     <div className="error">
-                                        <img src= "/assets/caution_symbol.png" height="20" width="20" />
+                                        <i class="material-icons">error</i>
                                         <p>Could not find username or email</p>
                                     </div>
                                     :
