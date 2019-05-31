@@ -119,7 +119,6 @@ form .submit {
 [class*="-error"] > input {
     border: 2px solid #d92f26;
     border-radius: 4px;
-    font-size: 
 }
 
 [class*="floating-"] > input {
