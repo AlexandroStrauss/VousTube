@@ -16,6 +16,7 @@ class LoginForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCheckSubmit = this.handleCheckSubmit.bind(this);
+        this.flipBack = this.flipBack.bind(this);
     }
 
     update(field) {
@@ -108,10 +109,14 @@ class LoginForm extends React.Component {
 
                     <div className="form-password">
                         <p className="welcoming">Welcome</p>
-                        <button className="identifier-info">
+                        <button className="identifier-info" onClick={() => this.flipBack()}>
                             <i class="material-icons md-16">account_circle</i>
                             <p>{this.state.identifier}</p>
+                            <i class="material-icons">keyboard_arrow_down</i>
                         </button>
+                        <div class="space-40px">
+
+                        </div>
                         <form onSubmit={this.handleSubmit} >
                                 <div className={this.state.pwdError ? "floating-label-error" : "floating-label"}>
                                     <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />

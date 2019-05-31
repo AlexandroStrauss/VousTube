@@ -2,9 +2,11 @@
     padding: 48px 40px 36px 40px;
 }
 
+
 input {
     outline: none;
 }
+
 
 
 .signup-form > form {
@@ -15,11 +17,13 @@ input {
 .welcoming {
     padding: 24px 0 0 0;
     margin: 0;
+    font-size: 24px;
 }
 
 .continue {
     padding: 16px 0 0 0;
     margin: 0;
+    font-size: 16px;
 }
 
 .toplevel-signup {
@@ -129,20 +133,21 @@ form .submit {
     float: none;
     transition: all 0.3s ease;
     background: #ffffff;
-    padding: 8px;
+    padding: 2px 8px;
 }
 
 [class*="floating-"] > input:focus + label {
-    top: -60px;
+    top: -58px;
     left: 8px;
     font-size: 11px;
+    opacity: 100%;
 }
 
-.floating-label > input:focus + label{
+.floating-label > input:focus + label {
     color: #055fd4;
 }
 
-.floating-label-errors > input:focus + label{
+.floating-label-error > input:focus + label {
     color: #d92f26;
 }
 
@@ -188,7 +193,35 @@ form .submit {
 
 .identifier-info {
     margin: 0 auto;
-    width: 168px;
+    outline: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 140px;
+    height: 32px;
     border: 1px solid #dadcdf;
-    border-radius: 90%;
+    border-radius: 50px;
+}
+
+.identifier-info:hover {
+    cursor: pointer;
+    background-color: #fafafb;
+}
+
+
+.identifier-info p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.space-40px {
+    padding: 0;
+    margin:0;
+    height: 40px;
+}
+
+.toplevel-login, .toplevel-signup {
+    position: relative;
+    top: 104px;
 }

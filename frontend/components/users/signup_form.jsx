@@ -132,7 +132,6 @@ class SignupForm extends React.Component {
 
 export default SignupForm
 
-
 {/* () ?
                                 this.isEmpty(this.state.password) ?
                                     <div className="error">
