@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SideBar from './nav_bar';
+import SideBar from './side_bar';
 
 export const mapStateToProps = state => ({
     currentUser: state.entities.users[state.session.id]

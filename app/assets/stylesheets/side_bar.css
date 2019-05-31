@@ -6,9 +6,23 @@
     z-index: 1;
 }
 
+.sidedbar-collapsed > button {
+    font-size: 24px;
+}
 .sidedbar-collapsed :hover {
     background-color: #dcdcdc;  
 }
 
+
+
+.sidebar-open {
+    width: 164px;
+}
+
+.sidedbar-open-selected {
+    color: #ff0000;
+    font-weight: bold;
+    background-color: #dcdcdc
+}
 
 /* selected icon: #ff0000; */
