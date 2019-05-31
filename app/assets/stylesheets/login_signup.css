@@ -6,6 +6,7 @@ input {
     outline: none;
 }
 
+
 .signup-form > form {
     padding: 24px 0 0 0;
 }
@@ -116,6 +117,36 @@ form .submit {
     border-radius: 4px;
 }
 
+[class*="floating-"] > input {
+    display: block; 
+    position: relative;
+    float: none;
+}
+
+[class*="floating-"] > label {
+    display: inline-block; 
+    position: relative;
+    float: none;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    padding: 8px;
+}
+
+[class*="floating-"] > input:focus + label {
+    top: -60px;
+    left: 8px;
+    font-size: 11px;
+}
+
+.floating-label > input:focus + label{
+    color: #055fd4;
+}
+
+.floating-label-errors > input:focus + label{
+    color: #d92f26;
+}
+
+
 .bottom-links {
     display: flex;
     align-items: baseline;
@@ -141,27 +172,6 @@ form .submit {
 .identifier-info {
     display: flex;
     align-items: baseline;
-}
-
-.floating-label {
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.floating-label > label {
-    position: absolute;
-    top: calc(50% - 6px);
-    opacity: 0;
-    transition: all .3s ease;
-}
-
-.floating-label input:focus {
-    padding: 28px 0px 12px 0px;
-}
-
-.floating-label input:focus + label{
-    transform: translateY(-10px);
-    opacity: .7;
 }
 
 .chars-warning {

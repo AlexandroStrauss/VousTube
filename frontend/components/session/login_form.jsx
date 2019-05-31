@@ -76,8 +76,8 @@ class LoginForm extends React.Component {
 
                         <form onSubmit={this.handleCheckSubmit} >
                             <div className={this.state.idError ? "floating-label-error" : "floating-label"}>
-                                <input type="text" placeholder="Email or username" value={this.state.identifier} onChange={this.update('identifier')} />
-                                {/* <label>Email or username</label> */}
+                                <input type="text" value={this.state.identifier} onChange={this.update('identifier')} />
+                                <label>Email or username</label>
 
                                 {this.state.idError ? 
                                     (this.identifierEmpty() ?
@@ -114,10 +114,9 @@ class LoginForm extends React.Component {
                         </button>
                         <form onSubmit={this.handleSubmit} >
                                 <div className={this.state.pwdError ? "floating-label-error" : "floating-label"}>
-                                
-                                {/* <Link to="/login" onClick={this.setState({phase:false})}>Create account</Link> */}
-                                <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
-                                {/* <label>Enter your password</label> */}
+                                    <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
+                                    <label>Enter your password</label>
+
                                 {this.state.pwdError ?
                                     (this.pwdEmpty() ?
                                         <div className="error">
@@ -138,8 +137,6 @@ class LoginForm extends React.Component {
 
                             </div>
 
-
-
                             <div className="bottom-links">
                             <p></p>
                             <input type="submit" className="submit" value="Next" />
@@ -153,3 +150,4 @@ class LoginForm extends React.Component {
 }
 
 export default LoginForm;
+
