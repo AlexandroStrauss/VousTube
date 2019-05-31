@@ -80,10 +80,9 @@ class SignupForm extends React.Component {
                 <p className="continue">to continue to VousTube</p>
                 <form onSubmit={this.handleSubmit} >
                         <div className={this.isEmpty(this.state.username) ? "floating-label-error" : "floating-label"}>
-                        <input type="text" placeholder="Your name" value={this.state.username} onChange={this.update('username')} />
-                            <label>Your name</label>
+                        <input id="name" type="text" placeholder="Your name" value={this.state.username} onChange={this.update('username')} />
+                            <label for="name">Your name</label>
 
-                            
                             {this.isEmpty(this.state.username) ?
                                 <div className="error">
                                     <i class="material-icons md-12">error</i>
@@ -95,8 +94,8 @@ class SignupForm extends React.Component {
                     </div>
 
                         <div className={this.isEmpty(this.state.email) ? "floating-label-error" : "floating-label"}>                        
-                            <input type="email" placeholder="Your email address" value={this.state.email} onChange={this.update('email')} />
-                            <label>Your email address</label>
+                            <input id="email" type="email" placeholder="Your email address" value={this.state.email} onChange={this.update('email')} />
+                            <label for="email">Your email address</label>
 
                             {this.isEmpty(this.state.email) ?
                                 <div className="error">
@@ -109,8 +108,8 @@ class SignupForm extends React.Component {
                     </div>
 
                         <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>                        
-                            <input type={this.state.showPwd ? "text" : "password"} placeholder="Password" value={this.state.password} onChange={this.update('password')} />
-                            <label>Password</label>
+                            <input id="pwd" type={this.state.showPwd ? "text" : "password"} placeholder="Password" value={this.state.password} onChange={this.update('password')} />
+                            <label for="pwd">Password</label>
 
 
                             {this.passwordError()} 

@@ -77,8 +77,8 @@ class LoginForm extends React.Component {
 
                         <form onSubmit={this.handleCheckSubmit} >
                             <div className={this.state.idError ? "floating-label-error" : "floating-label"}>
-                                <input type="text" value={this.state.identifier} onChange={this.update('identifier')} />
-                                <label>Email or username</label>
+                                <input type="text" id="identifier" value={this.state.identifier} onChange={this.update('identifier')} />
+                                <label for="identifier">Email or username</label>
 
                                 {this.state.idError ? 
                                     (this.identifierEmpty() ?
@@ -119,8 +119,8 @@ class LoginForm extends React.Component {
                         </div>
                         <form onSubmit={this.handleSubmit} >
                                 <div className={this.state.pwdError ? "floating-label-error" : "floating-label"}>
-                                    <input type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
-                                    <label>Enter your password</label>
+                                    <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
+                                    <label for="pwd">Enter your password</label>
 
                                 {this.state.pwdError ?
                                     (this.pwdEmpty() ?

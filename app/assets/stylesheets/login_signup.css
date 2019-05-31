@@ -119,28 +119,33 @@ form .submit {
 [class*="-error"] > input {
     border: 2px solid #d92f26;
     border-radius: 4px;
+    font-size: 
 }
 
 [class*="floating-"] > input {
     display: block; 
     position: relative;
     float: none;
+    font-size: 16px;
 }
 
 [class*="floating-"] > label {
     display: inline-block; 
+    top: -38px;
+    left: 8px;
     position: relative;
     float: none;
     transition: all 0.3s ease;
     background: #ffffff;
     padding: 2px 8px;
+    cursor: auto;
+    color: #7f868a;
 }
 
 [class*="floating-"] > input:focus + label {
-    top: -58px;
+    top: -62px;
     left: 8px;
     font-size: 11px;
-    opacity: 100%;
 }
 
 .floating-label > input:focus + label {

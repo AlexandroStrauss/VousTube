@@ -1,0 +1,14 @@
+.sidedbar-collapsed {
+    background-color: #f5f5f5;
+    color: #909090;
+    min-width: 72px;
+    max-width: 72px; 
+    z-index: 1;
+}
+
+.sidedbar-collapsed :hover {
+    background-color: #dcdcdc;  
+}
+
+
+/* selected icon: #ff0000; */

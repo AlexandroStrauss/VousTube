@@ -17,8 +17,7 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
     /* background-color: #fafafa; */
-        background-color: #ffffff;
-
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -29,14 +28,9 @@ header {
     justify-content: space-between;
     align-items: center;
     max-height: 56px;
+    z-index: 4;
     box-shadow: 0 6px 10px #f2f2f2;
 }
-
-/* head, .signup-form, .login-form {
-    background-color: #ffffff
-} */
-
-
 
 a {
     text-decoration: none;
@@ -48,10 +42,6 @@ a:active {
     color: #055fd4;
 }
 
-
-/* .welcoming {
-    padding: 16px 0 0 0;
-} */
 [class*="form-"] p {
     text-align: center;
     /* padding: 8px 0 0 0; */
@@ -62,10 +52,5 @@ a:active {
     justify-content: flex-start;
 }
 
-
 .material-icons.md-12 { font-size: 12px; }
 .material-icons.md-16 { font-size: 16px; }
-
-
-
-
