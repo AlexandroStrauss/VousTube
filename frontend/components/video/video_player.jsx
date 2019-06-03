@@ -12,18 +12,22 @@ class VideoPlayer extends React.Component {
         this.swapPlayPause = this.swapPlayPause.bind(this);
         this.swapMute = this.swapMute.bind(this);
 
-        this.state.video = (
-            <video onKeyPress={this.buttonPresses}>
+        this.videoEle = (
+            <video onKeyPress={this.buttonPresses} id="video">
                 <source src={this.state.videoUrl} />
             </video>
         )
     }
 
+    componentDidMount() {
+        this.video = document.getElementById('video');
+    }
+
     playPause() {
-        if (this.state.video.ended) {
+        if (this.video.ended) {
             return (< i class="material-icons" >
                 replay</i >)
-        } else if (this.state.video.paused) {
+        } else if (this.video.paused) {
             return (<i class="material-icons">
                 play_arrow</i>)
         } else {
@@ -33,12 +37,12 @@ class VideoPlayer extends React.Component {
     }
 
     volumeButton() {
-        if (this.state.video.volume === 0) {
+        if (this.video.volume === 0) {
             return (
                 <i class="material-icons">volume_off</i>
             )
         } else if 
-            (this.state.video.volume < 0.5) {
+            (this.video.volume < 0.5) {
                 return (
                     <i class="material-icons">volume_down</i>
                 )
@@ -50,29 +54,32 @@ class VideoPlayer extends React.Component {
     }
 
     swapPlayPause () {
-        if(this.state.video.paused || this.state.video.ended) {
-            this.state.video.play()
+        debugger
+        if(this.video.paused || this.video.ended) {
+            this.video.play()
         } else {
-            this.state.video.pause()
+            this.video.pause()
         }
     }
 
     swapMute () {
-        if(this.state.video.muted) {
-            this.state.video.unmute()
+        debugger
+        if(this.video.muted) {
+            this.video.muted = false;
         } else {
-            this.state.video.mute()
+            this.video.muted = true;
         }
     }
 
-    // this.state.video.addEventListener('play', function(){
+    // this.video.addEventListener('play', function(){
     //     changeButtonState('playpause');
     // }, false)
 
     buttonPresses(e) {
+        debugger
         switch (e.key) {
             case "ArrowLeft":
-                this.state.video.currentTime -= 5;
+                this.video.currentTime -= 5;
             case "ArrowRight":
                 video.currentTime += 5;
             case "ArrowUp":
@@ -87,7 +94,7 @@ class VideoPlayer extends React.Component {
     }
 
     render() {
-        const video = this.state.video;
+        const video = this.videoEle;
 
         return (
             <figure id="video-container" onKeyPress={this.buttonPresses}>
@@ -97,9 +104,9 @@ class VideoPlayer extends React.Component {
                 {/* </video> */} 
                 {video}
                 <div id="video-controls">
-                    <button type="button" id="play-pause">{this.playPause()}</button>
+                    <button type="button" id="play-pause">Q</button>
                     {/* <input type="range" id="seek-bar" value="0"> */}
-                    <button type="button" id="mute">{this.volumeButton()}</button>
+                    <button type="button" id="mute">IJW</button>
                     {/* <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" /> */}
                     <button type="button" id="full-screen"><i class="material-icons">fullscreen</i></button>
                 </div>
