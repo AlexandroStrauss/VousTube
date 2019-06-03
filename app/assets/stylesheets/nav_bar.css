@@ -118,3 +118,35 @@
 
 }
 
+.vid-upload {
+    position: absolute;
+    display: flex;
+    width: 170px;
+    top: 48px;
+    right: 135px;
+    background-color: white;
+    z-index: 9;
+	box-shadow: -1px 6px 10px 5px rgba(0,0,0,0.09);
+}
+
+.vid-upload > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 16px;
+}
+.vid-upload > a > i {
+    margin: 0 30px 0 0;
+    color: red;
+}
+
+.vid-upload > a > p {
+    font-size: 14px;
+    color: black;
+    padding: 0;
+}
+
+
+.vid-upload-hidden {
+    display: none;
+}

@@ -4,10 +4,14 @@ class VideoForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            videoFile = null,
-            video = [],
-            thumbUrl = null,
+            title: "",
+            description: "",
+            // videoFile = null,
+            // video = [],
+            // thumbUrl = null,
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     handleFile(e) {
@@ -27,7 +31,7 @@ class VideoForm extends React.Component {
         formData.append('video[title]', this.state.title)
         formData.append('video[description]', this.state.description)
         formData.append('video[video]', this.state.videoFile)
-        formData.append('video[thumbnail]', this.state.thumbnail_img)
+        // formData.append('video[thumbnail]', this.state.thumbUrl)
         $.ajax({
             url: '/api/videos',
             method: 'POST',
@@ -39,24 +43,25 @@ class VideoForm extends React.Component {
             response => console.log(response.responseJSON),
         )
     }
+
     render () {
+        return (
         <form>
-            <label for="title">
-                <input type="text">
+            <label htmlFor="title">
+                <input type="text" id="title" value={this.state.title}>
 
                 </input>
             </label>
 
-            <label for="description">
-                <textarea name="" id="" cols="30" rows="10">
+            <label htmlFor="description">
+                <textarea id="description" name="" cols="30" rows="10" value={this.state.description}>
 
                 </textarea>
-            </label>
-
+            </label> 
 
             <label>Select file to upload
                 <input type="file" 
-                    onChange={this.handleFile.bind(this)}
+                    onChange={this.handleFile}
                     accept="video/*"
                 />
             </label>
@@ -64,13 +69,14 @@ class VideoForm extends React.Component {
             {/* <label>Choose A Thumbnail
                 <input type="file"
                     onChange={this.handleFile.bind(this)}
-                    accept="image/*"
+                     accept="image/*"
                 />
             </label> */}
 
             <input type="submit" onClick={this.handleSubmit} value="Upload" />
-
-
         </form>
+        )
     }
 }
+
+export default VideoForm;

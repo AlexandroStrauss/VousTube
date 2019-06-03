@@ -10,7 +10,10 @@ import SideBar from '../side_bar/side_bar';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.currentUser;
+        this.state = {
+            clicked: false,
+        }
+        this.videoClick = this.videoClick.bind(this)
     }
 
     componentDidMount() {
@@ -23,6 +26,10 @@ class NavBar extends React.Component {
         } else {
             return <FontAwesomeIcon icon={faEllipsisV} />
         }
+    }
+
+    videoClick () {
+        this.setState({clicked: !this.state.clicked})
     }
     
     render () {
@@ -41,7 +48,13 @@ class NavBar extends React.Component {
 
                 <div className="nav-right-side">
                     <div className="nav-btns">
-                        <button><FontAwesomeIcon icon={faVideo} /></button>
+                        <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
+                            <div className={this.state.clicked ? "vid-upload" : "vid-upload-hidden"}>
+                                <Link to='/videos/new'>
+                                <i class="material-icons">cloud_upload</i>
+                                <p>Upload video</p>
+                                </Link>
+                            </div>
                         <button><FontAwesomeIcon icon={faTh} /></button>
                         <button><FontAwesomeIcon icon={faComment} /></button>
                         <button>{this.bellMore()}</button>

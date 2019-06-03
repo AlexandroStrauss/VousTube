@@ -2,7 +2,15 @@ import React from 'react';
 
 class VideoIndex extends React.Component {
     constructor (props) {
-        super(props)
+        super(props);
+        this.state = {
+            videos: []
+        }
+        this.fetchVideos = this.fetchVideos.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchVideos();
     }
 
     render () {
@@ -24,3 +32,5 @@ class VideoIndex extends React.Component {
         )
     }
 }
+
+export default VideoIndex;
