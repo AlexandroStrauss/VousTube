@@ -54,11 +54,21 @@ class VideoForm extends React.Component {
             </label>
 
 
-            <label>Choose A File...
+            <label>Select file to upload
                 <input type="file" 
                     onChange={this.handleFile.bind(this)}
+                    accept="video/*"
                 />
             </label>
+
+            {/* <label>Choose A Thumbnail
+                <input type="file"
+                    onChange={this.handleFile.bind(this)}
+                    accept="image/*"
+                />
+            </label> */}
+
+            <input type="submit" onClick={this.handleSubmit} value="Upload" />
 
 
         </form>
