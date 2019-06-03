@@ -24,11 +24,11 @@ body {
 
 #video-container {
     position: absolute;
-    left: 480px;    
+    left: 150px;    
     height: 600px;
 }
 
-.video-controls button {
+#video-controls button {
    border:none;
    cursor:pointer;
    background:transparent;
