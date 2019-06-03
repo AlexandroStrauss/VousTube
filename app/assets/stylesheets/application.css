@@ -22,26 +22,6 @@ body {
     padding: 0;
 }
 
-#video-container {
-    position: absolute;
-    left: 150px;    
-    height: 600px;
-}
-
-#video-controls button {
-   border:none;
-   cursor:pointer;
-   background:transparent;
-   background-size:contain;
-   background-repeat:no-repeat;
-}
-
-video {
-    margin: 0 auto;
-    width: auto !important;
-    height: 100% !important;
-}
-
 header {
     background-color: #ffffff;
     display: flex;

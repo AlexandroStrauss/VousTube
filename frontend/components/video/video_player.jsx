@@ -6,8 +6,9 @@ class VideoPlayer extends React.Component {
         this.state = {
             videoUrl: "https://voustube-dev.s3.amazonaws.com/coconut_head_sad.mp4",
         }
+        this.buttonPresses = this.buttonPresses.bind(this)
         this.state.video = (
-            <video>
+            <video onKeyPress={this.buttonPresses}>
                 <source src={this.state.videoUrl} />
             </video>
         )
@@ -62,24 +63,25 @@ class VideoPlayer extends React.Component {
     //     changeButtonState('playpause');
     // }, false)
 
+    buttonPresses(e) {
+        switch (e.key) {
+            case "ArrowLeft":
+                this.state.video.currentTime -= 5;
+            case "ArrowRight":
+                video.currentTime += 5;
+            case "ArrowUp":
+                video.volume += 0.1;
+            case "ArrowDown":
+                video.volume -= 0.1;
+            case " ":
+                this.swapPlayPause();
+            case "m":
+                this.swapMute();
+        }
+    }
+
     render() {
         const video = this.state.video;
-        // video.addEventListener('keydown', e => {
-        //     switch (e.key) {
-        //         case "ArrowLeft":
-        //             video.currentTime -= 5;
-        //         case "ArrowRight":
-        //             video.currentTime += 5;
-        //         case "ArrowUp":
-        //             video.volume += 0.1;
-        //         case "ArrowDown":
-        //             video.volume -= 0.1;
-        //         case " ":
-        //             this.swapPlayPause();
-        //         case "m": 
-        //             this.swapMute();
-        //     }
-        // })
 
         return (
             <figure id="video-container">
