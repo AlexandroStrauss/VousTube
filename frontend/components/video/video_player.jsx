@@ -24,7 +24,7 @@ class VideoPlayer extends React.Component {
     render() {
         return (
             <figure id="video-container">
-                <video height="300" width="400" controls> 
+                <video controls> 
                     <source src={this.state.videoUrl} />
                     {/* <source src={this.props.videoUrl} type="video/mp4" /> */}
                 </video>
@@ -33,7 +33,7 @@ class VideoPlayer extends React.Component {
                     {/* <input type="range" id="seek-bar" value="0"> */}
                     {/* <button type="button" id="mute">{volumeButton}</button> */}
                     {/* <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" /> */}
-                    <button type="button" id="full-screen">Full-Screen</button>
+                    <button type="button" id="full-screen"><i class="material-icons">fullscreen</i></button>
                 </div>
             </figure>
         )
@@ -66,6 +66,16 @@ class VideoPlayer extends React.Component {
 //         mute.setAttribute('data-state', video.muted ? 'unmute' : 'mute');
 //     }
 // }
+
+
+{/* <i class="material-icons">
+    fullscreen
+</i>
+
+    <i class="material-icons">
+        fullscreen_exit
+</i> */}
+
 
 
 export default VideoPlayer;

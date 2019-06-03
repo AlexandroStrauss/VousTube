@@ -38,7 +38,8 @@ body {
 
 video {
     margin: 0 auto;
-    height: 100%;
+    width: auto !important;
+    height: 100% !important;
 }
 
 header {
