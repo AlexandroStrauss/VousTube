@@ -1,21 +1,41 @@
-import { faLinkedIn, faFire, faPhoenixFramework } from "@fortawesome/free-solid-svg-icons";
-
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {Link } from 'react-router-dom';
 class SideBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = this.props.currentUser;
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = this.props.currentUser;
+    // }
 
-    componentDidMount() {
-        this.props.currentUser;
-    }
+    // componentDidMount() {
+    //     this.props.currentUser;
+    // }
     render () {
         return (
-            <div className="sidebar-collapsed">
-                <button><i class="material-icons">home</i></button>
-                <button><FontAwesomeIcon icon={faLinkedIn} /></button> 
-                <button><FontAwesomeIcon icon={faGithub} /></button> 
-            </div>
+            <section className="sidebar-open">
+                <Link to="/" >
+                <button>
+                    <i class="material-icons">home</i>
+                    <p>Home</p>
+                </button>
+                </Link>
+
+                <a href="https://linkedin.com" >
+                <button>
+                    <FontAwesomeIcon icon={faLinkedin} />
+                    <p>LinkedIn</p>
+                </button> 
+                </a>
+
+                <a href="https://github.com/AlexandroStrauss">
+                <button>
+                    <FontAwesomeIcon icon={faGithub} />
+                    <p>Github</p>
+                </button> 
+                </a>
+            </section>
         )  
     }
 }

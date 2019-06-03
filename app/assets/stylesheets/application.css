@@ -22,12 +22,31 @@ body {
     padding: 0;
 }
 
+#video-container {
+    position: absolute;
+    left: 480px;    
+    height: 600px;
+}
+
+.video-controls button {
+   border:none;
+   cursor:pointer;
+   background:transparent;
+   background-size:contain;
+   background-repeat:no-repeat;
+}
+
+video {
+    margin: 0 auto;
+    height: 100%;
+}
+
 header {
     background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-height: 56px;
+    height: 56px;
     z-index: 4;
     box-shadow: 0 6px 10px #f2f2f2;
 }

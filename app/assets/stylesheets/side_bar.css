@@ -1,28 +1,88 @@
-.sidedbar-collapsed {
+.sidebar-collapsed {
+    position: fixed;
+    height: 100%;
     background-color: #f5f5f5;
     color: #909090;
-    min-width: 72px;
-    max-width: 72px; 
+    width: 72px;
     z-index: 1;
+    overflow-x: hidden;
 }
 
-.sidedbar-collapsed > button {
+.sidebar-collapsed > a > button {
+    background-color: #f5f5f5;
     font-size: 24px;
+    width: 100%;
+    border: none;
+    padding: 16px 0 14px 0;
+    outline: none;
+    color: #909090;
 }
-.sidedbar-collapsed :hover {
+
+.sidebar-collapsed > a > button > p {
+    font-size: 14px;
+    margin: 0;
+}
+.sidebar-collapsed :hover {
     background-color: #dcdcdc;  
 }
 
+.sidebar-collapsed > a > button:focus {
+    color: #ff0000;
+}
 
 
 .sidebar-open {
     width: 164px;
+        position: fixed;
+    height: 100%;
+    background-color: #f5f5f5;
+    color: #909090;
+    z-index: 1;
+    overflow-x: hidden;
 }
 
-.sidedbar-open-selected {
+.sidebar-open > a > button:focus {
     color: #ff0000;
     font-weight: bold;
-    background-color: #dcdcdc
+    background-color: #dcdcdc;
 }
+
+.sidebar-open > a > button:focus > p {
+    color: black;
+}
+
+
+
+.sidebar-open > a > button {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    font-size: 24px;
+    width: 100%;
+    border: none;
+    padding: 16px 0 14px 0;
+    outline: none;
+    color: #909090;
+}
+
+.sidebar-open > a > button > p {
+    display: inline;
+    font-size: 14px;
+    margin: 0 0 0 24px;
+}
+
+.sidebar-open > a > button > svg {
+    margin: 0 0 0 24px;
+}
+
+.sidebar-open > a > button > i {
+    margin: 0 0 0 24px;
+}
+
+
+.sidebar-open :hover {
+    background-color: #dcdcdc;  
+}
+
 
 /* selected icon: #ff0000; */

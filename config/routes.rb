@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: :create
     resource :session, only: [:create, :destroy]
     post '/session/check', to: 'sessions#check'
-    resources :videos, only: :show
+    resources :videos, only: [:create, :show, :index]
   end
 
 end

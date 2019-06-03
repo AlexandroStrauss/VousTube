@@ -4,6 +4,8 @@ import { faBars, faVideo, faBell, faComment, faTh, faEllipsisV } from '@fortawes
 import SearchBar from '../header/search_bar';
 import { Route, Link } from 'react-router-dom';
 import SessionDisplayContainer from '../session_display_container';
+import SideBar from '../side_bar/side_bar';
+
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -26,10 +28,12 @@ class NavBar extends React.Component {
     render () {
         return (
             <header>
+
                 <div class="left-nav-bar">
                     <button><FontAwesomeIcon icon={faBars} /></button>
                     {/* <div className="youtube-icon"><FontAwesomeIcon icon={faYoutube} /></div> */}
-                    <Link to="/"><h1>VousTube</h1></Link>
+                    <Link to="/"><img src="/assets/voustube_futura.png" width="101" height="25"/></Link>
+                    {/* <Link to="/"><h1>VousTube</h1></Link> */}
 
                 </div>
 
