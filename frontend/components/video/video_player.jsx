@@ -13,7 +13,7 @@ class VideoPlayer extends React.Component {
         this.swapMute = this.swapMute.bind(this);
 
         this.videoEle = (
-            <video onKeyPress={this.buttonPresses} id="video">
+            <video onKeyPress={this.buttonPresses} id="video" controls>
                 <source src={this.state.videoUrl} />
             </video>
         )
@@ -41,7 +41,7 @@ class VideoPlayer extends React.Component {
             return (
                 <i class="material-icons">volume_off</i>
             )
-        } else if 
+        } else if
             (this.video.volume < 0.5) {
                 return (
                     <i class="material-icons">volume_down</i>
@@ -54,8 +54,7 @@ class VideoPlayer extends React.Component {
     }
 
     swapPlayPause () {
-        debugger
-        if(this.video.paused || this.video.ended) {
+        if (this.video.paused || this.video.ended) {
             this.video.play()
         } else {
             this.video.pause()
@@ -63,8 +62,7 @@ class VideoPlayer extends React.Component {
     }
 
     swapMute () {
-        debugger
-        if(this.video.muted) {
+        if (this.video.muted) {
             this.video.muted = false;
         } else {
             this.video.muted = true;
@@ -76,20 +74,33 @@ class VideoPlayer extends React.Component {
     // }, false)
 
     buttonPresses(e) {
-        debugger
-        switch (e.key) {
-            case "ArrowLeft":
-                this.video.currentTime -= 5;
-            case "ArrowRight":
+        e.preventDefault();
+        switch (e.keyCode) {
+            case 39:
                 video.currentTime += 5;
-            case "ArrowUp":
-                video.volume += 0.1;
-            case "ArrowDown":
-                video.volume -= 0.1;
-            case " ":
-                this.swapPlayPause();
-            case "m":
+                break;
+            case 37:
+                if (video.currentTime < 5) {
+                    video.currentTime = 0;
+                } else { video.currentTime -= 5};
+                break;
+            case 38:
+                if (video.volume <= 0.9) {
+                video.volume += 0.1 }
+                else {video.volume = 1};
+                break;
+            case 40:
+                if (video.volume >= 0.1) {
+                    video.volume -= 0.1
+                }
+                else { video.volume = 0 };
+                break;
+            // case 32:
+            //     this.swapPlayPause();
+            //     break;
+            case 77:
                 this.swapMute();
+
         }
     }
 
@@ -97,13 +108,13 @@ class VideoPlayer extends React.Component {
         const video = this.videoEle;
 
         return (
-            <figure id="video-container" onKeyPress={this.buttonPresses}>
-                {/* <video controls> 
+            <figure id="video-container" onKeyDown={this.buttonPresses}>
+                {/* <video controls>
                     <source src={this.state.videoUrl} />
                     {/* <source src={this.props.videoUrl} type="video/mp4" /> */}
-                {/* </video> */} 
+                {/* </video> */}
                 {video}
-                <div id="video-controls">
+                <div id="video-controls" className = "controls" data-state="hidden">
                     <button type="button" id="play-pause">Q</button>
                     {/* <input type="range" id="seek-bar" value="0"> */}
                     <button type="button" id="mute">IJW</button>
@@ -111,7 +122,7 @@ class VideoPlayer extends React.Component {
                     <button type="button" id="full-screen"><i class="material-icons">fullscreen</i></button>
                 </div>
                 <div id="video-info">
-                    
+
                     {/* <h3>{video.title}</h3> */}
                 </div>
             </figure>
@@ -124,7 +135,7 @@ class VideoPlayer extends React.Component {
 
 // function checkKey(e) {
 
-    
+
 //     e = e || window.event;
 
 //     if (e.keyCode == '38') {
@@ -168,6 +179,29 @@ class VideoPlayer extends React.Component {
 //         mute.setAttribute('data-state', video.muted ? 'unmute' : 'mute');
 //     }
 // }
+
+
+// switch (e.key) {
+//     case "ArrowRight":
+//         video.currentTime += 5;
+//     case "ArrowLeft":
+//         if (video.currentTime < 5) {
+//             video.currentTime = 0;
+//         } else { video.currentTime -= 5; }
+//     case "ArrowUp":
+//         if (video.volume <= 0.9) {
+//             video.volume += 0.1
+//         }
+//         else { video.volume = 1 };
+//     case "ArrowDown":
+//         if (video.volume >= 0.1) {
+//             video.volume -= 0.1
+//         }
+//         else { video.volume = 0 };
+//     case " ":
+//         this.swapPlayPause();
+//     case "m":
+//         this.swapMute();
 
 
 {/* <i class="material-icons">

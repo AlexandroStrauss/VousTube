@@ -1,9 +1,13 @@
-<% if logged_in? %>
 <script type="text/javascript">
+<% if logged_in? %>
+
     window.currentUser = <%= render(
         "api/users/user.json.jbuilder",
         user: current_user
-    ).html_safe %></script>
-<% end %>
+    ).html_safe %>
+    
+    <% end %>
+    window.logo= "<%= image_url("voustube_futura.png") %>"
+</script>
 
 <main id="root"></main>

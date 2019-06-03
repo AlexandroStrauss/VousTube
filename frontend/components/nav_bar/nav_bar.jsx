@@ -32,7 +32,7 @@ class NavBar extends React.Component {
                 <div class="left-nav-bar">
                     <button><FontAwesomeIcon icon={faBars} /></button>
                     {/* <div className="youtube-icon"><FontAwesomeIcon icon={faYoutube} /></div> */}
-                    <Link to="/"><img src="/assets/voustube_futura.png" width="101" height="25"/></Link>
+                    <Link to="/"><img src={window.logo} width="101" height="25"/></Link>
                     {/* <Link to="/"><h1>VousTube</h1></Link> */}
 
                 </div>
