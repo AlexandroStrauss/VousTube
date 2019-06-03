@@ -6,7 +6,12 @@ class VideoPlayer extends React.Component {
         this.state = {
             videoUrl: "https://voustube-dev.s3.amazonaws.com/coconut_head_sad.mp4",
         }
-        this.buttonPresses = this.buttonPresses.bind(this)
+        this.buttonPresses = this.buttonPresses.bind(this);
+        this.playPause = this.playPause.bind(this);
+        this.volumeButton = this.volumeButton.bind(this);
+        this.swapPlayPause = this.swapPlayPause.bind(this);
+        this.swapMute = this.swapMute.bind(this);
+
         this.state.video = (
             <video onKeyPress={this.buttonPresses}>
                 <source src={this.state.videoUrl} />
@@ -59,6 +64,7 @@ class VideoPlayer extends React.Component {
             this.state.video.mute()
         }
     }
+
     // this.state.video.addEventListener('play', function(){
     //     changeButtonState('playpause');
     // }, false)
@@ -84,7 +90,7 @@ class VideoPlayer extends React.Component {
         const video = this.state.video;
 
         return (
-            <figure id="video-container">
+            <figure id="video-container" onKeyPress={this.buttonPresses}>
                 {/* <video controls> 
                     <source src={this.state.videoUrl} />
                     {/* <source src={this.props.videoUrl} type="video/mp4" /> */}
