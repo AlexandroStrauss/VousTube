@@ -81,7 +81,7 @@ class SignupForm extends React.Component {
                 <p className="continue">to continue to VousTube</p>
                 <form onSubmit={this.handleSubmit} >
                         <div className={this.isEmpty(this.state.username) ? "floating-label-error" : "floating-label"}>
-                        <input id="name" type="text" placeholder="Your name" value={this.state.username} onChange={this.update('username')} />
+                        <input id="name" type="text" value={this.state.username} onChange={this.update('username')} />
                             <label for="name">Your name</label>
 
                             {this.isEmpty(this.state.username) ?
@@ -95,7 +95,7 @@ class SignupForm extends React.Component {
                     </div>
 
                         <div className={this.isEmpty(this.state.email) ? "floating-label-error" : "floating-label"}>                        
-                            <input id="email" type="email" placeholder="Your email address" value={this.state.email} onChange={this.update('email')} />
+                            <input id="email" type="email" value={this.state.email} onChange={this.update('email')} />
                             <label for="email">Your email address</label>
 
                             {this.isEmpty(this.state.email) ?
@@ -109,9 +109,8 @@ class SignupForm extends React.Component {
                     </div>
 
                         <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>                        
-                            <input id="pwd" type={this.state.showPwd ? "text" : "password"} placeholder="Password" value={this.state.password} onChange={this.update('password')} />
+                            <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
                             <label for="pwd">Password</label>
-
 
                             {this.passwordError()} 
                     </div>

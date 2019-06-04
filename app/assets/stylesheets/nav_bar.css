@@ -45,8 +45,6 @@
     justify-content: space-between;
 }
 
-
-
 .nav-btns {
     color: #606060;
 }
@@ -123,17 +121,28 @@
     display: flex;
     width: 170px;
     top: 48px;
-    right: 155px;
+    right: 60px;
     background-color: white;
     z-index: 9;
 	box-shadow: -1px 6px 10px 5px rgba(0,0,0,0.09);
 }
 
 .vid-upload > a {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 6px 16px;
+    max-height: 40px;
+    margin: 8px 0;
+}
+
+.vid-upload > a:hover {
+    background-color: #e2e2e2;
+}
+
+.vid-upload > a:focus {
+    background-color: #c6c6c6;
 }
 .vid-upload > a > i {
     margin: 0 30px 0 0;
@@ -144,9 +153,109 @@
     font-size: 14px;
     color: black;
     padding: 0;
+    margin: 0;
 }
 
-
 .vid-upload-hidden {
+    display: none;
+}
+
+.current-user-thumbnail {
+    background-color: #0288d1;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 24px;
+    padding: 0px 10px;
+}
+
+.current-user-thumbnail > p {
+    margin: 0;
+}
+
+.user-button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.user-button p {
+    padding: 0;
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+}
+
+.user-names {
+        margin: 0 0 0 10px;
+}
+
+.user-names > h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.user-names > h4 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* .user-pic {
+    padding: 
+} */
+
+.user-dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    top: 10px;
+    right: 40px;
+    background-color: white;
+    color: #0a0a0a;
+
+    z-index: 9;
+    box-shadow: -1px 6px 10px 5px rgba(0,0,0,0.09);
+    border:none;
+    font-size: 11px;
+    font-family: 'Roboto', Arial, sans-serif;
+    /* padding: 8px 0px 8px 0px; */
+}
+
+.user-dropdown > button {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-around; */
+    font-size: 20px;
+    cursor: pointer;
+    color: #909090;
+    padding: 8px 36px 8px 16px;
+    margin: 0px 0px 8px 0px;
+    outline: none;
+}
+
+.user-dropdown > button:hover {
+    background-color: #e2e2e2;
+}
+
+.user-dropdown > button:focus {
+        background-color: #c6c6c6;
+}
+
+.user-dropdown > button > p {
+    font-size: 14px;
+    color: #0a0a0a;
+    margin: 0 0 0 20px;
+}
+
+.user-dropdown-hidden {
     display: none;
 }

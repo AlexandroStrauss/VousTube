@@ -15,7 +15,7 @@
 
 .vid-form-background {
     width: 100%;
-    height: 1500px;
+    height: 100vh;
     background-color: #dddddd;
 }
 
@@ -26,6 +26,7 @@
     border-radius: 0;
     width: 428px; 
     padding: 5px 10px 6px 10px;
+    font-size: 12px;
 }
 
 .video-form textarea {
@@ -37,6 +38,7 @@
     padding: 5px 10px 6px 10px;
     border: 1px solid #dddddd;
     outline: none;
+    font-size: 12px;
 }
 
 .video-form input:hover, textarea:hover{

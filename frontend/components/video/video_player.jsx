@@ -3,24 +3,32 @@ import React from 'react';
 class VideoPlayer extends React.Component {
     constructor(props) {
         super(props)
+        // this.videoUrl = urlFor(this.state.video)
         this.state = {
-            videoUrl: "https://voustube-dev.s3.amazonaws.com/coconut_head_sad.mp4",
+            url: ""
         }
         this.buttonPresses = this.buttonPresses.bind(this);
         this.playPause = this.playPause.bind(this);
         this.volumeButton = this.volumeButton.bind(this);
         this.swapPlayPause = this.swapPlayPause.bind(this);
         this.swapMute = this.swapMute.bind(this);
+        // debugger
 
-        this.videoEle = (
-            <video onKeyPress={this.buttonPresses} id="video" controls>
-                <source src={this.state.videoUrl} />
-            </video>
-        )
     }
 
     componentDidMount() {
-        this.video = document.getElementById('video');
+        this.props.fetchVideo(this.props.match.params.id)
+            .then(response => {
+                this.setState({url: response.videoUrl})
+            });
+    }
+
+    setupVideo(videoUrl) {
+        return (
+            <video onKeyPress={this.buttonPresses} id="video" controls>
+                <source src={videoUrl} />
+            </video>
+        )
     }
 
     playPause() {
@@ -106,14 +114,14 @@ class VideoPlayer extends React.Component {
 
     render() {
         const video = this.videoEle;
-
+        // this.video = document.getElementById('video');
         return (
             <figure id="video-container" onKeyDown={this.buttonPresses}>
                 {/* <video controls>
                     <source src={this.state.videoUrl} />
                     {/* <source src={this.props.videoUrl} type="video/mp4" /> */}
                 {/* </video> */}
-                {video}
+                {this.setupVideo(this.state.url)}
                 <div id="video-controls" className = "controls" data-state="hidden">
                     <button type="button" id="play-pause">Q</button>
                     {/* <input type="range" id="seek-bar" value="0"> */}
@@ -122,8 +130,9 @@ class VideoPlayer extends React.Component {
                     <button type="button" id="full-screen"><i class="material-icons">fullscreen</i></button>
                 </div>
                 <div id="video-info">
-
-                    {/* <h3>{video.title}</h3> */}
+                    {/* <h3>{this.props.video.title}</h3>
+                    <h3>{this.props.video.description}</h3>
+                    <h3>{this.props.author.username}</h3> */}
                 </div>
             </figure>
         )
@@ -134,7 +143,6 @@ class VideoPlayer extends React.Component {
 // document.onkeydown = checkKey;
 
 // function checkKey(e) {
-
 
 //     e = e || window.event;
 
@@ -152,7 +160,6 @@ class VideoPlayer extends React.Component {
 //         // right arrow
 //         video.currentTime += 5;
 //     }
-
 // }
 
 // video.currentTime -= 5;
@@ -180,7 +187,6 @@ class VideoPlayer extends React.Component {
 //     }
 // }
 
-
 // switch (e.key) {
 //     case "ArrowRight":
 //         video.currentTime += 5;
@@ -203,7 +209,6 @@ class VideoPlayer extends React.Component {
 //     case "m":
 //         this.swapMute();
 
-
 {/* <i class="material-icons">
     fullscreen
 </i>
@@ -211,7 +216,5 @@ class VideoPlayer extends React.Component {
     <i class="material-icons">
         fullscreen_exit
 </i> */}
-
-
 
 export default VideoPlayer;

@@ -19,11 +19,9 @@ class VideoForm extends React.Component {
         }
     }
     handleFile(e) {
-        debugger
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-            debugger
             // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
             this.setState({ videoFile: file})
         }
@@ -33,7 +31,6 @@ class VideoForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         const formData = new FormData();
         formData.append('video[title]', this.state.title)
@@ -42,7 +39,6 @@ class VideoForm extends React.Component {
             formData.append('video[video]', this.state.videoFile)
         }
         // formData.append('video[thumbnail]', this.state.thumbUrl)
-        debugger
         $.ajax({
             url: '/api/videos',
             method: 'POST',
@@ -61,13 +57,21 @@ class VideoForm extends React.Component {
             <div className="vid-form">
                 <form className="video-form">
                     {/* <label htmlFor="title" placeholder="Title"> */}
-                            <input type="text" id="title" value={this.state.title} onChange={this.update('title')}>
+                            <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
 
                         </input>
                     {/* </label> */}
 
-                    <label htmlFor="description" placeholder="Description">
-                            <textarea id="description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>
+                        {/* <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>
+                            <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
+                            <label for="pwd">Password</label>
+
+                            {this.passwordError()}
+                        </div> */}
+
+
+                    <label htmlFor="description" >
+                            <textarea id="description" placeholder="Description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>
 
                         </textarea>
                     </label> 

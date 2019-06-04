@@ -9,7 +9,6 @@ class Video < ApplicationRecord
         class_name: :User
     has_one_attached :video
 
-
     def ensure_video
         unless self.video.attached?
             errors[:video] << "no video attached"

@@ -8,6 +8,8 @@ import SideBarContainer from './side_bar/side_bar_container';
 import SideBar from './side_bar/side_bar';
 import VideoPlayer from './video/video_player';
 import VideoForm from './video/video_form';
+import VideoPlayerContainer from './video/video_player_container';
+import VideoIndexContainer from './video/video_index_container';
 
 
 const App = () => (
@@ -21,7 +23,8 @@ const App = () => (
         <Route path="/videos/new" component={VideoForm} />
 
         <Route path="/videos" component={SideBar} />
-        {/* <Route path={`/videos/${id}`} component={VideoPlayer} /> */}
+        {/* <Route path="/" component={VideoIndexContainer} /> */}
+        <Route path='/videos/:id' component={VideoPlayerContainer} />
         {/* <VideoPlayer /> */}
     </div>
 );

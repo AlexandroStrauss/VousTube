@@ -7,11 +7,9 @@ class Api::VideosController < ApplicationController
     def create
         @video = Video.new(video_params)
         @video.author_id = current_user.id
-        debugger
         if @video.save 
-            render json: {message: "success!"}
+            render :show
         else
-            debugger
             render json: @video.errors.full_messages
         end
     end
@@ -22,6 +20,6 @@ class Api::VideosController < ApplicationController
     end
 
     def video_params
-        params.require(:video).permit(:title, :description, :thumbnail_img, :videoFile)
+        params.require(:video).permit(:title, :description, :thumbnail_img, :video)
     end
 end
