@@ -3,3 +3,39 @@ video {
   height: auto   !important;
   z-index: 5; */
 }
+
+.video-idx {
+  margin: 50px 0 0 150px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.video {
+  width: 212px;
+  height: 200px;
+  margin: 0 5px 0 0;
+
+}
+.video-tile {
+  color: black;
+  width: 212px;
+  height: 200px;
+}
+
+.video-tile img {
+  height: 120px;
+  width: 212px;
+}
+
+.author {
+  font-size: 13px;
+  color: #606060;
+}
+
+.title {
+  color: #0a0a0a;
+  font-size: 14px;
+  font-weight: bold;
+}

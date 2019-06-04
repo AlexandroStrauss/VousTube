@@ -115,7 +115,6 @@ class SignupForm extends React.Component {
                             {this.passwordError()} 
                     </div>
                     
-                    
                     <div className="bottom-links">
                         <Link to="/login">Sign in instead</Link>
                         <input type="submit" className="submit" value="Next" onClick={this.handleSubmit} />
@@ -125,8 +124,6 @@ class SignupForm extends React.Component {
             </div>
             </div>
         )
-
-
     }
 }
 

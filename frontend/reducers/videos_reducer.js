@@ -8,13 +8,15 @@ const defaultVideo = {
 }
 
 
-export default (state = defaultVideo, action) => {
+export default (state = {}, action) => {
+    // debugger
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_ALL_VIDEOS:
-
+            // debugger
+            return merge({}, action.videos);
         case RECEIVE_VIDEO:
-
+            return merge({}, state, {[action.video.id]: action.video});
         default:
             return state;
     }

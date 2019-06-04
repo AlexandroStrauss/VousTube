@@ -7,7 +7,7 @@ class Api::VideosController < ApplicationController
     def create
         @video = Video.new(video_params)
         @video.author_id = current_user.id
-        if @video.save 
+        if @video.save
             render :show
         else
             render json: @video.errors.full_messages
@@ -15,8 +15,8 @@ class Api::VideosController < ApplicationController
     end
 
     def index
-        @videos = Video.all 
-        render :index
+        @videos = Video.all
+        # render :index
     end
 
     def video_params

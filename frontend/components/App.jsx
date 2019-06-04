@@ -23,9 +23,10 @@ const App = () => (
         <Route path="/videos/new" component={VideoForm} />
 
         <Route path="/videos" component={SideBar} />
-        {/* <Route path="/" component={VideoIndexContainer} /> */}
+        <Route exact path="/" component={SideBar} />
+        <Route exact path="/videos" component={VideoIndexContainer} />
+        <Route exact path="/" component={VideoIndexContainer} />
         <Route path='/videos/:id' component={VideoPlayerContainer} />
-        {/* <VideoPlayer /> */}
     </div>
 );
 

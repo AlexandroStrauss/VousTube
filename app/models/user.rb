@@ -10,7 +10,6 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         class_name: :Video
 
-
     after_initialize :ensure_session_token
 
     def self.find_by_credentials(identifier, password)
@@ -25,8 +24,6 @@ class User < ApplicationRecord
         user ||= User.find_by(email: identifier)
         !!user
     end
-
-
 
     def is_password?(password)
         BCrypt::Password.new(self.password_digest).is_password?(password)

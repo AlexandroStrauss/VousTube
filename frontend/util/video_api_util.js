@@ -1,16 +1,16 @@
-export const fetchVideos = (videos) => {
+export const fetchVideos = () => {
     return $.ajax({
         method: 'GET',
-        url: "/api/videos"
+        url: '/api/videos'
     })
-}
+};
 
 export const fetchVideo = (id) => {
     return $.ajax({
         method: 'GET',
         url: `/api/videos/${id}`
     })
-}
+};
 
 export const createVideo = formData => {
     return $.ajax({
@@ -22,4 +22,4 @@ export const createVideo = formData => {
         contentType: false,
         processData: false
     })
-}
+};

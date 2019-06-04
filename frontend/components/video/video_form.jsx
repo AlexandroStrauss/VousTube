@@ -46,7 +46,7 @@ class VideoForm extends React.Component {
             contentType: false,
             processData: false
         }).then(
-            response => console.log(response.message),
+            this.props.history.push('/'),
             response => console.log(response.responseJSON),
         )
     }

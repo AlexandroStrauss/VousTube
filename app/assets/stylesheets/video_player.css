@@ -1,7 +1,8 @@
 #video-container {
     position: absolute;
     left: 150px;    
-    height: 600px;
+    height: 71.4%;
+    outline: none;
 }
 
 #video-controls button {
@@ -16,4 +17,5 @@ video {
     margin: 0 auto;
     width: auto !important;
     height: 100% !important;
+    outline: none;
 }

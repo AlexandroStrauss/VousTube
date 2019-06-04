@@ -11,7 +11,8 @@ class VideoPlayer extends React.Component {
         this.playPause = this.playPause.bind(this);
         this.volumeButton = this.volumeButton.bind(this);
         this.swapPlayPause = this.swapPlayPause.bind(this);
-        this.swapMute = this.swapMute.bind(this);
+        // this.swapMute = this.swapMute.bind(this);
+        this.setupVideo = this.setupVideo.bind(this);
         // debugger
 
     }
@@ -19,16 +20,17 @@ class VideoPlayer extends React.Component {
     componentDidMount() {
         this.props.fetchVideo(this.props.match.params.id)
             .then(response => {
-                this.setState({url: response.videoUrl})
+                this.setState({url: response.video.videoUrl})
             });
     }
 
     setupVideo(videoUrl) {
-        return (
-            <video onKeyPress={this.buttonPresses} id="video" controls>
+        this.video = (
+            <video autofocus onKeyPress={this.buttonPresses} id="video" controls autoplay >
                 <source src={videoUrl} />
             </video>
         )
+        return (this.video)
     }
 
     playPause() {
@@ -69,12 +71,12 @@ class VideoPlayer extends React.Component {
         }
     }
 
-    swapMute () {
-        if (this.video.muted) {
-            this.video.muted = false;
-        } else {
-            this.video.muted = true;
-        }
+    // swapMute () {
+    //     if (this.video.muted) 
+    // }
+
+    parseDate () {
+        let date = this.props.video.video.record.created_at
     }
 
     // this.video.addEventListener('play', function(){
@@ -107,14 +109,20 @@ class VideoPlayer extends React.Component {
             //     this.swapPlayPause();
             //     break;
             case 77:
-                this.swapMute();
-
+                if (video.muted) {
+                    video.muted = false;
+                } else {
+                    video.muted = true;
+                }
         }
     }
 
     render() {
-        const video = this.videoEle;
+        const video = this.video;
         // this.video = document.getElementById('video');
+        if (!this.state.url) {
+            return null;
+        }
         return (
             <figure id="video-container" onKeyDown={this.buttonPresses}>
                 {/* <video controls>
@@ -130,9 +138,13 @@ class VideoPlayer extends React.Component {
                     <button type="button" id="full-screen"><i class="material-icons">fullscreen</i></button>
                 </div>
                 <div id="video-info">
-                    {/* <h3>{this.props.video.title}</h3>
-                    <h3>{this.props.video.description}</h3>
-                    <h3>{this.props.author.username}</h3> */}
+                    <div class="vid-title">{this.props.video.title}</div>
+
+                    <div class="vid-author">{this.props.video.author.username}</div>
+
+                    <div class="publish-date">Published on {this.props.video.video.record.created_at}</div>
+
+                    <div class="vid-description">{this.props.video.description}</div>
                 </div>
             </figure>
         )
