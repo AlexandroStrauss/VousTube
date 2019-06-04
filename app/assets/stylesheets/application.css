@@ -13,11 +13,10 @@
  *= require_tree .
  *= require_self
  */
-
 body {
     font-family: 'Roboto', Arial, sans-serif;
     /* background-color: #fafafa; */
-    background-color: #ffffff;
+    background-color: #fafafa;
     margin: 0;
     padding: 0;
 }

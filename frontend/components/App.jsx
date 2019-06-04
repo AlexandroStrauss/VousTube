@@ -17,12 +17,12 @@ const App = () => (
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route path="/" component={NavBarContainer} />
         </Switch>
-        
+
         <Route path="/videos/new" component={VideoForm} />
 
         <Route path="/videos" component={SideBar} />
         {/* <Route path={`/videos/${id}`} component={VideoPlayer} /> */}
-
+        {/* <VideoPlayer /> */}
     </div>
 );
 

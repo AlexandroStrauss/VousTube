@@ -73,6 +73,7 @@ class SignupForm extends React.Component {
 
     render() {
         return (
+            <div className="background-color">
             <div className="toplevel-signup">
             <div className="signup-form">
                 
@@ -121,6 +122,7 @@ class SignupForm extends React.Component {
                         <input type="submit" className="submit" value="Next" onClick={this.handleSubmit} />
                     </div>
                 </form>
+            </div>
             </div>
             </div>
         )

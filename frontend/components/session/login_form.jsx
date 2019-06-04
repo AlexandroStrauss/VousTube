@@ -68,6 +68,7 @@ class LoginForm extends React.Component {
 
     render() {
         return (
+            <div className="background-color">
             <div className="toplevel-login">
                 <div className={this.state.phase ? "login-phase2" : "login-phase1"}>
 
@@ -149,6 +150,7 @@ class LoginForm extends React.Component {
                         </form>
                     </div>
                 </div>
+            </div>
             </div>
         )
     }
