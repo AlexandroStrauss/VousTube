@@ -19,6 +19,7 @@ class VideoForm extends React.Component {
         }
     }
     handleFile(e) {
+        debugger
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
@@ -32,6 +33,7 @@ class VideoForm extends React.Component {
     }
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
         const formData = new FormData();
         formData.append('video[title]', this.state.title)

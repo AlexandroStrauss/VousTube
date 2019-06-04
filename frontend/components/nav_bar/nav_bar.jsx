@@ -28,6 +28,14 @@ class NavBar extends React.Component {
         }
     }
 
+    loginPath() {
+        if (this.props.currentUser) {
+            return '/videos/new'
+        } else {
+            return '/login'
+        }
+    }
+
     videoClick () {
         this.setState({clicked: !this.state.clicked})
     }
@@ -50,7 +58,7 @@ class NavBar extends React.Component {
                     <div className="nav-btns">
                         <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
                             <div className={this.state.clicked ? "vid-upload" : "vid-upload-hidden"}>
-                                <Link to='/videos/new'>
+                                <Link to={this.loginPath()}>
                                 <i class="material-icons">cloud_upload</i>
                                 <p>Upload video</p>
                                 </Link>

@@ -35,6 +35,7 @@
     border-radius: 0;
     width: 428px;
     padding: 5px 10px 6px 10px;
+    border: 1px solid #dddddd;
     outline: none;
 }
 
