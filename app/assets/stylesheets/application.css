@@ -33,6 +33,13 @@ header {
     box-shadow: 0 3px 5px #f2f2f2;
 }
 
+.form-header {
+    box-shadow: none;
+    height: 56px;
+    top: 0;
+    padding: 0;
+}
+
 a {
     text-decoration: none;
     color: #055fd4;

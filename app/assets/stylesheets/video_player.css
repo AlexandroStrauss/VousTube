@@ -1,7 +1,9 @@
 #video-container {
     position: absolute;
-    left: 150px;    
+    left: 0px;  
+    margin: 16px 40px 16px 48px;  
     height: 71.4%;
+    width: auto;
     outline: none;
 }
 
@@ -15,7 +17,71 @@
 
 video {
     margin: 0 auto;
-    width: auto !important;
+    /* width: auto !important; */
     height: 100% !important;
     outline: none;
+}
+
+.video-info, .author-publish, .vid-author {
+    color: #0a0a0a;
+}
+
+#video-info {
+    width: 100%;
+}
+
+.video-stats {
+    width: 100%;
+    padding: 20px 0 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.vid-title {
+    width: 100%;
+    font-size: 18px;
+    color: #0a0a0a;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+}
+
+.vid-author {
+    font-size: 14px;
+}
+
+.publish-date {
+    font-size: 13px;
+        color: rgba(17, 17, 17, 0.6)
+
+}
+
+.vid-description {
+    font-size: 14px;
+    margin: 24px 0 0 64px;
+}
+
+.author-stuff{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 0 0 0;
+
+}
+
+.author-publish{
+    display: flex;
+    flex-direction: column;
+}
+
+.author-thumbnail {
+    background-color: #0288d1;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 40px;
+    padding: 0px 18px;
+    margin: 0 16px 0 0;
+}
+
+.author-thumbnail > p {
+    margin: 0;
 }

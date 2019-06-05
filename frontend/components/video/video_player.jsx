@@ -20,13 +20,14 @@ class VideoPlayer extends React.Component {
     componentDidMount() {
         this.props.fetchVideo(this.props.match.params.id)
             .then(response => {
+                debugger
                 this.setState({url: response.video.videoUrl})
             });
     }
 
     setupVideo(videoUrl) {
         this.video = (
-            <video autofocus onKeyPress={this.buttonPresses} id="video" controls autoplay >
+            <video autoFocus onKeyPress={this.buttonPresses} id="video" autoPlay >
                 <source src={videoUrl} />
             </video>
         )
@@ -118,33 +119,43 @@ class VideoPlayer extends React.Component {
     }
 
     render() {
-        const video = this.video;
+        debugger
         // this.video = document.getElementById('video');
-        if (!this.state.url) {
+        if (!this.state.url || !this.props.video) {
             return null;
         }
+        const video = this.video;
         return (
-            <figure id="video-container" onKeyDown={this.buttonPresses}>
-                {/* <video controls>
-                    <source src={this.state.videoUrl} />
-                    {/* <source src={this.props.videoUrl} type="video/mp4" /> */}
-                {/* </video> */}
+            <figure id="video-container" autoFocus onKeyDown={this.buttonPresses}>
                 {this.setupVideo(this.state.url)}
-                <div id="video-controls" className = "controls" data-state="hidden">
-                    <button type="button" id="play-pause">Q</button>
+                <div id="video-controls" className="controls" data-state="hidden">
+                    <button type="button" onClick={this.swapPlayPause} id="play-pause">
+                        {/* <i className="material-icons">{video.ended ? replay : video.paused ? pause : play_arrow}</i> */}
+                    </button>
+
                     {/* <input type="range" id="seek-bar" value="0"> */}
                     <button type="button" id="mute">IJW</button>
                     {/* <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" /> */}
                     <button type="button" id="full-screen"><i class="material-icons">fullscreen</i></button>
                 </div>
                 <div id="video-info">
-                    <div class="vid-title">{this.props.video.title}</div>
+                    <div className="video-stats">
+                        <div className="vid-title">{this.props.video.title}</div>
 
-                    <div class="vid-author">{this.props.video.author.username}</div>
+                    </div>
 
-                    <div class="publish-date">Published on {this.props.video.video.record.created_at}</div>
+                    <div className="author-stuff">
+                        <div className="author-thumbnail" >
+                            <p>{this.props.video.author.username[0]}</p>
+                        </div >
 
-                    <div class="vid-description">{this.props.video.description}</div>
+                        <div className="author-publish">
+                            <div className="vid-author">{this.props.video.author.username}</div>
+                            <div className="publish-date">Published on {this.props.video.video.record.created_at}</div>
+                        </div>
+                    </div>
+
+                    <div className="vid-description">{this.props.video.description}</div>
                 </div>
             </figure>
         )
