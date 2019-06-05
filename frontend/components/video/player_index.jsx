@@ -48,7 +48,7 @@ class PlayerIndex extends React.Component {
                         <div className="duration">{video.duration}</div>
                         <div className="player-idx-deets">
                             <div className="title">{video.title}</div>
-                            <div className="author">{video.author.username}</div>
+                            <div className="author">{this.props.authors[video.author_id].username}</div>
                             {/* <div className="timestamp">{this.timestamp(video.created_at)}</div> */}
                         </div>
                     </a>

@@ -60,13 +60,11 @@ class VideoForm extends React.Component {
                 // <div className="vid-form-background">
                     <div className="upload-form">
 
-                    <i class="material-icons">cloud_upload</i>
-
-                    <label>Select file to upload
-
-                        <input type="file"
-                            onChange={this.handleFile}
-                            accept="video/*" />
+                        <i class="material-icons">cloud_upload</i>
+                        <label>Select file to upload
+                            <input type="file"
+                                onChange={this.handleFile}
+                                accept="video/*" />
                         </label>
                     </div>
                     // </div>

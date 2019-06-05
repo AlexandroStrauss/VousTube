@@ -4,17 +4,19 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import {Link } from 'react-router-dom';
 class SideBar extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = this.props.currentUser;
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: true
+        }
+    }
 
     // componentDidMount() {
     //     this.props.currentUser;
     // }
     render () {
         return (
-            <section className="sidebar-open">
+            // <section className={this.state.open ? "sidebar-collapsed" : "sidebar-open"}>
                 <div className="sidebar-holder">
                 <Link to="/" >
                 <button>
@@ -37,7 +39,7 @@ class SideBar extends React.Component {
                 </button> 
                 </a>
                 </div>
-            </section>
+            // </section>
         )  
     }
 }

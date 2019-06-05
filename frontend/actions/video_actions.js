@@ -9,23 +9,25 @@ export const create = newVideo => dispatch => APIUtil.createVideo(newVideo)
     ), err => dispatch(receiveErrors(err.responseJSON)));
 
 export const fetch = videoId => dispatch => APIUtil.fetchVideo(videoId)
-    .then(video => (dispatch(receiveVideo(video))
+    .then(payload => (dispatch(receiveVideo(payload))
     ), err => dispatch(receiveErrors(err.responseJSON)));
 
 export const allVideos = () => dispatch => APIUtil.fetchVideos()
-    .then(videos => (dispatch(receiveAllVideos(videos)))
+    .then(payload => (dispatch(receiveAllVideos(payload)))
     , err => dispatch(receiveErrors(err.responseJSON)));
 
-const receiveVideo = video => {
+const receiveVideo = ({video, author}) => {
     return {
         type: RECEIVE_VIDEO,
-        video
+        video,
+        author
     }
 }
 
-const receiveAllVideos = (videos) => ({
+const receiveAllVideos = ({videos, authors}) => ({
     type: RECEIVE_ALL_VIDEOS,
-    videos
+    videos,
+    authors
 })
 
 // const receiveErrors = errors => ({

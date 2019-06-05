@@ -7,7 +7,7 @@ import SessionDisplayContainer from '../session_display_container';
 import SideBar from '../side_bar/side_bar';
 
 
-class NavBar extends React.Component {
+class PlayerNavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,54 +38,53 @@ class NavBar extends React.Component {
         }
     }
 
-    videoClick () {
-        this.setState({clicked: !this.state.clicked})
+    videoClick() {
+        this.setState({ clicked: !this.state.clicked })
     }
 
     sidebarClick() {
         this.setState({ open: !this.state.open })
     }
-    
-    render () {
+
+    render() {
         return (
             <>
-            <header>
+                <header>
 
-                <div class="left-nav-bar">
-                    <button onClick={this.sidebarClick}><FontAwesomeIcon icon={faBars} /></button>
-                    {/* <div className="youtube-icon"><FontAwesomeIcon icon={faYoutube} /></div> */}
-                    <Link to="/"><img src={window.logo} width="101" height="25"/></Link>
-                    {/* <Link to="/"><h1>VousTube</h1></Link> */}
+                    <div class="left-nav-bar">
+                        <button onClick={this.sidebarClick}><FontAwesomeIcon icon={faBars} /></button>
+                        {/* <div className="youtube-icon"><FontAwesomeIcon icon={faYoutube} /></div> */}
+                        <Link to="/"><img src={window.logo} width="101" height="25" /></Link>
+                        {/* <Link to="/"><h1>VousTube</h1></Link> */}
 
-                </div>
-
-                <SearchBar />
-
-                <div className="nav-right-side">
-                    <div className="nav-btns">
-                        <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
-                            <div className={this.state.clicked ? "vid-upload" : "vid-upload-hidden"}>
-                                <Link to={this.loginPath()}>
-                                <i class="material-icons">cloud_upload</i>
-                                <p>Upload video</p>
-                                </Link>
-                            </div>
-                        <button><FontAwesomeIcon icon={faTh} /></button>
-                        <button><FontAwesomeIcon icon={faComment} /></button>
-                        <button>{this.bellMore()}</button>
                     </div>
 
-                    <SessionDisplayContainer />
-                </div>
-            </header>
+                    <SearchBar />
 
-                <section className={this.state.open ? "sidebar-open" : "sidebar-collapsed"}>
+                    <div className="nav-right-side">
+                        <div className="nav-btns">
+                            <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
+                            <div className={this.state.clicked ? "vid-upload" : "vid-upload-hidden"}>
+                                <Link to={this.loginPath()}>
+                                    <i class="material-icons">cloud_upload</i>
+                                    <p>Upload video</p>
+                                </Link>
+                            </div>
+                            <button><FontAwesomeIcon icon={faTh} /></button>
+                            <button><FontAwesomeIcon icon={faComment} /></button>
+                            <button>{this.bellMore()}</button>
+                        </div>
+
+                        <SessionDisplayContainer />
+                    </div>
+                </header>
+
+                <section className={this.state.open ? "sidebar-open" : "sidebar-hidden"}>
                     <SideBar />
                 </section>
-
             </>
         )
     }
 }
 
-export default NavBar;
+export default PlayerNavBar;

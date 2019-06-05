@@ -14,7 +14,7 @@ export default (state = {}, action) => {
         case RECEIVE_ALL_VIDEOS:
             // debugger
             const newState = {};
-            action.videos.forEach(video => {
+            Object.values(action.videos).forEach(video => {
                 newState[video.id] = video;
             })
             return merge({}, state, newState);

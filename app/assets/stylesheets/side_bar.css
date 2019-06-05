@@ -83,10 +83,14 @@
     margin: 0 0 0 24px;
 }
 
-
 .sidebar-open :hover {
     background-color: #dcdcdc;  
 }
 
-
 /* selected icon: #ff0000; */
+
+.sidebar-hidden {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.4s;
+}
