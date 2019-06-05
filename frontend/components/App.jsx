@@ -10,6 +10,8 @@ import VideoIndexContainer from './video/video_index_container';
 import FormNavBarContainer from './nav_bar/form_nav_bar_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import PlayerIndexContainer from './video/player_index_container';
+import MasterPlayer from './video/master_player';
+import PlayerNavBarContainer from './nav_bar/player_nav_bar_container';
 
 
 const App = () => (
@@ -21,19 +23,20 @@ const App = () => (
 
         <Switch>
             <Route exact path="/videos/new" component={FormNavBarContainer} />
+            <Route path="/videos/:id" component={PlayerNavBarContainer} />
             <Route path="/" component={NavBarContainer} />
         </Switch>
 
-        <Route path="/videos/new" component={VideoForm} />
+        <Switch>
+            <Route path="/videos/new" component={VideoForm} />
+            <Route path='/videos/:id' component={MasterPlayer} />
+        </Switch>
 
-        <Route exact path="/videos" component={SideBar} />
-        <Route exact path="/" component={SideBar} />
         <Switch>
             <Route exact path="/videos" component={VideoIndexContainer} />
             <Route exact path="/" component={VideoIndexContainer} />
-            <Route path="/videos/:id" component={PlayerIndexContainer} />
+            {/* <Route path="/videos/:id" component={PlayerIndexContainer} /> */}
         </Switch>
-        <Route path='/videos/:id' component={VideoPlayerContainer} />
     </div>
 );
 

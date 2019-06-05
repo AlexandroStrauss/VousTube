@@ -78,16 +78,35 @@
 
 }
 
-label > i {
-    font-size: 60px;
+.video-background {
+    background-color: black;
+    height: 54vh;
+    width: 96vh;
+    display: flex;
+    justify-content: center;
+}
+.upload-form > i {
+    font-size: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-label > i:hover {
+.upload-form > i:hover {
     color: #b82125;
 }
 
+.upload-form > label {
+    display: flex;
+        flex-direction: column;
+    align-items: center;
+
+}
+
 .upload-form > label > input {
-    padding: 150px;
+    margin: 0 auto;
+    padding: 30px;
     cursor: pointer;
     border: none;
 }

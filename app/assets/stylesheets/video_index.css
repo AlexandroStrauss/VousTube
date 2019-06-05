@@ -47,7 +47,7 @@ video {
 
 .player-idx {
   position: absolute;
-  right: 0;
+  right: 36px;
   list-style-type: none;
   display: flex;
   flex-direction: column;

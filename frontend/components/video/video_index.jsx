@@ -40,6 +40,7 @@ class VideoIndex extends React.Component {
     }
 
     render () {
+        // debugger
         const videos = this.props.videos ? this.props.videos.map(video => {
             return(
             <li className="video">
@@ -47,7 +48,7 @@ class VideoIndex extends React.Component {
                     <img src="assets/e.png" />
                     <div className="duration">{video.duration}</div>
                     <div className="title">{video.title}</div>     
-                    <div className="author">{video.author.username}</div>     
+                    <div className="author">{this.props.authors[video.author_id].username}</div>     
                     {/* <div className="timestamp">{this.timestamp(video.created_at)}</div>              */}
                 </a>
             </li>

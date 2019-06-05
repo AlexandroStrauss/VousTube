@@ -1,5 +1,13 @@
+#player-container {
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    width: 80vw;
+    justify-content: space-between;
+}
+
 #video-container {
-    position: absolute;
+    /* position: absolute; */
     left: 0px;  
     margin: 16px 40px 16px 48px;  
     height: 71.4%;
@@ -7,9 +15,15 @@
     outline: none;
 }
 
+#video-controls {
+    display: flex;
+    flex-direction: row;
+}
+
 #video-controls button {
    border:none;
-   cursor:pointer;
+   outline: none;
+   cursor: pointer;
    background:transparent;
    background-size:contain;
    background-repeat:no-repeat;
@@ -37,7 +51,7 @@ video {
 }
 
 .vid-title {
-    width: 100%;
+    width: 96vh;
     font-size: 18px;
     color: #0a0a0a;
     word-break: break-word;
