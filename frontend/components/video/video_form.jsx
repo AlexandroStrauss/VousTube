@@ -9,9 +9,11 @@ class VideoForm extends React.Component {
             videoFile: null,
             video: [],
             thumbUrl: null,
+            firstPage: true,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
+        this.twoPages = this.twoPages.bind(this);
     }
     update(field) {
         return(e) => {
@@ -28,6 +30,7 @@ class VideoForm extends React.Component {
         if (file) {
             fileReader.readAsDataURL(file);
         }
+        this.setState({firstPage: false})
     }
 
     handleSubmit(e) {
@@ -46,21 +49,37 @@ class VideoForm extends React.Component {
             contentType: false,
             processData: false
         }).then(
-            response => console.log(response.message),
+            this.props.history.push('/'),
             response => console.log(response.responseJSON),
         )
     }
 
-    render () {
-        return (
-            <div className="vid-form-background">
-            <div className="vid-form">
-                <form className="video-form">
-                    {/* <label htmlFor="title" placeholder="Title"> */}
-                            <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
+    twoPages() {
+        if(this.state.firstPage === true) {
+            return (
+                // <div className="vid-form-background">
+                    <div className="upload-form">
+
+                    <i class="material-icons">cloud_upload</i>
+
+                    <label>Select file to upload
+
+                        <input type="file"
+                            onChange={this.handleFile}
+                            accept="video/*" />
+                        </label>
+                    </div>
+                    // </div>
+            )
+        } else {
+            return (
+                <div className="vid-form">
+                    <form className="video-form">
+                        {/* <label htmlFor="title" placeholder="Title"> */}
+                        <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
 
                         </input>
-                    {/* </label> */}
+                        {/* </label> */}
 
                         {/* <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>
                             <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
@@ -70,30 +89,67 @@ class VideoForm extends React.Component {
                         </div> */}
 
 
-                    <label htmlFor="description" >
+                        <label htmlFor="description" >
                             <textarea id="description" placeholder="Description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>
 
-                        </textarea>
-                    </label> 
+                            </textarea>
+                        </label>
 
-                    <label>Select file to upload
-                        <input type="file" 
-                            onChange={this.handleFile}
-                            accept="video/*"
-                        />
-                    </label>
 
-                    {/* <label>Choose A Thumbnail
+                        {/* <label>Choose A Thumbnail
                         <input type="file"
                             onChange={this.handleFile.bind(this)}
                             accept="image/*"
                         />
                     </label> */}
 
-                    <input type="submit" className="submit" onClick={this.handleSubmit} value="Publish" />
-                </form>
+                        <input type="submit" className="submit" onClick={this.handleSubmit} value="Publish" />
+                    </form>
+                </div>
+            )
+        }
+    }
+    
+
+    render () {
+        return (
+            <div className="vid-form-background">
+                {this.twoPages()}
             </div>
-            </div>
+            // <div className="vid-form">
+            //     <form className="video-form">
+            //         {/* <label htmlFor="title" placeholder="Title"> */}
+            //                 <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
+
+            //             </input>
+            //         {/* </label> */}
+
+            //             {/* <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>
+            //                 <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
+            //                 <label for="pwd">Password</label>
+
+            //                 {this.passwordError()}
+            //             </div> */}
+
+
+            //         <label htmlFor="description" >
+            //                 <textarea id="description" placeholder="Description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>
+
+            //             </textarea>
+            //         </label> 
+
+
+            //         {/* <label>Choose A Thumbnail
+            //             <input type="file"
+            //                 onChange={this.handleFile.bind(this)}
+            //                 accept="image/*"
+            //             />
+            //         </label> */}
+
+            //         <input type="submit" className="submit" onClick={this.handleSubmit} value="Publish" />
+            //     </form>
+            // </div>
+            // </div>
         )
     }
 }

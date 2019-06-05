@@ -8,7 +8,11 @@
     overflow-x: hidden;
 }
 
-.sidebar-collapsed > a > button {
+.sidebar-holder {
+    margin: 5px 0 0 0;
+}
+
+.sidebar-collapsed > div > a > button {
     background-color: #f5f5f5;
     font-size: 24px;
     width: 100%;
@@ -18,7 +22,7 @@
     color: #909090;
 }
 
-.sidebar-collapsed > a > button > p {
+.sidebar-collapsed > div > a > button > p {
     font-size: 14px;
     margin: 0;
 }
@@ -26,7 +30,7 @@
     background-color: #dcdcdc;  
 }
 
-.sidebar-collapsed > a > button:focus {
+.sidebar-collapsed > div > a > button:focus {
     color: #ff0000;
 }
 
@@ -41,19 +45,19 @@
     overflow-x: hidden;
 }
 
-.sidebar-open > a > button:focus {
+.sidebar-open > div > a > button:focus {
     color: #ff0000;
     font-weight: bold;
     background-color: #dcdcdc;
 }
 
-.sidebar-open > a > button:focus > p {
+.sidebar-open > div > a > button:focus > p {
     color: black;
 }
 
 
 
-.sidebar-open > a > button {
+.sidebar-open > div > a > button {
     display: flex;
     align-items: center;
     background-color: #f5f5f5;
@@ -65,17 +69,17 @@
     color: #909090;
 }
 
-.sidebar-open > a > button > p {
+.sidebar-open > div > a > button > p {
     display: inline;
     font-size: 14px;
     margin: 0 0 0 24px;
 }
 
-.sidebar-open > a > button > svg {
+.sidebar-open > div > a > button > svg {
     margin: 0 0 0 24px;
 }
 
-.sidebar-open > a > button > i {
+.sidebar-open > div > a > button > i {
     margin: 0 0 0 24px;
 }
 

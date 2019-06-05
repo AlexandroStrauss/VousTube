@@ -26,9 +26,9 @@ class SessionDisplay extends React.Component{
     render() {
         if (this.props.currentUser) {
             const userCircle = (
-                    < div className = "current-user-thumbnail" >
-                <p>{this.props.currentUser.username[0]}</p>
-                    </div >
+                <div className = "current-user-thumbnail" >
+                    <p>{this.props.currentUser.username[0]}</p>
+                </div >
             )
 
             return (

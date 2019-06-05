@@ -2,8 +2,8 @@ import React from 'react';
 import timeago from 'timeago.js';
 import { Link } from 'react-router-dom';
 
-class VideoIndex extends React.Component {
-    constructor (props) {
+class PlayerIndex extends React.Component {
+    constructor(props) {
         // debugger
         super(props);
         this.state = {
@@ -39,28 +39,34 @@ class VideoIndex extends React.Component {
         return clone;
     }
 
-    render () {
+    render() {
         const videos = this.props.videos ? this.props.videos.map(video => {
-            return(
-            <li className="video">
-                <a className="video-tile" href={`/#/videos/${video.id}`}>
-                    <img src="assets/e.png" />
-                    <div className="duration">{video.duration}</div>
-                    <div className="title">{video.title}</div>     
-                    <div className="author">{video.author.username}</div>     
-                    {/* <div className="timestamp">{this.timestamp(video.created_at)}</div>              */}
-                </a>
-            </li>
+            return (
+                <li className="video">
+                    <a className="video-tile" href={`/#/videos/${video.id}`}>
+                        <img src="assets/e.png" />
+                        <div className="duration">{video.duration}</div>
+                        <div className="player-idx-deets">
+                            <div className="title">{video.title}</div>
+                            <div className="author">{video.author.username}</div>
+                            {/* <div className="timestamp">{this.timestamp(video.created_at)}</div> */}
+                        </div>
+                    </a>
+                </li>
             )
-        }) : [] 
+        }) : []
         const randVideos = this.randomize(videos);
 
-        return(
-            <ul className="video-idx">
-                {randVideos}
+        return (
+            <ul className="player-idx">
+                <p>Up next</p>
+                {randVideos[0]}
+                <div className="line"></div>
+
+                {randVideos.slice(1)}
             </ul>
         )
     }
 }
 
-export default VideoIndex;
+export default PlayerIndex;

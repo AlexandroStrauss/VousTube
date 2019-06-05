@@ -78,7 +78,7 @@ class LoginForm extends React.Component {
 
                         <form onSubmit={this.handleCheckSubmit} >
                             <div className={this.state.idError ? "floating-label-error" : "floating-label"}>
-                                <input type="text" id="identifier" value={this.state.identifier} onChange={this.update('identifier')} autofocus/>
+                                <input type="text" id="identifier" autoFocus value={this.state.identifier} onChange={this.update('identifier')} />
                                 <label for="identifier">Email or username</label>
 
                                 {this.state.idError ? 

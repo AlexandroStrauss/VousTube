@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import VideoIndex from './video_index';
 import { allVideos } from '../../actions/video_actions';
+import PlayerIndex from './player_index';
 
 const mapStateToProps = state => {
     // debugger
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
     fetchVideos: () => dispatch(allVideos())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerIndex);

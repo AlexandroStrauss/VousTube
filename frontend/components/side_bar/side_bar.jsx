@@ -15,9 +15,10 @@ class SideBar extends React.Component {
     render () {
         return (
             <section className="sidebar-open">
+                <div className="sidebar-holder">
                 <Link to="/" >
                 <button>
-                    <i class="material-icons">home</i>
+                    <i className="material-icons">home</i>
                     <p>Home</p>
                 </button>
                 </Link>
@@ -35,6 +36,7 @@ class SideBar extends React.Component {
                     <p>Github</p>
                 </button> 
                 </a>
+                </div>
             </section>
         )  
     }

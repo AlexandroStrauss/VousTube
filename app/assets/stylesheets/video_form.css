@@ -7,6 +7,15 @@
     box-shadow: 2px;
 }
 
+.upload-form {
+    width: 750px;
+    background-color: #ffffff;
+    height: 80%;
+    margin: 0 auto;
+    border: 1px solid #dddddd;
+    box-shadow: 2px;
+}
+
 .video-form {
     display: flex;
     flex-direction: column;
@@ -68,3 +77,18 @@
     font-size: 11px;
 
 }
+
+label > i {
+    font-size: 60px;
+}
+
+label > i:hover {
+    color: #b82125;
+}
+
+.upload-form > label > input {
+    padding: 150px;
+    cursor: pointer;
+    border: none;
+}
+
