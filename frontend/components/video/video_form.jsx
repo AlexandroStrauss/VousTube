@@ -10,7 +10,9 @@ class VideoForm extends React.Component {
             video: [],
             images: [],
             imageFile: null,
+            imageUrl: null,
             firstPage: true,
+            videoReady: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -27,7 +29,7 @@ class VideoForm extends React.Component {
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
             // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
-            this.setState({ videoFile: file})
+            this.setState({ videoFile: file, videoReady: true})
         }
         if (file) {
             fileReader.readAsDataURL(file);
@@ -35,17 +37,16 @@ class VideoForm extends React.Component {
         this.setState({firstPage: false})
     }
 
-    handleImageFile(e) {
-        const file = e.currentTarget.files[0];
+    handleImageFile(file) {
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
+            debugger
             // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
-            this.setState({ imageFile: file })
+            this.setState({ imageFile: file, imageUrl: fileReader.result})
         }
         if (file) {
             fileReader.readAsDataURL(file);
         }
-
     }
 
     handleSubmit(e) {
@@ -67,19 +68,25 @@ class VideoForm extends React.Component {
             contentType: false,
             processData: false
         }).then(
-            this.props.history.push('/'),
-            response => console.log(response.responseJSON),
+            response => {
+                this.props.history.push('/'),
+                console.log(response.responseJSON)
+            },
         )
     }
 
     twoPages() {
+        
         if(this.state.firstPage === true) {
             return (
                 // <div className="vid-form-background">
                     <div className="upload-form">
 
+                        <label>
                         <i class="material-icons">cloud_upload</i>
-                        <label>Select file to upload
+
+                            Select file to upload
+                            <p>Or drag and drop video files</p>
                             <input type="file"
                                 onChange={this.handleFile}
                                 accept="video/*" />
@@ -88,14 +95,25 @@ class VideoForm extends React.Component {
                     // </div>
             )
         } else {
+            if (this.state.images[0]) {
+                this.handleImageFile(this.state.images[0])
+            }
+            const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : <img src="assets/e.png" />
+            debugger
             return (
                 <div className="vid-form">
+                    <div className="thumbnail-sidebar">
+                        {preview}
+                    </div>
+
+                    <div className="main-column">
+                    <div className="progress-bar">
+
+                    </div>
                     <form className="video-form">
-                        {/* <label htmlFor="title" placeholder="Title"> */}
                         <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
 
                         </input>
-                        {/* </label> */}
 
                         {/* <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>
                             <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
@@ -112,6 +130,7 @@ class VideoForm extends React.Component {
                         </label>
 
                         <label>Select a thumbnail for your video
+                            <p>If you don't, it will be given a default thumbnail</p>
                             <input type="file"
                                 onChange={e => this.setState({ images: e.target.files })}
                                 accept="image/*" 
@@ -128,6 +147,7 @@ class VideoForm extends React.Component {
 
                         <input type="submit" className="submit" onClick={this.handleSubmit} value="Publish" />
                     </form>
+                </div>
                 </div>
             )
         }

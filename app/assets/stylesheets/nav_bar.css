@@ -43,6 +43,7 @@
 .nav-right-side {
     display: flex;
     justify-content: space-between;
+    /* padding: 0 40px 0 0; */
 }
 
 .nav-btns {
@@ -106,7 +107,7 @@
     outline: none;
     cursor: pointer;
     border-radius: 50%;
-    padding: 8px;
+    padding: 8px 24px 8px 12px;
     font-size: 18px;
 }
 
@@ -121,7 +122,7 @@
     display: flex;
     width: 170px;
     top: 48px;
-    right: 60px;
+    right: 84px;
     background-color: white;
     z-index: 9;
 	box-shadow: -1px 6px 10px 5px rgba(0,0,0,0.09);
@@ -165,11 +166,18 @@
     color: #ffffff;
     border-radius: 50%;
     font-size: 24px;
-    padding: 0px 10px;
+    margin: 0px 22px 0 0;
+    height: 34px;
+    width: 34px;
+        display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .current-user-thumbnail > p {
     margin: 0;
+    
 }
 
 .user-button {
@@ -216,7 +224,7 @@
     flex-direction: column;
     width: 300px;
     top: 10px;
-    right: 40px;
+    right: 74px;
     background-color: white;
     color: #0a0a0a;
 

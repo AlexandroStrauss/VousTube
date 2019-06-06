@@ -12,7 +12,7 @@ class PlayerNavBar extends React.Component {
         super(props);
         this.state = {
             clicked: false,
-            open: true,
+            open: false,
         }
         this.videoClick = this.videoClick.bind(this)
         this.sidebarClick = this.sidebarClick.bind(this)

@@ -5,6 +5,7 @@ import SearchBar from '../header/search_bar';
 import { Route, Link } from 'react-router-dom';
 import SessionDisplayContainer from '../session_display_container';
 import SideBar from '../side_bar/side_bar';
+import VideoIndexContainer from '../video/video_index_container';
 
 
 class NavBar extends React.Component {
@@ -12,7 +13,7 @@ class NavBar extends React.Component {
         super(props);
         this.state = {
             clicked: false,
-            open: true,
+            open: false,
         }
         this.videoClick = this.videoClick.bind(this)
         this.sidebarClick = this.sidebarClick.bind(this)
@@ -79,10 +80,14 @@ class NavBar extends React.Component {
                 </div>
             </header>
 
+            <div id="index-container">
+
                 <section className={this.state.open ? "sidebar-open" : "sidebar-collapsed"}>
                     <SideBar />
                 </section>
 
+                <VideoIndexContainer />
+            </div>
             </>
         )
     }

@@ -1,9 +1,11 @@
 .sidebar-collapsed {
-    position: fixed;
-    height: 100%;
+    position: sticky;
+    left: 0;
+    top: 56px;
+    height: 100vh;
     background-color: #f5f5f5;
     color: #909090;
-    width: 72px;
+    min-width: 72px;
     z-index: 1;
     overflow-x: hidden;
 }
@@ -36,12 +38,16 @@
 
 
 .sidebar-open {
-    width: 164px;
-        position: fixed;
-    height: 100%;
+    min-width: 240px;
+    position: sticky;
+        top: 56px;
+    height: 100vh;
+
+    left: 0;
+    height: 100vh;
     background-color: #f5f5f5;
     color: #909090;
-    z-index: 1;
+    z-index: 22;
     overflow-x: hidden;
 }
 
@@ -90,7 +96,8 @@
 /* selected icon: #ff0000; */
 
 .sidebar-hidden {
+    display: none;
     width: 0;
     overflow: hidden;
-    transition: width 0.4s;
+    transition: width 0.4s ease;
 }

@@ -1,10 +1,23 @@
 .vid-form {
-    width: 1000px;
+    width: 970px;
+    padding: 15px;
     background-color: #ffffff;
     height: 100%;
     margin: 0 auto;
     border: 1px solid #dddddd;
     box-shadow: 2px;
+    display: flex;
+    flex-direction: row;
+}
+
+.thumbnail-sidebar {
+    width: 196px;
+    height: 100%;
+}
+
+.thumbnail-sidebar > img {
+    width: 196px;
+    height: 100px;
 }
 
 .upload-form {
@@ -14,18 +27,33 @@
     margin: 0 auto;
     border: 1px solid #dddddd;
     box-shadow: 2px;
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar {
+    height: 100px;
+    width: 100%;
+    /* padding: 15px; */
+    border-bottom: 1px solid #cccccc;
 }
 
 .video-form {
+    width: 758px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
+    justify-content: center;
+    padding: 16px 0 0 0;
 }
 
 .vid-form-background {
     width: 100%;
     height: 100vh;
     background-color: #dddddd;
+    padding: 12px 40px 36px 40px;
 }
 
 .video-form input {
@@ -35,6 +63,7 @@
     border-radius: 0;
     width: 428px; 
     padding: 5px 10px 6px 10px;
+    margin: 0 0 16px 0;
     font-size: 12px;
 }
 
@@ -48,6 +77,8 @@
     border: 1px solid #dddddd;
     outline: none;
     font-size: 12px;
+        margin: 0 0 16px 0;
+
 }
 
 .video-form input:hover, textarea:hover{
@@ -57,7 +88,6 @@
 .video-form input:focus, textarea:focus{
     border: 1px solid #177ac6;
 }
-
 
 .video-form label {
     display: flex;
@@ -70,11 +100,21 @@
     border-radius: 2px;
     width: 120px;
     height: 30px;
+    position: relative;
+    bottom: 452px;
+    left: 672px;
     display: flex;
     padding: 0;
     justify-content: center;
     align-items: center;
     font-size: 11px;
+}
+
+.video-form > label > p {
+        color: #676767;
+    font-size: 14px;
+    text-align: left;
+
 
 }
 
@@ -93,21 +133,45 @@
     justify-content: center;
 }
 
-.upload-form > i:hover {
+.upload-form > label:hover {
+    cursor: pointer;
+}
+
+.upload-form > label > i {
+    font-size: 140px;
+    color: #cccccc;
+}
+
+.upload-form > label:hover > i {
     color: #b82125;
 }
 
-.upload-form > label {
-    display: flex;
-        flex-direction: column;
-    align-items: center;
+.upload-form > label > p {
+    color: #676767;
+    font-size: 14px;
+}
 
+.upload-form > label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #505050;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .upload-form > label > input {
     margin: 0 auto;
-    padding: 30px;
     cursor: pointer;
     border: none;
+    z-index: -1;
+    padding: 50px;
 }
 
+.upload-form > label:hover + .upload-form > i {
+    color: #b82125;
+}
+
+.main-column {
+    margin: 0 0 0 16px;
+}
