@@ -18,6 +18,12 @@
 #video-controls {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+                position: relative;
+            bottom: 50px;
+            color: white;
+
+
 }
 
 #video-controls button {
@@ -36,12 +42,14 @@ video {
     outline: none;
 }
 
-.video-info, .author-publish, .vid-author {
+#video-info, .author-publish, .vid-author {
     color: #0a0a0a;
 }
 
 #video-info {
     width: 100%;
+    position: relative;
+    bottom: 50px;
 }
 
 .video-stats {
@@ -99,3 +107,37 @@ video {
 .author-thumbnail > p {
     margin: 0;
 }
+
+#seek-bar {
+    width: 99%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    left: 2px;
+    bottom: 48px;
+}
+
+#volume-bar {
+    width: 8vw;
+    padding: 0;
+    transition: 0.2s;
+    display: none;
+}
+
+#volume-icon:hover + #volume-bar {
+    display: block; 
+}
+
+#left-controls {
+    display: flex;
+    flex-direction: row;
+            align-items: center;
+            color: white;
+
+}
+
+#right-controls button, #left-controls button {
+    color: white;
+
+}
+

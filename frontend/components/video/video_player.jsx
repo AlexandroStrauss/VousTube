@@ -6,10 +6,11 @@ class VideoPlayer extends React.Component {
         this.state = {
             url: "",
             author: {},
-            play_icon: <i class="material-icons">pause</i>,
+            play_icon: "pause",
             volume_icon: <i class="material-icons">volume_up</i>,
-            timer: "0:00",
+            timer: "0:00/0:00",
             fullscreen: <i class="material-icons">fullscreen</i>,
+            volume: 1,
         }
 
         this.buttonPresses = this.buttonPresses.bind(this);
@@ -22,6 +23,7 @@ class VideoPlayer extends React.Component {
         this.timer = this.timer.bind(this);
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
+        this.setVolume = this.setVolume.bind(this);
     }
 
     componentDidMount() {
@@ -42,41 +44,37 @@ class VideoPlayer extends React.Component {
 
     setupVideo(videoUrl) {
         this.video =  (
-            <video autoFocus onKeyPress={this.buttonPresses} id="video" autoPlay >
+            <video onTimeUpdate={this.timer} id="video" autoPlay >
                 <source src={videoUrl} />
             </video>
         )
         return (this.video)
     }
 
-    volumeButton() {
-        this.video = document.getElementById('video');
+    setVolume() {
+        let video = document.getElementById('video');
 
-        if (this.video.volume === 0) {
-            return (
-                <i class="material-icons">volume_off</i>
-            )
-        } else if
-            (this.video.volume < 0.5) {
-                return (
-                    <i class="material-icons">volume_down</i>
-                )
-        } else {
-            return (
-                <i class="material-icons">volume_up</i>
-            )
-        }
+        let volBar = document.getElementById('volume-bar');
+
+        if (!volBar.value) { volBar.value = 1 }
+        debugger
+        video.volume = volBar.value;
+        debugger
+
+        this.setState({ volume: video.volume })
+
+        this.volumeButton()
     }
 
     swapPlayPause() {
         let video = document.getElementById('video');
         if (video.paused || video.ended) {
             video.play()
-            this.setState({ play_icon: < i class="material-icons" >pause</i > })
+            this.setState({ play_icon: "pause" })
             // this.playPause()
         } else {
             video.pause()
-            this.setState({ play_icon: < i class="material-icons" >play_arrow</i > })
+            this.setState({ play_icon: "play_arrow" })
             // this.playPause()
         }
     }
@@ -86,11 +84,11 @@ class VideoPlayer extends React.Component {
 
         if (video) { 
             if (video.ended) {
-                this.setState({play_icon: < i class="material-icons" >replay</i >})
+                this.setState({play_icon: "replay"})
             } else if (video.paused) {
-                this.setState({ play_icon: < i class="material-icons" >play-arrow</i > })
+                this.setState({ play_icon: "play_arrow" })
             } else {
-                this.setState({ play_icon: < i class="material-icons" >pause</i > })
+                this.setState({ play_icon: "pause" })
         }
     }
     }
@@ -128,23 +126,69 @@ class VideoPlayer extends React.Component {
         var time = video.duration * (seekBar.value / 100);
 
         video.currentTime = time;
-        
     }
 
     timer() {
         let video = document.getElementById('video');
         let seekBar = document.getElementById('seek-bar');
 
-        // let time = video.currentTime;
-        // let minutes = Math.floor(time / 60);
-        // let newTime = (minutes + ":" + (time % 60));
-        // this.setState({ timer: newTime })
+        let newTime = video.currentTime * (100 / video.duration)
+        if (!newTime) { newTime = 0 }
+        seekBar.value = newTime;
+        // let curmins = Math.floor(video.currentTime / 60)
+        // let cursecs = Math.floor(video.currentTime - curmins * 60)
+        // let durmins = Math.floor(video.duration / 60)
+        // let dursecs = Math.round(video.duration - durmins * 60)
+        // if (!durmins) { durmins = "0" }
+        // if (!dursecs) { dursecs = "0" }
 
-        var value = (100 / video.duration) * video.currentTime;
+        // if (cursecs < 10) { cursecs = "0" + cursecs }
+        // if (dursecs < 10) { dursecs = "0" + dursecs }
+        // this.curtimetext.innerHTML = curmins + ":" + cursecs
+        // this.durtimetext.innerHTML = durmins + ":" + dursecs
+        let time = video.currentTime;
+        let minutes = Math.floor(time / 60);
+        let seconds = Math.floor(time % 60);
+        if (seconds < 10) { seconds = "0" + seconds}
+        let newTimer = (minutes + ":" + seconds);
 
-        // Update the slider value
-        seekBar.value = value;
+        let dur = video.duration;
+        let durminutes = Math.floor(dur / 60);
+        let dursecs = Math.floor(dur % 60);
+        if (dursecs < 10) { dursecs = "0" + dursecs }
+        let duration = (durminutes + ":" + dursecs);
+        
+        this.setState({ timer: newTimer + "/" + duration })
+        this.playPause();
     }
+
+    setVolume() {
+        let video = document.getElementById('video');
+
+        let volBar = document.getElementById('volume-bar');
+
+        if(!volBar.value) {volBar.value = 1}
+        debugger
+        video.volume = volBar.value;
+        debugger
+
+        this.setState({volume: video.volume})
+        this.volumeButton();
+    }
+
+    volumeButton() {
+        this.video = document.getElementById('video');
+
+        if (this.video.volume === 0) {
+            this.setState({ volume_icon: <i class="material-icons">volume_mute</i> })
+        } else if
+            (this.video.volume < 0.5) {
+            this.setState({ volume_icon: <i class="material-icons">volume_down</i> })
+        } else {
+            this.setState({ volume_icon: <i class="material-icons">volume_up</i> })
+        }
+    }
+
 
     // parseDate () {
     //     let date = this.props.video.video.record.created_at
@@ -160,11 +204,9 @@ class VideoPlayer extends React.Component {
         video.play();
     }
 
-
     buttonPresses(e) {
-        debugger
         let video = document.getElementById('video');
-        debugger
+        let volBar = document.getElementById('volume-bar');
         e.preventDefault();
         switch (e.keyCode) {
             case 39:
@@ -179,12 +221,20 @@ class VideoPlayer extends React.Component {
                 if (video.volume <= 0.9) {
                 video.volume += 0.1 }
                 else {video.volume = 1};
+                volBar.value = video.volume;
+
+                this.setVolume();
+
                 break;
             case 40:
                 if (video.volume >= 0.1) {
                     video.volume -= 0.1
                 }
                 else { video.volume = 0 };
+                volBar.value = video.volume;
+
+                this.setVolume();
+
                 break;
             case 32:
                 this.swapPlayPause();
@@ -207,23 +257,32 @@ class VideoPlayer extends React.Component {
                 <div className="video-background">
                 {this.setupVideo(this.state.url)}
                 </div>
+                <input type="range" id="seek-bar"
+                    onChange={this.changeTime}
+                    // onTimeUpdate={this.timer} 
+                    onMouseDown={this.pause}
+                    onMouseUp={this.play}
+                />
+                
                 <div id="video-controls" className="controls" data-state="hidden">
+                    <div id="left-controls">
                     <button type="button" onClick={this.swapPlayPause} id="play-pause">
-                        {this.state.play_icon}
+                            <i class="material-icons">{this.state.play_icon}</i>
                     </button>
 
                     <button type="button" onClick={this.swapMute} id="volume-icon">{this.state.volume_icon}</button>
+                    <input type="range"
+                        onChange={this.setVolume}
+                        id="volume-bar"
+                        min="0" max="1"
+                        step="0.1" />
 
                     <div id="timer">{this.state.timer}</div>
-                    <input type="range" id="seek-bar" value="0" 
-                        onChange={this.changeTime} 
-                        onTimeUpdate={this.timer} 
-                        onMouseDown={this.pause} 
-                        onMouseUp={this.play}
-                    />
+                    </div>
                     
-                    {/* <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" /> */}
+                    <div id="right-controls">
                     <button type="button" id="full-screen" onClick={this.swapFullscreen}>{this.state.fullscreen}</button>
+                    </div>
                 </div>
                 <div id="video-info">
                     <div className="video-stats">

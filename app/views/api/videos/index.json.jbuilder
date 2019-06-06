@@ -1,8 +1,14 @@
 @videos.each do |video| 
     json.videos do 
         json.set! video.id do
-            json.extract! video, :title, :description, :thumbnail_img, :id, :author_id
+            json.extract! video, :title, :description, :id, :author_id
             json.videoUrl url_for(video.video)
+            
+            if (video.thumbnails[0]) 
+                json.imageUrl url_for(video.thumbnails[0])
+            else
+                json.imageUrl false
+            end
         end
     end
 end

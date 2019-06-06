@@ -8,6 +8,7 @@ class Video < ApplicationRecord
         foreign_key: :author_id,
         class_name: :User
     has_one_attached :video
+    has_many_attached :thumbnails
 
     def ensure_video
         unless self.video.attached?

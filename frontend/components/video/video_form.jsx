@@ -8,11 +8,13 @@ class VideoForm extends React.Component {
             description: "",
             videoFile: null,
             video: [],
-            thumbUrl: null,
+            images: [],
+            imageFile: null,
             firstPage: true,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
+        this.handleImageFile = this.handleImageFile.bind(this);
         this.twoPages = this.twoPages.bind(this);
     }
     update(field) {
@@ -33,6 +35,19 @@ class VideoForm extends React.Component {
         this.setState({firstPage: false})
     }
 
+    handleImageFile(e) {
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
+            this.setState({ imageFile: file })
+        }
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
+
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
@@ -40,6 +55,9 @@ class VideoForm extends React.Component {
         formData.append('video[description]', this.state.description)
         if (this.state.videoFile) {
             formData.append('video[video]', this.state.videoFile)
+        }
+        if (this.state.images[0]) {
+            formData.append('video[thumbnails][]', this.state.images[0])
         }
         // formData.append('video[thumbnail]', this.state.thumbUrl)
         $.ajax({
@@ -91,6 +109,13 @@ class VideoForm extends React.Component {
                             <textarea id="description" placeholder="Description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>
 
                             </textarea>
+                        </label>
+
+                        <label>Select a thumbnail for your video
+                            <input type="file"
+                                onChange={e => this.setState({ images: e.target.files })}
+                                accept="image/*" 
+                                multiple/>
                         </label>
 
 
