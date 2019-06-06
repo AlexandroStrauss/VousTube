@@ -38,14 +38,6 @@
 
 
 .sidebar-open {
-<<<<<<< HEAD
-    width: 16.66666vw;
-        position: fixed;
-    height: 100%;
-    background-color: #f5f5f5;
-    color: #909090;
-    /* z-index: 1; */
-=======
     min-width: 240px;
     max-width: 240px;
     position: sticky;
@@ -73,7 +65,6 @@
     background-color: #f5f5f5;
     color: #909090;
     z-index: 22;
->>>>>>> video3
     overflow-x: hidden;
 }
 
@@ -84,12 +75,7 @@
 
 .sidebar-open > div > a > button:focus, .player-sidebar-open > div > a > button:focus {
     color: #ff0000;
-<<<<<<< HEAD
-    font-weight: 500;
-    background-color: #11111166;
-=======
     background-color: #dcdcdc;
->>>>>>> video3
 }
 
 .sidebar-open > div > a > button:focus > p, .player-sidebar-open > div > a > button:focus > p{
@@ -105,11 +91,7 @@
     font-size: 24px;
     width: 100%;
     border: none;
-<<<<<<< HEAD
-    padding: 8px 0 8px 0;
-=======
     /* padding: 16px 0 14px 0; */
->>>>>>> video3
     outline: none;
     color: #909090;
     height: 40px;
