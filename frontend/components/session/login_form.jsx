@@ -17,6 +17,14 @@ class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCheckSubmit = this.handleCheckSubmit.bind(this);
         this.flipBack = this.flipBack.bind(this);
+        // this.focusFirstPage = this.focusFirstPage.bind(this);
+        // this.focusSecondPage = this.focusSecondPage.bind(this);
+        this.textInput = React.createRef();
+        this.focusTextInput = this.focusTextInput.bind(this);
+
+        this.secondInput = React.createRef();
+        this.focusSecondInput = this.focusSecondInput.bind(this);
+
     }
 
     update(field) {
@@ -55,7 +63,8 @@ class LoginForm extends React.Component {
     }
 
     flipBack() {
-        this.setState({ phase: false })
+        this.setState({ phase: false });
+        this.focusSecondInput();
     }
     
     pwdEmpty() {
@@ -63,6 +72,41 @@ class LoginForm extends React.Component {
             return true
         } else {
             return false
+        }
+    }
+
+    focusTextInput() {
+        this.textInput.current.focus();
+    }
+
+    focusSecondInput() {
+        this.secondInput.current.focus();
+    }
+
+
+
+    // focusFirstPage() {
+    //     if (this.state.phase) {
+    //         return (
+    //             <input type="text" id="identifier" required="required" value={this.state.identifier} onChange={this.update('identifier')} />
+    //         )
+    //     } else {
+    //         return (
+    //             <input type="text" id="identifier" required="required" autoFocus value={this.state.identifier} onChange={this.update('identifier')} />
+    //         )
+    //     }
+    // }
+
+
+    focusSecondPage() {
+        if (this.state.phase) {
+            return (
+                <input id="pwd" type={this.state.showPwd ? "text" : "password"} autoFocus required="required" value={this.state.password} onChange={this.update('password')} />
+            )
+        } else {
+            return (
+                <input id="pwd" type={this.state.showPwd ? "text" : "password"} required="required" value={this.state.password} onChange={this.update('password')} />
+            )
         }
     }
 
@@ -78,7 +122,7 @@ class LoginForm extends React.Component {
 
                         <form onSubmit={this.handleCheckSubmit} >
                             <div className={this.state.idError ? "floating-label-error" : "floating-label"}>
-                                <input type="text" id="identifier" autoFocus value={this.state.identifier} onChange={this.update('identifier')} />
+                                <input type="text" id="identifier" required="required" autoFocus value={this.state.identifier} ref={this.secondInput} onChange={this.update('identifier')} />
                                 <label for="identifier">Email or username</label>
 
                                 {this.state.idError ? 
@@ -103,7 +147,7 @@ class LoginForm extends React.Component {
 
                             <div className="bottom-links">
                                 <Link to="/signup">Create account</Link>
-                                <input type="submit" className="submit" value="Next" />
+                                <input type="submit" className="submit" onClick={this.focusTextInput} value="Next" />
                             </div>
                         </form>
                     </div>
@@ -120,7 +164,12 @@ class LoginForm extends React.Component {
                         </div>
                         <form onSubmit={this.handleSubmit} >
                                 <div className={this.state.pwdError ? "floating-label-error" : "floating-label"}>
-                                    <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
+                                    <input id="pwd" 
+                                        type={this.state.showPwd ? "text" : "password"} 
+                                        required="required" value={this.state.password} 
+                                        onChange={this.update('password')} 
+                                        ref={this.textInput}
+                                    />
                                     <label for="pwd">Enter your password</label>
 
                                 {this.state.pwdError ?

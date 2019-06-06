@@ -154,6 +154,11 @@ form .submit {
     color: #d92f26;
 }
 
+input:valid + label {
+    top: -62px;
+    left: 8px;
+    font-size: 11px;
+}
 
 .bottom-links {
     display: flex;

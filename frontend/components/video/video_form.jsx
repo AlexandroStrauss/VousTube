@@ -13,6 +13,7 @@ class VideoForm extends React.Component {
             imageUrl: null,
             firstPage: true,
             videoReady: false,
+            uploadProgress: 0,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -25,6 +26,17 @@ class VideoForm extends React.Component {
         }
     }
     handleFile(e) {
+        this.setState({ firstPage: false })
+
+        // var xhr = new XMLHttpRequest();
+        // debugger
+        // xhr.upload.addEventListener("progress", function (e) {
+        //     debugger
+        //     var pc = parseInt(100 - (e.loaded / e.total * 100));
+        //     this.setState({uploadProgress: pc})
+        // }, false);
+
+
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
@@ -34,13 +46,17 @@ class VideoForm extends React.Component {
         if (file) {
             fileReader.readAsDataURL(file);
         }
-        this.setState({firstPage: false})
     }
+
+    // progressHandler(e) {
+    //     var percent = (event.loaded / event.total) * 100;
+    //     this.setState({ uploadProgress: Math.round(percent)}) 
+    // }
 
     handleImageFile(file) {
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-            debugger
+            
             // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
             this.setState({ imageFile: file, imageUrl: fileReader.result})
         }
@@ -75,6 +91,10 @@ class VideoForm extends React.Component {
         )
     }
 
+    // titleErrors() {
+    //     if (this.state.title === "" )
+    // }
+
     twoPages() {
         
         if(this.state.firstPage === true) {
@@ -99,17 +119,21 @@ class VideoForm extends React.Component {
                 this.handleImageFile(this.state.images[0])
             }
             const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : <img src="assets/e.png" />
-            debugger
+            const previewText = this.state.imageUrl ? "Your thumbnail" : "Default thumbnail"
+            
             return (
                 <div className="vid-form">
                     <div className="thumbnail-sidebar">
                         {preview}
-                    </div>
+                    <div className="previewTxt">{previewText}</div>
+
+                        
+                </div>
 
                     <div className="main-column">
-                    <div className="progress-bar">
-
-                    </div>
+                        <div className="progress-bar">
+                            
+                        </div>
                     <form className="video-form">
                         <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
 

@@ -79,7 +79,7 @@ class PlayerNavBar extends React.Component {
                     </div>
                 </header>
 
-                <section className={this.state.open ? "sidebar-open" : "sidebar-hidden"}>
+                <section className={this.state.open ? "player-sidebar-open" : "sidebar-hidden"}>
                     <SideBar />
                 </section>
             </>

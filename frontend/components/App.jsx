@@ -25,7 +25,6 @@ const App = () => (
             <Route exact path="/videos/new" component={FormNavBarContainer} />
             <Route path="/videos/:id" component={PlayerNavBarContainer} />
             <Route exact path="/videos" component={NavBarContainer} />
-
             <Route exact path="/" component={NavBarContainer} />
 
             {/* <Route path="/" component={NavBarContainer} /> */}

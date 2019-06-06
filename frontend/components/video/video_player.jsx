@@ -57,9 +57,9 @@ class VideoPlayer extends React.Component {
         let volBar = document.getElementById('volume-bar');
 
         if (!volBar.value) { volBar.value = 1 }
-        debugger
+        
         video.volume = volBar.value;
-        debugger
+        
 
         this.setState({ volume: video.volume })
 
@@ -95,13 +95,17 @@ class VideoPlayer extends React.Component {
 
     swapMute () {
         let video = document.getElementById('video');
+        let volBar = document.getElementById('volume-bar');
+
         if (video.muted) { 
             video.muted = false;
             this.setState({ volume_icon: < i class="material-icons" >volume_up</i > })
+            volBar.value = video.volume;
 
         } else {
             video.muted = true;
             this.setState({ volume_icon: < i class="material-icons" >volume_off</i > })
+            volBar.value = 0;
         }
     }
 
@@ -168,9 +172,9 @@ class VideoPlayer extends React.Component {
         let volBar = document.getElementById('volume-bar');
 
         if(!volBar.value) {volBar.value = 1}
-        debugger
+        
         video.volume = volBar.value;
-        debugger
+        
 
         this.setState({volume: video.volume})
         this.volumeButton();
@@ -232,7 +236,6 @@ class VideoPlayer extends React.Component {
                 }
                 else { video.volume = 0 };
                 volBar.value = video.volume;
-
                 this.setVolume();
 
                 break;
@@ -306,27 +309,5 @@ class VideoPlayer extends React.Component {
         )
     }
 }
-
-// document.onkeydown = checkKey;
-
-
-// video.currentTime -= 5;
-// video.currentTime += 5;
-
-// const volumeButton () {
-//     if (video.)
-//     <i class="material-icons">
-//         volume_up</i>
-// }
-
-
-
-{/* <i class="material-icons">
-    fullscreen
-</i>
-
-    <i class="material-icons">
-        fullscreen_exit
-</i> */}
 
 export default VideoPlayer;

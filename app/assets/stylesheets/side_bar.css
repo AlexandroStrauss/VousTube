@@ -39,8 +39,9 @@
 
 .sidebar-open {
     min-width: 240px;
+    max-width: 240px;
     position: sticky;
-        top: 56px;
+    top: 56px;
     height: 100vh;
 
     left: 0;
@@ -51,47 +52,69 @@
     overflow-x: hidden;
 }
 
-.sidebar-open > div > a > button:focus {
+.player-sidebar-open {
+    max-width: 240px;
+    min-width: 240px;
+    position: fixed;
+    top: 56px;
+    height: 100vh;
+
+    left: 0;
+    height: 100vh;
+
+    background-color: #f5f5f5;
+    color: #909090;
+    z-index: 22;
+    overflow-x: hidden;
+}
+
+.sidebar-open > div > a > button:hover, .player-sidebar-open > div > a > button:hover {
+    background-color: #dcdcdc;  
+
+}
+
+.sidebar-open > div > a > button:focus, .player-sidebar-open > div > a > button:focus {
     color: #ff0000;
-    font-weight: bold;
     background-color: #dcdcdc;
 }
 
-.sidebar-open > div > a > button:focus > p {
-    color: black;
+.sidebar-open > div > a > button:focus > p, .player-sidebar-open > div > a > button:focus > p{
+    color: #0a0a0a;
 }
 
 
 
-.sidebar-open > div > a > button {
+.sidebar-open > div > a > button, .player-sidebar-open > div > a > button {
     display: flex;
     align-items: center;
     background-color: #f5f5f5;
     font-size: 24px;
     width: 100%;
     border: none;
-    padding: 16px 0 14px 0;
+    /* padding: 16px 0 14px 0; */
     outline: none;
     color: #909090;
+    height: 40px;
 }
 
-.sidebar-open > div > a > button > p {
+.sidebar-open > div > a > button > p, .player-sidebar-open > div > a > button > p{
     display: inline;
     font-size: 14px;
     margin: 0 0 0 24px;
+    color: #0a0a0a;
 }
 
-.sidebar-open > div > a > button > svg {
+.sidebar-open > div > a > button > svg, .player-sidebar-open > div > a > button > svg{
     margin: 0 0 0 24px;
 }
 
-.sidebar-open > div > a > button > i {
+.sidebar-open > div > a > button > i, .player-sidebar-open > div > a > button > i{
     margin: 0 0 0 24px;
 }
 
-.sidebar-open :hover {
+/* .sidebar-open:hover, .player-sidebar-open:hover {
     background-color: #dcdcdc;  
-}
+} */
 
 /* selected icon: #ff0000; */
 
@@ -100,4 +123,19 @@
     width: 0;
     overflow: hidden;
     transition: width 0.4s ease;
+}
+
+.sidebar-collapsed #home, .sidebar-open #home {
+    color: #ff0000;
+}
+
+
+.sidebar-open #home > p {
+    color: black;
+        font-weight: 500;
+
+}
+
+.sidebar-open > div > a > #linked-in > svg, .player-sidebar-open > div > a > #linked-in > svg {
+    margin: 0 3px 0 24px;
 }
