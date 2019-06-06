@@ -128,6 +128,10 @@ video {
     display: block; 
 }
 
+#volume-bar:hover {
+    display: block;
+}
+
 #left-controls {
     display: flex;
     flex-direction: row;
@@ -141,3 +145,6 @@ video {
 
 }
 
+#video-background:hover + #seek-bar + #video-controls {
+    display: none;
+}

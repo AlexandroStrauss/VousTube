@@ -133,7 +133,6 @@ class VideoForm extends React.Component {
         }
     }
     
-
     render () {
         return (
             <div className="vid-form-background">

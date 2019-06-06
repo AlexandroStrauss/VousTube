@@ -254,7 +254,7 @@ class VideoPlayer extends React.Component {
         const author = this.props.users[this.props.video.author_id]
         return (
             <figure id="video-container" autoFocus onKeyDown={this.buttonPresses}>
-                <div className="video-background">
+                <div className="video-background" onClick={this.swapPlayPause}>
                 {this.setupVideo(this.state.url)}
                 </div>
                 <input type="range" id="seek-bar"
