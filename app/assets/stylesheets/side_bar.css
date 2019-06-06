@@ -36,7 +36,7 @@
 
 
 .sidebar-open {
-    width: 164px;
+    width: 16.66666vw;
         position: fixed;
     height: 100%;
     background-color: #f5f5f5;
@@ -64,7 +64,7 @@
     font-size: 24px;
     width: 100%;
     border: none;
-    padding: 16px 0 14px 0;
+    padding: 8px 0 8px 0;
     outline: none;
     color: #909090;
 }
