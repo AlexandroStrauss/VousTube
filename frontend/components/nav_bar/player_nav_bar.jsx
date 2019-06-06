@@ -12,7 +12,7 @@ class PlayerNavBar extends React.Component {
         super(props);
         this.state = {
             clicked: false,
-            open: true,
+            open: false,
         }
         this.videoClick = this.videoClick.bind(this)
         this.sidebarClick = this.sidebarClick.bind(this)
@@ -79,7 +79,7 @@ class PlayerNavBar extends React.Component {
                     </div>
                 </header>
 
-                <section className={this.state.open ? "sidebar-open" : "sidebar-hidden"}>
+                <section className={this.state.open ? "player-sidebar-open" : "sidebar-hidden"}>
                     <SideBar />
                 </section>
             </>

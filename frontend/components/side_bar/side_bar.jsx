@@ -19,14 +19,14 @@ class SideBar extends React.Component {
             // <section className={this.state.open ? "sidebar-collapsed" : "sidebar-open"}>
                 <div className="sidebar-holder">
                 <Link to="/" >
-                <button>
+                <button autoFocus id="home">
                     <i className="material-icons">home</i>
                     <p>Home</p>
                 </button>
                 </Link>
 
                 <a href="https://linkedin.com" >
-                <button>
+                <button id="linked-in">
                     <FontAwesomeIcon icon={faLinkedin} />
                     <p>LinkedIn</p>
                 </button> 

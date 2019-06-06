@@ -1,9 +1,11 @@
 .sidebar-collapsed {
-    position: fixed;
-    height: 100%;
+    position: sticky;
+    left: 0;
+    top: 56px;
+    height: 100vh;
     background-color: #f5f5f5;
     color: #909090;
-    width: 72px;
+    min-width: 72px;
     z-index: 1;
     overflow-x: hidden;
 }
@@ -36,61 +38,122 @@
 
 
 .sidebar-open {
+<<<<<<< HEAD
     width: 16.66666vw;
         position: fixed;
     height: 100%;
     background-color: #f5f5f5;
     color: #909090;
     /* z-index: 1; */
+=======
+    min-width: 240px;
+    max-width: 240px;
+    position: sticky;
+    top: 56px;
+    height: 100vh;
+
+    left: 0;
+    height: 100vh;
+    background-color: #f5f5f5;
+    color: #909090;
+    z-index: 22;
     overflow-x: hidden;
 }
 
-.sidebar-open > div > a > button:focus {
+.player-sidebar-open {
+    max-width: 240px;
+    min-width: 240px;
+    position: fixed;
+    top: 56px;
+    height: 100vh;
+
+    left: 0;
+    height: 100vh;
+
+    background-color: #f5f5f5;
+    color: #909090;
+    z-index: 22;
+>>>>>>> video3
+    overflow-x: hidden;
+}
+
+.sidebar-open > div > a > button:hover, .player-sidebar-open > div > a > button:hover {
+    background-color: #dcdcdc;  
+
+}
+
+.sidebar-open > div > a > button:focus, .player-sidebar-open > div > a > button:focus {
     color: #ff0000;
+<<<<<<< HEAD
     font-weight: 500;
     background-color: #11111166;
+=======
+    background-color: #dcdcdc;
+>>>>>>> video3
 }
 
-.sidebar-open > div > a > button:focus > p {
-    color: black;
+.sidebar-open > div > a > button:focus > p, .player-sidebar-open > div > a > button:focus > p{
+    color: #0a0a0a;
 }
 
 
 
-.sidebar-open > div > a > button {
+.sidebar-open > div > a > button, .player-sidebar-open > div > a > button {
     display: flex;
     align-items: center;
     background-color: #f5f5f5;
     font-size: 24px;
     width: 100%;
     border: none;
+<<<<<<< HEAD
     padding: 8px 0 8px 0;
+=======
+    /* padding: 16px 0 14px 0; */
+>>>>>>> video3
     outline: none;
     color: #909090;
+    height: 40px;
 }
 
-.sidebar-open > div > a > button > p {
+.sidebar-open > div > a > button > p, .player-sidebar-open > div > a > button > p{
     display: inline;
     font-size: 14px;
     margin: 0 0 0 24px;
+    color: #0a0a0a;
 }
 
-.sidebar-open > div > a > button > svg {
+.sidebar-open > div > a > button > svg, .player-sidebar-open > div > a > button > svg{
     margin: 0 0 0 24px;
 }
 
-.sidebar-open > div > a > button > i {
+.sidebar-open > div > a > button > i, .player-sidebar-open > div > a > button > i{
     margin: 0 0 0 24px;
 }
 
-.sidebar-open :hover {
+/* .sidebar-open:hover, .player-sidebar-open:hover {
     background-color: #dcdcdc;  
-}
+} */
 
 /* selected icon: #ff0000; */
 
 .sidebar-hidden {
+    display: none;
     width: 0;
     overflow: hidden;
-    transition: width 0.4s;
+    transition: width 0.4s ease;
+}
+
+.sidebar-collapsed #home, .sidebar-open #home {
+    color: #ff0000;
+}
+
+
+.sidebar-open #home > p {
+    color: black;
+        font-weight: 500;
+
+}
+
+.sidebar-open > div > a > #linked-in > svg, .player-sidebar-open > div > a > #linked-in > svg {
+    margin: 0 3px 0 24px;
 }

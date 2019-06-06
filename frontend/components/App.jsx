@@ -24,7 +24,10 @@ const App = () => (
         <Switch>
             <Route exact path="/videos/new" component={FormNavBarContainer} />
             <Route path="/videos/:id" component={PlayerNavBarContainer} />
-            <Route path="/" component={NavBarContainer} />
+            <Route exact path="/videos" component={NavBarContainer} />
+            <Route exact path="/" component={NavBarContainer} />
+
+            {/* <Route path="/" component={NavBarContainer} /> */}
         </Switch>
 
         <Switch>
@@ -32,9 +35,9 @@ const App = () => (
             <Route path='/videos/:id' component={MasterPlayer} />
         </Switch>
 
+
         <Switch>
-            <Route exact path="/videos" component={VideoIndexContainer} />
-            <Route exact path="/" component={VideoIndexContainer} />
+
             {/* <Route path="/videos/:id" component={PlayerIndexContainer} /> */}
         </Switch>
     </div>

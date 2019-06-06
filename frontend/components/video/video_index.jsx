@@ -47,20 +47,37 @@ class VideoIndex extends React.Component {
             <li className="video">
                 <a className="video-tile" href={`/#/videos/${video.id}`}>
                     <img src={video.imageUrl ? video.imageUrl : "assets/e.png"} />
-                    <div className="duration">{video.duration}</div>
-                    <div className="title">{video.title}</div>     
-                    <div className="author">{this.props.authors[video.author_id].username}</div>     
-                    {/* <div className="timestamp">{this.timestamp(video.created_at)}</div>              */}
+                    <div className="vid-info">
+                        <div className="duration">{video.duration}</div>
+                        <div className="title">{video.title}</div>     
+                        <div className="author">{this.props.authors[video.author_id].username}</div>     
+                        {/* <div className="timestamp">{this.timestamp(video.created_at)}</div>*/}
+                    </div>
                 </a>
             </li>
             )
         }) : [] 
         const randVideos = this.randomize(videos);
+        const randVideos2 = this.randomize(videos);
 
         return(
-            <ul className="video-idx">
-                {randVideos}
-            </ul>
+            <div id="idx-shell">
+                <p id="recommended">Recommended</p>
+
+                <ul className="video-idx">
+                    {randVideos}
+                    <div id="line-container">
+
+                    </div>
+                </ul>
+
+                <p id="recommended">From your subscriptions</p>
+
+                <ul className="video-idx">
+                    {randVideos2}
+                </ul>
+
+            </div>
         )
     }
 }
