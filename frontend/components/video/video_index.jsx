@@ -39,13 +39,14 @@ class VideoIndex extends React.Component {
         return clone;
     }
 
+
     render () {
         // debugger
         const videos = this.props.videos ? this.props.videos.map(video => {
             return(
             <li className="video">
                 <a className="video-tile" href={`/#/videos/${video.id}`}>
-                    <img src="assets/e.png" />
+                    <img src={video.imageUrl ? video.imageUrl : "assets/e.png"} />
                     <div className="duration">{video.duration}</div>
                     <div className="title">{video.title}</div>     
                     <div className="author">{this.props.authors[video.author_id].username}</div>     
