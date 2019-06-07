@@ -11,7 +11,6 @@ export default (state = {}, action) => {
             
             return merge({}, state, {[action.author.id]: action.author });
         case RECEIVE_ALL_VIDEOS: 
-            // debugger
             const newState = {};
             Object.values(action.authors).forEach(author => {
                 newState[author.id] = author;

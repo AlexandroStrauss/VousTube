@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 
 class PlayerIndex extends React.Component {
     constructor(props) {
-        // debugger
         super(props);
         this.state = {
             videos: []
         }
-        // debugger
         // this.fetchVideos = this.fetchVideos.bind(this);
         this.timestamp = this.timestamp.bind(this);
     }

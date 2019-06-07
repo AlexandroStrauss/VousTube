@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 
 class VideoIndex extends React.Component {
     constructor (props) {
-        // debugger
         super(props);
         this.state = {
             videos: []
         }
-        // debugger
         // this.fetchVideos = this.fetchVideos.bind(this);
         this.timestamp = this.timestamp.bind(this);
     }
@@ -41,7 +39,6 @@ class VideoIndex extends React.Component {
 
 
     render () {
-        // debugger
         const videos = this.props.videos ? this.props.videos.map(video => {
             return(
             <li className="video">

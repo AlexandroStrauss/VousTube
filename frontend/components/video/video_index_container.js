@@ -4,7 +4,6 @@ import VideoIndex from './video_index';
 import { allVideos } from '../../actions/video_actions';
 
 const mapStateToProps = state => {
-    // debugger
     return {
         videos: Object.values(state.entities.videos),
         authors: (state.entities.users)

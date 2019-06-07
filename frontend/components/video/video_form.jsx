@@ -29,9 +29,7 @@ class VideoForm extends React.Component {
         this.setState({ firstPage: false })
 
         // var xhr = new XMLHttpRequest();
-        // debugger
         // xhr.upload.addEventListener("progress", function (e) {
-        //     debugger
         //     var pc = parseInt(100 - (e.loaded / e.total * 100));
         //     this.setState({uploadProgress: pc})
         // }, false);
