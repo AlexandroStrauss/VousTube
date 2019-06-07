@@ -8,7 +8,7 @@
 require 'open-uri'
 
 user1 = User.create!({username: 'demo', email: 'demouser@demosite.com', password: 'password' })
-user2 = User.create!({username: 'testacct', email: 'test@tester.com', password: 'password' })
+user2 = User.create!({username: 'testaccount', email: 'test@tester.com', password: 'password' })
 user3 = User.create!({username: 'The Content Creator', email: 'content', password: 'password' })
 
 video1 = Video.create!({title: 'every time I ask my PM for help', description: 'this happens a lot', author_id: 1})
