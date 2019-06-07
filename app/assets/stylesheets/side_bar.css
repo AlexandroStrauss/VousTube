@@ -33,9 +33,14 @@
     background-color: #dcdcdc;  
 }
 
-.sidebar-collapsed > div > a > button:focus {
+/* .sidebar-collapsed > div > a > button:focus {
     color: #ff0000;
+} */
+
+.sidebar-collapsed > div > a > button:hover {
+    cursor: pointer;
 }
+
 
 
 .sidebar-open {
@@ -71,11 +76,12 @@
 
 .sidebar-open > div > a > button:hover, .player-sidebar-open > div > a > button:hover {
     background-color: #dcdcdc;  
+    cursor: pointer;
 
 }
 
 .sidebar-open > div > a > button:focus, .player-sidebar-open > div > a > button:focus {
-    color: #ff0000;
+    /* color: #ff0000; */
     background-color: #dcdcdc;
 }
 
