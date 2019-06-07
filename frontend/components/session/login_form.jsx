@@ -44,8 +44,8 @@ class LoginForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => console.log('success'), err => this.setState({ pwdError: true, submitted: true}));
-        <Redirect to={`/users/${user.id}`} />
+        this.props.processForm(user).then(() => <Redirect to={`/users/${user.id}`} />, err => this.setState({ pwdError: true, submitted: true}));
+        
     }
 
     handleCheckSubmit(e) {

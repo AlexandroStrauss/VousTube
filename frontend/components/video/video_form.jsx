@@ -85,9 +85,7 @@ class VideoForm extends React.Component {
             processData: false
         }).then(
             response => {
-                this.props.history.push('/'),
-                console.log(response.responseJSON)
-            },
+                this.props.history.push('/')            },
         )
     }
 
