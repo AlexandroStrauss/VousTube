@@ -42,7 +42,7 @@ class PlayerIndex extends React.Component {
             return (
                 <li className="video">
                     <a className="video-tile" href={`/#/videos/${video.id}`}>
-                        <img src={video.imageUrl ? video.imageUrl : "assets/e.png"} />
+                        <img src={video.imageUrl ? video.imageUrl : asset_path("e.png")} />
                         <div className="duration">{video.duration}</div>
                         <div className="player-idx-deets">
                             <div className="title">{video.title}</div>

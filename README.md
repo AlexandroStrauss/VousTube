@@ -4,6 +4,16 @@
 
 VousTube is my attempt to create a functional clone of YouTube. It allows users to both upload their own videos and view the videos uploaded by everyone else. 
 
+## Demo login 
+
+Feel free to log in using the demo login: 
+
+username: demo
+email: demouser@demosite.com
+password: password
+
+The login form asks for either the username or email, not both. 
+
 ## User authentication
 
 The real YouTube is a Google product, and so its login/signup features are handled entirely through Google Accounts. VousTube's login/signup process is simpler - new users don't have to enter their real names, nor write their passwords a second time – but intended to mimic the look of the Google login form as closely as possible.
@@ -22,29 +32,24 @@ There are a few shortcomings with the video upload form at the moment. Every vid
 
 ### Video Index
 
-All videos show up on the main page
+All videos show up on the main page, styled precisely in line with YouTube styling. The "Recommended" and "From your subscriptions" headings are strictly ornamental: each has all the half-dozen or so videos on the database in an order that is shuffled on every refresh. (The sidebar next to the video player works in much the same way.)
 
 ### Video Playback
 
+The video player contains all the basic controls of the real YouTube video player. All the player buttons work, and keyboard controls allow you to pause/unpause, mute/unmute, change the volume, and jump forward and back in the video five seconds at a time. 
 
+## Next steps
 
+### Current features to polish and improve
 
-Things you may want to cover:
+* Finish styling the video player
+* Add an upload progress bar to the video form
+* Add properly formatted time stamps to videos
 
-* Ruby version
+### Future features to implement 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Let users upload their own thumbnails
+* Automatically select a thumbnail from the first frame of the video if a user does not upload one
+* Add the ability to post comments under videos
+* Add the ability to like both videos and comments and display both appropriately
+* Make search bar fully functional

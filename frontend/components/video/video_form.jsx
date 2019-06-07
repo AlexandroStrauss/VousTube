@@ -114,7 +114,7 @@ class VideoForm extends React.Component {
             if (this.state.images[0]) {
                 this.handleImageFile(this.state.images[0])
             }
-            const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : <img src="assets/e.png" />
+            const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : <img src={asset_path("e.png")} />
             const previewText = this.state.imageUrl ? "Your thumbnail" : "Default thumbnail"
             
             return (
