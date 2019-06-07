@@ -27,7 +27,7 @@ class SessionDisplay extends React.Component{
         if (this.props.currentUser) {
             const userCircle = (
                 <div className = "current-user-thumbnail" >
-                    <p>{this.props.currentUser.username[0]}</p>
+                    <p>{this.props.currentUser.username[0].toUpperCase()}</p>
                 </div >
             )
 

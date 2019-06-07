@@ -294,7 +294,7 @@ class VideoPlayer extends React.Component {
 
                     <div className="author-stuff">
                         <div className="author-thumbnail" >
-                            <p>{author.username[0]}</p>
+                            <p>{author.username[0].toUpperCase()}</p>
                         </div >
 
                         <div className="author-publish">
