@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
-user1 = User.create!({name: 'demo', email: 'demouser@demosite.com', password: 'password' })
-user2 = User.create!({name: 'testacct', email: 'test@tester.com', password: 'password' })
-user3 = User.create!({name: 'The Content Creator', email: 'content', password: 'password' })
+user1 = User.create!({username: 'demo', email: 'demouser@demosite.com', password: 'password' })
+user2 = User.create!({username: 'testacct', email: 'test@tester.com', password: 'password' })
+user3 = User.create!({username: 'The Content Creator', email: 'content', password: 'password' })
 
 video1 = Video.create!({title: 'every time I ask my PM for help', description: 'this happens a lot', author_id: 1})
 vidfile1 = open('https://voustube-seed.s3.amazonaws.com/im_not_sure_where_to_start.mp4')
