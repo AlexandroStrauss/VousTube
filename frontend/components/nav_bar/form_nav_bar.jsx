@@ -4,6 +4,7 @@ import { faBars, faVideo, faBell, faEllipsisV } from '@fortawesome/free-solid-sv
 import SearchBar from '../header/search_bar';
 import { Link } from 'react-router-dom';
 import SessionDisplayContainer from '../session_display_container';
+import SearchBarContainer from '../header/search_bar_container';
 
 
 class FormNavBar extends React.Component {
@@ -49,7 +50,7 @@ class FormNavBar extends React.Component {
 
                 </div>
 
-                <SearchBar />
+                <SearchBarContainer />
 
                 <div className="nav-right-side">
                     <div className="nav-btns">

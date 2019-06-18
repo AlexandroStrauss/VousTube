@@ -24,7 +24,6 @@ class LoginForm extends React.Component {
 
         this.secondInput = React.createRef();
         this.focusSecondInput = this.focusSecondInput.bind(this);
-
     }
 
     update(field) {
@@ -51,7 +50,13 @@ class LoginForm extends React.Component {
     handleCheckSubmit(e) {
         e.preventDefault();
         const identifier = this.state.identifier;
-        this.props.check(identifier).then(() => this.setState({phase: true}), err => this.setState({idError: true, checked: true}));
+        this.props.check(identifier).then(() => {
+            this.setState({phase: true});
+        this.focusTextInput(e);
+    }, 
+            err => {
+                this.setState({idError: true, checked: true})
+            });
     }
 
     identifierEmpty() {
@@ -83,8 +88,6 @@ class LoginForm extends React.Component {
         this.secondInput.current.focus();
     }
 
-
-
     // focusFirstPage() {
     //     if (this.state.phase) {
     //         return (
@@ -96,7 +99,6 @@ class LoginForm extends React.Component {
     //         )
     //     }
     // }
-
 
     focusSecondPage() {
         if (this.state.phase) {
@@ -122,18 +124,21 @@ class LoginForm extends React.Component {
 
                         <form onSubmit={this.handleCheckSubmit} >
                             <div className={this.state.idError ? "floating-label-error" : "floating-label"}>
-                                <input type="text" id="identifier" required="required" autoFocus value={this.state.identifier} ref={this.secondInput} onChange={this.update('identifier')} />
+                                <input type="text" id="identifier" required="required" autoFocus 
+                                    value={this.state.identifier} 
+                                    ref={this.secondInput} 
+                                    onChange={this.update('identifier')} />
                                 <label for="identifier">Email or username</label>
 
                                 {this.state.idError ? 
                                     (this.identifierEmpty() ?
                                         <div className="error">
-                                            <i class="material-icons md-12">error</i>
+                                            <i className="material-icons md-16">error</i>
                                             <p>Enter an email or username</p>
                                         </div>
                                     :
                                         <div className="error">
-                                            <i class="material-icons md-12">error</i>
+                                            <i className="material-icons md-16">error</i>
                                             <p>Couldn't find your email or username</p>
                                         </div>)
                                     :
@@ -147,7 +152,7 @@ class LoginForm extends React.Component {
 
                             <div className="bottom-links">
                                 <Link to="/signup">Create account</Link>
-                                <input type="submit" className="submit" onClick={this.focusTextInput} value="Next" />
+                                <input type="submit" className="submit" onClick={this.handleCheckSubmit} value="Next" />
                             </div>
                         </form>
                     </div>
@@ -155,11 +160,11 @@ class LoginForm extends React.Component {
                     <div className="form-password">
                         <p className="welcoming">Welcome</p>
                         <button className="identifier-info" onClick={() => this.flipBack()}>
-                            <i class="material-icons md-16">account_circle</i>
+                            <i className="material-icons md-16">account_circle</i>
                             <p>{this.state.identifier}</p>
-                            <i class="material-icons">keyboard_arrow_down</i>
+                            <i className="material-icons">keyboard_arrow_down</i>
                         </button>
-                        <div class="space-40px">
+                        <div className="space-40px">
 
                         </div>
                         <form onSubmit={this.handleSubmit} >
@@ -175,12 +180,12 @@ class LoginForm extends React.Component {
                                 {this.state.pwdError ?
                                     (this.pwdEmpty() ?
                                         <div className="error">
-                                            <i class="material-icons md-12">error</i>
+                                            <i className="material-icons md-16">error</i>
                                             <p>Enter a password</p>
                                         </div>
                                         :
                                         <div className="error">
-                                            <i class="material-icons md-12">error</i>
+                                            <i className="material-icons md-16">error</i>
                                             <p>Wrong password. Try again.</p>
                                         </div>)
                                     :

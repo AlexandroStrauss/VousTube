@@ -24,6 +24,8 @@ class VideoPlayer extends React.Component {
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
         this.setVolume = this.setVolume.bind(this);
+        this.calculateTime = this.calculateTime.bind(this);
+        this.setTime = this.setTime.bind(this);
     }
 
     componentDidMount() {
@@ -60,7 +62,6 @@ class VideoPlayer extends React.Component {
         
         video.volume = volBar.value;
         
-
         this.setState({ volume: video.volume })
 
         this.volumeButton()
@@ -130,6 +131,32 @@ class VideoPlayer extends React.Component {
         var time = video.duration * (seekBar.value / 100);
 
         video.currentTime = time;
+        this.calculateTime();
+    }
+
+    calculateTime() {
+        let video = document.getElementById('video');
+        let seekBarPlayed = document.getElementById('seek-bar-played');
+        let seekBarBuffered = document.getElementById('seek-bar-buffered');
+
+        var time = video.currentTime;
+        var duration = video.duration;
+        var buffered = video.buffered.end(0);
+        var playedPercent = (time/duration) * 100;
+        var bufferedPercent = (buffered/duration) * 100;
+        seekBarPlayed.style.width = playedPercent.toString()+"%"
+        seekBarBuffered.style.width = bufferedPercent.toString()+"%"
+
+    }
+
+    setTime(e) {
+        debugger
+        let video = document.getElementById('video');
+        // var parentPosition = getPosition(e.currentTarget);
+        debugger
+        var newTime = video.duration * (e.clientX/video.style.width);
+        video.currentTime = newTime;
+
     }
 
     timer() {
@@ -163,6 +190,7 @@ class VideoPlayer extends React.Component {
         let duration = (durminutes + ":" + dursecs);
         
         this.setState({ timer: newTimer + "/" + duration })
+        this.calculateTime();
         this.playPause();
     }
 
@@ -192,8 +220,6 @@ class VideoPlayer extends React.Component {
             this.setState({ volume_icon: <i class="material-icons">volume_up</i> })
         }
     }
-
-
     // parseDate () {
     //     let date = this.props.video.video.record.created_at
     // }
@@ -257,14 +283,26 @@ class VideoPlayer extends React.Component {
         const author = this.props.users[this.props.video.author_id]
         return (
             <figure id="video-container" autoFocus onKeyDown={this.buttonPresses}>
-                <div className="video-background" onClick={this.swapPlayPause}>
+                <div className="video-background" onClick={this.swapPlayPause} onKeyDown={this.buttonPresses}>
                 {this.setupVideo(this.state.url)}
                 </div>
+
+                <div id="seek-bar-played"
+                    // onClick={this.setTime}
+                    >
+                </div>
+                <div id="seek-bar-buffered" 
+                    // onClick={this.setTime}
+                    >
+
+                </div>
+                <div id="seek-bar-background"></div>
                 <input type="range" id="seek-bar"
                     onChange={this.changeTime}
+                    // onClick={this.setTime}
                     // onTimeUpdate={this.timer} 
-                    onMouseDown={this.pause}
-                    onMouseUp={this.play}
+                    // onMouseDown={this.pause}
+                    // onMouseUp={this.play}
                 />
                 
                 <div id="video-controls" className="controls" data-state="hidden">
@@ -274,6 +312,7 @@ class VideoPlayer extends React.Component {
                     </button>
 
                     <button type="button" onClick={this.swapMute} id="volume-icon">{this.state.volume_icon}</button>
+                    <div id="volume-bkgrd"></div>
                     <input type="range"
                         onChange={this.setVolume}
                         id="volume-bar"

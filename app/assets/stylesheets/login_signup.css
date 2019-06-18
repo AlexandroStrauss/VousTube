@@ -125,11 +125,12 @@ form .submit {
     position: relative;
     float: none;
     font-size: 16px;
+    height: 28px;
 }
 
 [class*="floating-"] > label {
     display: inline-block; 
-    top: -38px;
+    top: -44px;
     left: 8px;
     position: relative;
     float: none;
@@ -140,25 +141,37 @@ form .submit {
     color: #7f868a;
 }
 
-[class*="floating-"] > input:focus + label {
+[class*="floating-"] > input:focus + label, input:valid + label {
+    top: -71px;
+    left: 8px;
+    font-size: 12px;
+}
+
+/* input:valid + label {
     top: -62px;
     left: 8px;
     font-size: 11px;
-}
+} */
+
 
 .floating-label > input:focus + label {
     color: #055fd4;
+    
 }
 
 .floating-label-error > input:focus + label {
     color: #d92f26;
 }
 
-input:valid + label {
-    top: -62px;
-    left: 8px;
-    font-size: 11px;
+.floating-label > input:valid + label {
+    color: #055fd4;
 }
+
+.floating-label-error > input:valid + label {
+    color: #d92f26;
+}
+
+
 
 .bottom-links {
     display: flex;
@@ -168,17 +181,17 @@ input:valid + label {
 
 .error {
     display: flex; 
-    align-items: top; 
+    align-items: center; 
     color: #d92f26;
     font-size: 12px;
-    padding: 8px 0 0 0;
+    padding: 0px 0 0 0;
 }
 .error > i {
     padding: 0px 4px 0 0;
 }
 
 .error > p {
-    margin: 0 0 12px 0;
+    margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
 

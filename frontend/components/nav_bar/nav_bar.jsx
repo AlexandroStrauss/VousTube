@@ -2,10 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faVideo, faBell, faComment, faTh, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from '../header/search_bar';
+
 import { Route, Link } from 'react-router-dom';
 import SessionDisplayContainer from '../session_display_container';
 import SideBar from '../side_bar/side_bar';
 import VideoIndexContainer from '../video/video_index_container';
+import SearchBarContainer from '../header/search_bar_container';
 
 
 class NavBar extends React.Component {
@@ -60,7 +62,7 @@ class NavBar extends React.Component {
 
                 </div>
 
-                <SearchBar />
+                    <SearchBarContainer />
 
                 <div className="nav-right-side">
                     <div className="nav-btns">
