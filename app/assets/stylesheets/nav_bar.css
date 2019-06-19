@@ -320,3 +320,8 @@
 .search-results-hidden {
     display: none;
 }
+
+.search-hidden {
+    display: none;
+    padding: none;
+}

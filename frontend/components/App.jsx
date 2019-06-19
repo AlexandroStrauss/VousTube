@@ -12,7 +12,8 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import PlayerIndexContainer from './video/player_index_container';
 import MasterPlayer from './video/master_player';
 import PlayerNavBarContainer from './nav_bar/player_nav_bar_container';
-
+import SearchResultsContainer from './video/search_results_container';
+import MasterSearch from './video/master_search';
 
 const App = () => (
     <div>
@@ -25,7 +26,9 @@ const App = () => (
             <Route exact path="/videos/new" component={FormNavBarContainer} />
             <Route path="/videos/:id" component={PlayerNavBarContainer} />
             <Route exact path="/videos" component={NavBarContainer} />
+            <Route path="/results/" component={MasterSearch} />
             <Route exact path="/" component={NavBarContainer} />
+
 
             {/* <Route path="/" component={NavBarContainer} /> */}
         </Switch>
@@ -33,10 +36,13 @@ const App = () => (
         <Switch>
             <Route path="/videos/new" component={VideoForm} />
             <Route path='/videos/:id' component={MasterPlayer} />
+
+
         </Switch>
 
 
         <Switch>
+            {/* {<Route path="/results" component={SearchResultsContainer} />} */}
 
             {/* <Route path="/videos/:id" component={PlayerIndexContainer} /> */}
         </Switch>

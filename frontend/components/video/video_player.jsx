@@ -33,6 +33,8 @@ class VideoPlayer extends React.Component {
             .then(response => {
                 this.setState({url: response.video.videoUrl, author: response.user})
             });
+        window.scrollTo(0, 0)
+
     }
 
     componentDidUpdate(prevProps) {
@@ -203,7 +205,6 @@ class VideoPlayer extends React.Component {
         
         video.volume = volBar.value;
         
-
         this.setState({volume: video.volume})
         this.volumeButton();
     }

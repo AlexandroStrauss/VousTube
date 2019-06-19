@@ -1,0 +1,51 @@
+/* #video-results {
+    display: flex;
+    flex-direction: row;
+} */
+
+.result-shell {
+    margin: 16px 0 0 0;
+    border-top: 1px solid #e1e1e1;
+
+}
+.result-video {
+    height: 140px;
+    list-style: none;
+    cursor: pointer;
+    margin: 16px 0 0 0;
+    
+}
+
+.result-video > a {
+        display: flex;
+    flex-direction: row;
+}
+
+.vid-info {
+    margin: 0 0 0 18px;
+}
+
+.vid-info .title {
+    color: #0a0a0a;
+    font-size: 18px;
+    padding: 0;
+    font-weight: 400;
+    max-height: 48px;
+}
+
+.vid-info .author {
+    font-size: 13px;
+    padding: 2px 0 0 0;
+}
+
+.vid-info .description {
+  color: #606060;
+    font-size: 13px;
+    padding: 8px 0 0;
+    margin: 0 0 8px;
+}
+
+.result-video > a > img {
+    width: 248px;
+    height: 140px;
+}
