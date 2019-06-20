@@ -25,7 +25,7 @@
     margin: 0 0 0 18px;
 }
 
-.vid-info .title {
+.result-title {
     color: #0a0a0a;
     font-size: 18px;
     padding: 0;
@@ -33,7 +33,9 @@
     max-height: 48px;
 }
 
-.vid-info .author {
+.result-author {
+      color: #606060;
+
     font-size: 13px;
     padding: 2px 0 0 0;
 }
@@ -48,4 +50,30 @@
 .result-video > a > img {
     width: 248px;
     height: 140px;
+}
+
+#failure-img {
+    width: 35vw;
+    height: 21vw;
+}
+
+#failure-msg {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#no-results {
+    font-size: 24px;
+    color: #111111;
+    margin: 24px 0 16px 0;
+}
+
+#try-again {
+        font-size: 14px;
+    color: #111111;
+
+    margin: 0 0 8px 0;
 }

@@ -4,6 +4,7 @@ import VideoPlayer from './video_player';
 import { receiveVideo, fetch } from '../../actions/video_actions';
 import {withRouter } from 'react-router-dom';
 const mapStateToProps = (state, ownProps) => {
+    
     return {
     video: state.entities.videos[ownProps.match.params.id],
     users: state.entities.users

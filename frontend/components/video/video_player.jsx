@@ -152,10 +152,8 @@ class VideoPlayer extends React.Component {
     }
 
     setTime(e) {
-        debugger
         let video = document.getElementById('video');
         // var parentPosition = getPosition(e.currentTarget);
-        debugger
         var newTime = video.duration * (e.clientX/video.style.width);
         video.currentTime = newTime;
 

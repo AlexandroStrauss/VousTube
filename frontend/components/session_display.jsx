@@ -59,7 +59,6 @@ class SessionDisplay extends React.Component{
             return (
                 <div className="signin-btn">
                     
-                    {/* <img src="/assets/signin_img.png" height="25" width="25" /> */}
                     <Link to={'/login'}>
                         <i class="material-icons">account_circle</i>
                         Sign In
