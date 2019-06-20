@@ -9,7 +9,9 @@ VousTube is my attempt to create a functional clone of YouTube. It allows users 
 Feel free to log in using the demo login: 
 
 username: demo
+
 email: demouser@demosite.com
+
 password: password
 
 The login form asks for either the username or email, not both. 
@@ -28,7 +30,7 @@ Just as on the real YouTube, videos are the centerpiece of this app. Users can u
 
 As on YouTube, selecting a video file is necessary before entering in a title or description. 
 
-There are a few shortcomings with the video upload form at the moment. Every video has a thumbnail image for display, but VousTube doesn't have functionality to capture a screen from the video like real YouTube does. Instead, users are able to upload their own thumbnails (a function reserved on real YouTube for verified accounts) and, if they do not, their video is given a default thumbnail (a popular meme) instead. Additionally, the player is not very flexible with file types; H.264/MPEG-4 videos play without issue, but this does not seem to be the case with standard MPEG-4 files. This requires more testing to confirm. 
+There are a few shortcomings with the video upload form at the moment. Every video has a thumbnail image for display, but VousTube doesn't have functionality to capture a screen from the video like real YouTube does. Instead, users are able to upload their own thumbnails (a function reserved on real YouTube for verified accounts) and, if they do not, their video is given a default thumbnail (a popular meme) instead. Additionally, I plan to implement a progress bar to provide visual confirmation that a video is being uploaded. 
 
 ### Video Index
 
