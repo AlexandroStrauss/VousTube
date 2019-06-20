@@ -68,18 +68,38 @@ class SearchResults extends React.Component {
         })
         if (!videos[0]) {
             return (
-                // lifted the below image straight from YouTube
-                <div id="failure-msg">
-                    
-                    <img id="failure-img" src={window.failureImg} />
-                    <div id="no-results">No results found</div>
-                    <div id="try-again">Try different keywords</div>
-                </div>
+                <>
 
+
+
+
+                {/* // lifted the below image straight from YouTube */}
+                <div id="failure-msg">
+                    <div id="filter">
+                        <div id="sub-filter">
+                            <i className="material-icons">tune</i>FILTER
+                        </div>
+                    </div>
+
+                    <div id="failure-submsg">
+                        <img id="failure-img" src={window.failureImg} />
+                        <div id="no-results">No results found</div>
+                        <div id="try-again">Try different keywords</div>
+                    </div>
+
+                    <div id="bottom-spacer"></div>
+                </div>
+                </>
             )
         } else {
         return (
             <div id="result-shell">
+                <div id="filter">
+                    <div id="sub-filter">
+                        <i className="material-icons">tune</i>FILTER
+                        </div>
+                </div>
+
                 <ul className="video-results">
                     {videos}
                     <div id="line-container">
