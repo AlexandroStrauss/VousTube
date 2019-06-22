@@ -60,7 +60,7 @@ class SessionDisplay extends React.Component{
                 <div className="signin-btn">
                     
                     <Link to={'/login'}>
-                        <i class="material-icons">account_circle</i>
+                        <i className="material-icons">account_circle</i>
                         Sign In
                         </Link>
                 </div>

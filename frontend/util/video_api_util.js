@@ -6,6 +6,7 @@ export const fetchVideos = () => {
 };
 
 export const fetchVideo = (id) => {
+    debugger
     return $.ajax({
         method: 'GET',
         url: `/api/videos/${id}`
@@ -23,3 +24,13 @@ export const createVideo = formData => {
         processData: false
     })
 };
+
+export const createComment = formData => {
+    return $.ajax({
+        method: 'POST',
+        url: 'api/comments',
+        data: {
+            formData
+        },
+    })
+}

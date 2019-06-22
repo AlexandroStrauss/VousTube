@@ -1,8 +1,9 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from "../actions/session_actions";
+// import { RECEIVE_ERRORS } from "../actions/video_actions";
 
-const defaultSession = {
+const defaultSession = Object.freeze({
     id: null,
-};
+});
 
 export default (state = defaultSession, action) => {
     Object.freeze(state);

@@ -278,7 +278,7 @@ class VideoPlayer extends React.Component {
         if (!this.state.url || !this.props.video) {
             return null;
         }
-        const video = this.video;
+
         const author = this.props.users[this.props.video.author_id]
         return (
             <figure id="video-container" autoFocus onKeyDown={this.buttonPresses}>
