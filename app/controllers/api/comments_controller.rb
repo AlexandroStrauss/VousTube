@@ -13,7 +13,6 @@ class Api::CommentsController < ApplicationController
             redirect_to video_url(@comment.video_id)
         else
             # render json: @comment.errors.full_messages, status: :unprocessable_entity
-            debugger
             render json: @comment.errors.full_messages, status: :unprocessable_entity
         end
     end

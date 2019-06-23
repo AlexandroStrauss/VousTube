@@ -8,5 +8,7 @@ json.author do
 end
 
 json.comments do 
-    json.partial! 'api/comments/comment', comments: video.comments
+    video.comments.each do |comment|
+        json.partial! 'api/comments/comment', comment: comment
+    end
 end

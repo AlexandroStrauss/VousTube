@@ -21,6 +21,7 @@ class LoginForm extends React.Component {
         // this.focusSecondPage = this.focusSecondPage.bind(this);
         this.textInput = React.createRef();
         this.focusTextInput = this.focusTextInput.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
 
         this.secondInput = React.createRef();
         this.focusSecondInput = this.focusSecondInput.bind(this);
@@ -45,6 +46,11 @@ class LoginForm extends React.Component {
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(() => <Redirect to={`/users/${user.id}`} />, err => this.setState({ pwdError: true, submitted: true}));
         
+    }
+
+    demoLogin(e) {
+        e.preventDefault();
+        this.props.processForm({ identifier: "demo", password: "password" }).then(() => <Redirect to={`/users/${user.id}`} />, err => this.setState({ pwdError: true, submitted: true }));
     }
 
     handleCheckSubmit(e) {
@@ -147,7 +153,6 @@ class LoginForm extends React.Component {
                             </div>
 
                             <div className="space-maker">
-
                             </div>
 
                             <div className="bottom-links">
@@ -155,6 +160,9 @@ class LoginForm extends React.Component {
                                 <input type="submit" className="submit" onClick={this.handleCheckSubmit} value="Next" />
                             </div>
                         </form>
+
+                            <input type="submit" className="demo" onClick={this.demoLogin} value="Demo login" />
+
                     </div>
 
                     <div className="form-password">

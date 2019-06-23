@@ -24,7 +24,6 @@ export const createComment = comment => dispatch => (
 )
 
 const receiveVideo = ({video, comments, author}) => {
-    debugger
     return {
         type: RECEIVE_VIDEO,
         video,
@@ -46,7 +45,6 @@ const receiveComment = ({comment, author}) => ({
 });
 
 const receiveErrors = errors => {
-    debugger
     return {
     type: RECEIVE_ERRORS, 
     errors

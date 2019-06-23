@@ -52,21 +52,21 @@ class SignupForm extends React.Component {
             if (this.state.password === "") {
                 return (
                     <div className="error">
-                        <i class="material-icons md-12">error</i>
+                        <i className="material-icons md-12">error</i>
                         <p>Enter a password</p>
                     </div>
                 )
             } else {
                 return (
                     <div className="error">
-                        <i class="material-icons md-12">error</i>
+                        <i className="material-icons md-12">error</i>
                         <p>Use 8 characters or more for your password</p>
                     </div>
                 )
             }
         } else {
         return (
-            <p class="chars-warning">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+            <p className="chars-warning">Use 8 or more characters with a mix of letters, numbers & symbols</p>
         )
         }
     }
@@ -86,7 +86,7 @@ class SignupForm extends React.Component {
 
                             {this.isEmpty(this.state.username) ?
                                 <div className="error">
-                                    <i class="material-icons md-12">error</i>
+                                    <i className="material-icons md-12">error</i>
                                     <p>Enter a username</p>
                                 </div>
                                 :
@@ -100,7 +100,7 @@ class SignupForm extends React.Component {
 
                             {this.isEmpty(this.state.email) ?
                                 <div className="error">
-                                    <i class="material-icons md-12">error</i>
+                                    <i className="material-icons md-12">error</i>
                                     <p>Choose an email address</p>
                                 </div>
                                 :

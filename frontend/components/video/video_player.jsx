@@ -1,4 +1,6 @@
 import React from 'react';
+import CommentIndexContainer from '../comment/comment_index_container';
+import { Switch, Route, Link } from 'react-router-dom';
 
 class VideoPlayer extends React.Component {
     constructor(props) {
@@ -7,9 +9,9 @@ class VideoPlayer extends React.Component {
             url: "",
             author: {},
             play_icon: "pause",
-            volume_icon: <i class="material-icons">volume_up</i>,
+            volume_icon: <i className="material-icons">volume_up</i>,
             timer: "0:00/0:00",
-            fullscreen: <i class="material-icons">fullscreen</i>,
+            fullscreen: <i className="material-icons">fullscreen</i>,
             volume: 1,
         }
 
@@ -102,12 +104,12 @@ class VideoPlayer extends React.Component {
 
         if (video.muted) { 
             video.muted = false;
-            this.setState({ volume_icon: < i class="material-icons" >volume_up</i > })
+            this.setState({ volume_icon: < i className="material-icons" >volume_up</i > })
             volBar.value = video.volume;
 
         } else {
             video.muted = true;
-            this.setState({ volume_icon: < i class="material-icons" >volume_off</i > })
+            this.setState({ volume_icon: < i className="material-icons" >volume_off</i > })
             volBar.value = 0;
         }
     }
@@ -211,12 +213,12 @@ class VideoPlayer extends React.Component {
         this.video = document.getElementById('video');
 
         if (this.video.volume === 0) {
-            this.setState({ volume_icon: <i class="material-icons">volume_mute</i> })
+            this.setState({ volume_icon: <i className="material-icons">volume_mute</i> })
         } else if
             (this.video.volume < 0.5) {
-            this.setState({ volume_icon: <i class="material-icons">volume_down</i> })
+            this.setState({ volume_icon: <i className="material-icons">volume_down</i> })
         } else {
-            this.setState({ volume_icon: <i class="material-icons">volume_up</i> })
+            this.setState({ volume_icon: <i className="material-icons">volume_up</i> })
         }
     }
     // parseDate () {
@@ -307,7 +309,7 @@ class VideoPlayer extends React.Component {
                 <div id="video-controls" className="controls" data-state="hidden">
                     <div id="left-controls">
                     <button type="button" onClick={this.swapPlayPause} id="play-pause">
-                            <i class="material-icons">{this.state.play_icon}</i>
+                            <i className="material-icons">{this.state.play_icon}</i>
                     </button>
 
                     <button type="button" onClick={this.swapMute} id="volume-icon">{this.state.volume_icon}</button>
@@ -343,7 +345,15 @@ class VideoPlayer extends React.Component {
 
                     <div className="vid-description">{this.props.video.description}</div>
                 </div>
+                
+                <Route 
+                // path={`videos/${this.props.video.id}`}
+                component={CommentIndexContainer}
+                // comments={this.state.comments}
+                />
+
             </figure>
+
         )
     }
 }
