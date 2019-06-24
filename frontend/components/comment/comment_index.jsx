@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route, withRouter } from 'react-router-dom';
+import { merge } from 'lodash';
 
 class CommentIndex extends React.Component {
     constructor(props) {
@@ -9,10 +10,11 @@ class CommentIndex extends React.Component {
             topClicked: false,
         }
 
-        debugger
         this.update = this.update.bind(this);
         this.showCommentButtons = this.showCommentButtons.bind(this);
         this.redirectIfNotLoggedIn = this.redirectIfNotLoggedIn.bind(this);
+        this.cancelComment = this.cancelComment.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -20,29 +22,20 @@ class CommentIndex extends React.Component {
     }
 
     update(field) {
-        debugger
         return(e) => {
             this.setState({ [field]: e.target.value })
         }
     }
 
     redirectIfNotLoggedIn () {
-        // if (this.props.currentUser) {
-        //     return '#'
-        // } else {
-        //     return '/login'
-        // }
-
         if (!this.props.currentUser) {
             this.props.history.push('/login')
-            // <Redirect to='/login' />
         }
 
     }
     
     showCommentButtons () {
         this.redirectIfNotLoggedIn();
-        debugger
         if(!this.state.topClicked) {
             this.setState({
                 topClicked: true
@@ -68,6 +61,20 @@ class CommentIndex extends React.Component {
         }
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        var videoId = this.props.location.pathname.split('/');
+        videoId = parseInt(videoId[videoId.length - 1])
+        const body = this.state.body;
+        const comment = merge({}, {body: body, video_id: videoId})
+
+        this.props.createComment(comment);
+    }
+
+    cancelComment () {
+        this.setState({ body: '', topClicked: false});
+    }
+
     render () {
 
         return (
@@ -77,6 +84,7 @@ class CommentIndex extends React.Component {
                     <input type="text" placeholder="Add a public comment..."
                         id="top-comment-text" 
                         onClick={this.state.topClicked ? null : this.showCommentButtons} 
+                        onKeyPress={null}
                         // value={this.state.body}
 
                         onChange={this.update("body")}
@@ -89,7 +97,7 @@ class CommentIndex extends React.Component {
                 </div>
                     <div className={this.state.topClicked ? "comment-buttons" : "comment-buttons-hidden"}>
                         <button id="comment-cancel" 
-                        // onClick={}
+                        onClick={this.cancelComment}
                         >
                             CANCEL
                         </button>

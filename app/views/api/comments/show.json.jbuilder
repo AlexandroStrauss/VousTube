@@ -1,6 +1,6 @@
 json.comment do
   json.partial! '/api/comments/comment', comment: @comment
-  json.author @comment.author.username
+  json.author @comment.author
 end
 
 # json.author do

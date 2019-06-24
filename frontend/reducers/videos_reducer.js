@@ -1,12 +1,6 @@
 import { merge } from 'lodash';
 import { RECEIVE_VIDEO, RECEIVE_ALL_VIDEOS, RECEIVE_COMMENT } from '../actions/video_actions';
 
-// const defaultVideo = {
-//         id: null,
-//         title: null,
-//         description: "",
-// }
-
 export default (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
@@ -21,6 +15,7 @@ export default (state = {}, action) => {
         case RECEIVE_COMMENT: 
             const comment = action.comment;
             const anotherNewState = merge({}, state);
+            debugger
             anotherNewState[comment.video_id].commentIds.push(comment.id);
             return anotherNewState;
         default:

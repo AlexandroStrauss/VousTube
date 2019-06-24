@@ -10,5 +10,6 @@ end
 json.comments do 
     video.comments.each do |comment|
         json.partial! 'api/comments/comment', comment: comment
+        debugger
     end
 end

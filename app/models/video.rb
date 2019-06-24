@@ -18,4 +18,10 @@ class Video < ApplicationRecord
             errors[:video] << "no video attached"
         end
     end
+
+
+    # def change
+    #     add_column :video_views, :count, :integer, default: 0
+    # end
+
 end

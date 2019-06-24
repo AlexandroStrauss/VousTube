@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     post '/session/check', to: 'sessions#check'
     resources :videos, only: [:create, :show, :index] do 
       resources :comments, only: [:new, :create, :show, :index]
+      # post :increment 
     end
+
   end
 
 end

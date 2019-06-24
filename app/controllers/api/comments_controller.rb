@@ -7,12 +7,12 @@ class Api::CommentsController < ApplicationController
     end
     
     def create
-        @comment = current_user.comments.new(comment_params)
+        @comment = Comment.new(comment_params)
+        @comment.author_id = current_user.id
 
         if @comment.save 
-            redirect_to video_url(@comment.video_id)
+            redirect_to "/api/videos/#{@comment.video_id}"
         else
-            # render json: @comment.errors.full_messages, status: :unprocessable_entity
             render json: @comment.errors.full_messages, status: :unprocessable_entity
         end
     end

@@ -374,7 +374,7 @@ class VideoPlayer extends React.Component {
                 
                 <Route 
                 // path={`videos/${this.props.video.id}`}
-                component={CommentIndexContainer}
+                    component={CommentIndexContainer}
                 // comments={this.state.comments}
                 />
 

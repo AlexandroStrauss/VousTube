@@ -19,6 +19,13 @@ class Api::VideosController < ApplicationController
         # render :index
     end
 
+    # def increment
+    #     @videoview = VideoView.where(user_id: current_user, video_id: params[:id]).first_or_create
+    #     @videoview.increment!(:count)
+    # end
+
+
+    private
     def video_params
         params.require(:video).permit(:title, :description, :video, thumbnails: [])
     end

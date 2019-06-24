@@ -1,8 +1,6 @@
-# require 'streamio-ffmpeg'
-
 json.partial! 'api/videos/video', video: @video
 
-@video.comments.includes(:authors).each do |comment|
+@video.comments.includes(:author).each do |comment|
     json.comments do
         json.set! comment.id do
             json.partial! 'api/comments/comment', comment: comment
