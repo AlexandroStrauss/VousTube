@@ -4,7 +4,7 @@
     background-color: inherit;
     width: 100%;
     font-size: 14px;
-    margin: 0 0 0 12px; 
+    margin: 0 0 0 0px; 
     padding: 0 0 6px 0;
     font-weight: 400;
 
@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-#comment-submit {
+#comment-submit, #comment-submit-blue {
     font-size: 14px;
     padding: 10px 16px;
     background-color: #cccccc;
@@ -52,6 +52,12 @@
 #top-comment-text:valid + #comment-submit {
     background-color: #055fd4;
     cursor: pointer;
+}
+
+#comment-submit-blue {
+    background-color: #055fd4;
+    cursor: pointer;
+
 }
 
 .nouser-icon i {

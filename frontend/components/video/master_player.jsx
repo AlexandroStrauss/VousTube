@@ -7,6 +7,12 @@ import PlayerNavBarContainer from "../nav_bar/player_nav_bar_container";
 class MasterPlayer extends React.Component {
     constructor(props) {
         super(props)
+
+        const vid = document.getElementById("video-container")
+        if (vid) {
+            vid.select();
+        }
+
     }
 
     render() {

@@ -28,6 +28,9 @@ class VideoPlayer extends React.Component {
         this.setVolume = this.setVolume.bind(this);
         this.calculateTime = this.calculateTime.bind(this);
         this.setTime = this.setTime.bind(this);
+            
+        // the following line gets the video controls working but kills cmd + R page refreshes
+        window.addEventListener("keydown", this.buttonPresses);
     }
 
     componentDidMount() {
@@ -42,15 +45,15 @@ class VideoPlayer extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.video && (prevProps.video.id != this.props.video.id)) {
             this.props.fetchVideo(this.props.match.params.id)
-                .then(
-                        window.location.reload()
-                    )
+            .then(
+                    window.location.reload()
+                )
         }
     }
 
     setupVideo(videoUrl) {
         this.video =  (
-            <video onTimeUpdate={this.timer} id="video" autoPlay >
+            <video onTimeUpdate={this.timer} id="video" onKeyDown={this.buttonPresses} autoPlay >
                 <source src={videoUrl} />
             </video>
         )
@@ -238,17 +241,22 @@ class VideoPlayer extends React.Component {
     buttonPresses(e) {
         let video = document.getElementById('video');
         let volBar = document.getElementById('volume-bar');
-        e.preventDefault();
         switch (e.keyCode) {
             case 39:
+                e.preventDefault();
+
                 video.currentTime += 5;
                 break;
             case 37:
+                e.preventDefault();
+
                 if (video.currentTime < 5) {
                     video.currentTime = 0;
                 } else { video.currentTime -= 5};
                 break;
             case 38:
+                e.preventDefault();
+
                 if (video.volume <= 0.9) {
                 video.volume += 0.1 }
                 else {video.volume = 1};
@@ -258,6 +266,8 @@ class VideoPlayer extends React.Component {
 
                 break;
             case 40:
+                e.preventDefault();
+
                 if (video.volume >= 0.1) {
                     video.volume -= 0.1
                 }
@@ -267,9 +277,13 @@ class VideoPlayer extends React.Component {
 
                 break;
             case 32:
+                // e.preventDefault();
+
                 this.swapPlayPause();
                 break;
             case 77:
+                // e.preventDefault();
+
                 this.swapMute();
                 break;
         }
@@ -283,21 +297,32 @@ class VideoPlayer extends React.Component {
 
         const author = this.props.users[this.props.video.author_id]
         return (
-            <figure id="video-container" autoFocus onKeyDown={this.buttonPresses}>
-                <div className="video-background" onClick={this.swapPlayPause} onKeyDown={this.buttonPresses}>
+            <figure id="video-container"  
+                onKeyDown={this.buttonPresses}
+            >
+                <div className="video-background" onClick={this.swapPlayPause} 
+                // onKeyDown={this.buttonPresses}
+                >
                 {this.setupVideo(this.state.url)}
                 </div>
 
                 <div id="seek-bar-played"
-                    // onClick={this.setTime}
+                    // onKeyDown={this.buttonPresses}
+
+                    onClick={this.setTime}
                     >
                 </div>
                 <div id="seek-bar-buffered" 
-                    // onClick={this.setTime}
+                    // onKeyDown={this.buttonPresses}
+
+                    onClick={this.setTime}
                     >
 
                 </div>
-                <div id="seek-bar-background"></div>
+                <div id="seek-bar-background"
+                    // onKeyDown={this.buttonPresses}
+
+                ></div>
                 <input type="range" id="seek-bar"
                     onChange={this.changeTime}
                     // onClick={this.setTime}
@@ -307,8 +332,9 @@ class VideoPlayer extends React.Component {
                 />
                 
                 <div id="video-controls" className="controls" data-state="hidden">
-                    <div id="left-controls">
-                    <button type="button" onClick={this.swapPlayPause} id="play-pause">
+                    <div id="left-controls" 
+>
+                    <button type="button" onClick={this.swapPlayPause} id="play-pause" >
                             <i className="material-icons">{this.state.play_icon}</i>
                     </button>
 

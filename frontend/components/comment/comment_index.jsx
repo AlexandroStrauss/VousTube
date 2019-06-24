@@ -74,13 +74,12 @@ class CommentIndex extends React.Component {
             <div className="top-comment-form">
                 <div className="text-container">
                     {this.userLogo()}
-                    <input type="text" id="top-comment-text" 
+                    <input type="text" placeholder="Add a public comment..."
+                        id="top-comment-text" 
                         onClick={this.state.topClicked ? null : this.showCommentButtons} 
-                        value={this.state.body}
+                        // value={this.state.body}
 
                         onChange={this.update("body")}
-                        placeholder="Add a public comment..."
-
                     />
 
                     {/* <label for="top-comment-text">
@@ -95,7 +94,7 @@ class CommentIndex extends React.Component {
                             CANCEL
                         </button>
 
-                    <input type="submit" id="comment-submit" 
+                    <input type="submit" id={this.state.body === '' ? "comment-submit" : "comment-submit-blue"}
                     onClick={this.state.body === '' ? null : this.handleSubmit} value="COMMENT"> 
                             
                         </input>

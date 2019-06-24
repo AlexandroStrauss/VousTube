@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom';
 import SessionDisplayContainer from '../session_display_container';
 import SideBar from '../side_bar/side_bar';
 import SearchBarContainer from '../header/search_bar_container';
+import CommentIndexContainer from '../comment/comment_index_container';
 
 
 
@@ -52,6 +53,7 @@ class PlayerNavBar extends React.Component {
         return (
             <>
                 <header>
+                    {/* <CommentIndexContainer /> */}
 
                     <div className="left-nav-bar">
                         <button onClick={this.sidebarClick}><FontAwesomeIcon icon={faBars} /></button>

@@ -20,7 +20,7 @@
     flex-direction: row;
     justify-content: space-between;
     position: relative;
-    bottom: 50px;
+    bottom: 56px;
     color: white;
 }
 
@@ -117,6 +117,7 @@ video-containter:hover + {
     /* padding: 0px 18px; */
     margin: 0 16px 0 0;
     width: 40px;
+    min-width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -133,7 +134,7 @@ video-containter:hover + {
     padding: 0;
     position: relative;
     left: 2px;
-    bottom: 48px;
+    bottom: 56px;
     border: none;
     border-radius: 0px;
     /* z-index: 22; */
@@ -228,7 +229,7 @@ input[type=range]::-webkit-slider-runnable-track {
     height: 3px;
     z-index: 21;
     position: relative;
-    top: -30px;
+    top: -36px;
     cursor: pointer;
 }
 
@@ -237,7 +238,7 @@ input[type=range]::-webkit-slider-runnable-track {
     height: 3px;
     z-index: 20;
     position: relative;
-    top: -33px;
+    top: -39px;
     cursor: pointer;
 }
 
@@ -246,7 +247,7 @@ input[type=range]::-webkit-slider-runnable-track {
     height: 3px;
     z-index: 19;
     position: relative;
-    top: -36px;
+    top: -42px;
     cursor: pointer;
 
 }
