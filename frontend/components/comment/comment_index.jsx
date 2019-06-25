@@ -50,7 +50,6 @@ class CommentIndex extends React.Component {
                 <p>{username[0].toUpperCase()}</p>
 
             </div>
-
         } else if (this.props.currentUser) {
             return (
                 <div className="author-thumbnail" >
@@ -82,7 +81,7 @@ class CommentIndex extends React.Component {
         const body = this.state.body;
         const comment = merge({}, {body: body, video_id: videoId, parent_comment_id: parentCommentId})
 
-        this.props.createComment(comment);
+        this.props.createComment(comment).then(this.setState({body: ''}));
     }
 
     cancelComment () {
@@ -114,10 +113,13 @@ class CommentIndex extends React.Component {
 
     render () {
         const comments = this.props.comments.map(comment => {
+            var author = this.props.users[comment.author_id]
+
             return (
                 <li key={comment.id} id="comment-container">
                     <div id="comment-author-info">
-                        <div id="comment-author-username">{/* {this.userLogo(comment.author.username)} */}</div>
+                        <div id="comment-author-logo">{this.userLogo(author.username)}</div>
+                        <div id="comment-author-username">{author.username}</div>
                         <div id="comment-date">{comment.created_at}</div>
                     </div>
                     <div id="comment-body">{comment.body}</div>

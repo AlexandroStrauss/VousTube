@@ -29,7 +29,8 @@ const receiveVideo = ({video, comments, author}) => {
     return {
         type: RECEIVE_VIDEO,
         video,
-        comments,
+        comments: comments.comments,
+        commentAuthors: comments.authors,
         author
     }
 }
@@ -41,10 +42,11 @@ const receiveAllVideos = ({videos, authors}) => ({
 })
 
 const receiveComment = ({comment, author}) => {
+    debugger
     return {
     type: RECEIVE_COMMENT,
     comment,
-    author: comment.author,
+    // author: comment.author,
 }};
 
 const receiveErrors = errors => {

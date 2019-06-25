@@ -2,8 +2,7 @@ class Api::CommentsController < ApplicationController
 
 
     def new 
-        @comment = Comment.new(video_id: params[:video_id])
-
+        @comment = Comment.new(video_id: params[:video_id])\
     end
     
     def create
@@ -23,7 +22,6 @@ class Api::CommentsController < ApplicationController
             comment.video_id = params[:video_id]
             comment.includes(:author)
             comment.includes(:child_comments)
-
         end
 
         render :index

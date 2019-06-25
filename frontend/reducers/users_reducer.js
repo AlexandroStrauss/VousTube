@@ -8,8 +8,14 @@ export default (state = {}, action) => {
         case RECEIVE_CURRENT_USER:
             return merge({}, state, {[action.user.id]: action.user});
         case RECEIVE_VIDEO:
-            
-            return merge({}, state, {[action.author.id]: action.author });
+            const nouvelleEtat = {}
+            debugger
+            Object.values(action.commentAuthors).forEach(author => {
+                nouvelleEtat[author.id] = author;
+            })
+            debugger
+
+            return merge({}, state, nouvelleEtat, {[action.author.id]: action.author });
         case RECEIVE_ALL_VIDEOS: 
             const newState = {};
             Object.values(action.authors).forEach(author => {

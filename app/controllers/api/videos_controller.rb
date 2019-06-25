@@ -15,7 +15,7 @@ class Api::VideosController < ApplicationController
     end
 
     def index
-        @videos = Video.all.includes(:author, :comments)
+        @videos = Video.all.includes(:author)
         # render :index
     end
 
