@@ -6,12 +6,36 @@
     background-color: inherit;
     width: 100%;
     font-size: 14px;
-    margin: 0 0 4px 0px; 
+    margin: 10px 0 4px 0px; 
     padding: 0 0 6px 0;
     font-weight: 400;
 
     border-bottom: 1px solid #eeeeee;
     transform-origin: center;
+}
+
+/* solution for border transition effect by giana: https://codepen.io/giana/pen/yYBpVY/ */
+  #top-comment-text::before,
+  #top-comment-text::after {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center; 
+    /* // Ensure scaling is done from the center (expands outwards) */
+  }
+
+  #top-comment-text::before {
+    border-bottom: 2px solid #6f6f6f;
+    transform: scale3d(0,1,1); 
+    /* // Shrink only width */
+  }
+
+
+ #top-comment-text:focus::before,
+  #top-comment-text:focus::after {
+    transform: scale3d(1,1,1);
+    transition: transform 0.5s;
 }
 
 #top-comment-text:focus {
@@ -70,7 +94,7 @@
 .text-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: top;
 }
 
 #comment-container {

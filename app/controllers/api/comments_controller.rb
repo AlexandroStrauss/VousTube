@@ -21,6 +21,9 @@ class Api::CommentsController < ApplicationController
     def index 
         @comments = Comment.all.select do |comment|
             comment.video_id = params[:video_id]
+            comment.includes(:author)
+            comment.includes(:child_comments)
+
         end
 
         render :index
@@ -28,7 +31,8 @@ class Api::CommentsController < ApplicationController
 
     def show
         @comment = Comment.find(params[:id])
-        @comment.include(:child_comments)
+        @comment.includes(:author)
+        @comment.includes(:child_comments)
     end
 
     private

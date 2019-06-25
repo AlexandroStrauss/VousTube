@@ -277,9 +277,11 @@ class VideoPlayer extends React.Component {
 
                 break;
             case 32:
-                // e.preventDefault();
+                if (e.target === document.body) {
+                e.preventDefault();
 
-                this.swapPlayPause();
+                    this.swapPlayPause();
+                }
                 break;
             case 77:
                 // e.preventDefault();

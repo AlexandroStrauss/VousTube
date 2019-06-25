@@ -15,6 +15,7 @@ class CommentIndex extends React.Component {
         this.redirectIfNotLoggedIn = this.redirectIfNotLoggedIn.bind(this);
         this.cancelComment = this.cancelComment.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.commentLength = this.commentLength.bind(this);
     }
 
     componentDidMount() {
@@ -69,7 +70,6 @@ class CommentIndex extends React.Component {
 
     updateTopHeight() {
         if (document.getElementById('top-comment-text')) {
-            debugger
             document.getElementById('top-comment-text').style.height = document.getElementById('top-comment-text').scrollHeight + 'px';
         }
     }
@@ -89,8 +89,30 @@ class CommentIndex extends React.Component {
         this.setState({ body: '', topClicked: false});
     }
 
-    render () {
+    commentLength () {
+        var length = this.props.comments.length 
+        
+        var count;
+        if (length === 1) {
+            count = "1 Comment"
+        } else {
+            count = `${length} Comments`
+        }
+        return (
+            <div className="comment-length">
+                {count}
+            </div>
+        )
+    }
 
+
+    calculateRows() {
+        var lines = this.state.body.split(/\r*\n/);
+        return `${lines.length}`;
+    }
+
+
+    render () {
         const comments = this.props.comments.map(comment => {
             return (
                 <li key={comment.id} id="comment-container">
@@ -116,26 +138,23 @@ class CommentIndex extends React.Component {
 
         return (
             <>
+            {this.commentLength()}
             <div className="top-comment-form">
                 <div className="text-container">
                     {this.userLogo()}
                     {/* <textarea name="" id="" cols="10" rows="10"></textarea> */}
                         {/* <input type="text" */}
                         <textarea
-                        rows="1"
-                        onInput={this.updateTopHeight}
+                        rows={this.calculateRows()}
+                        // onInput={this.updateTopHeight}
                         placeholder="Add a public comment..."
                         id="top-comment-text" 
                         onClick={this.state.topClicked ? null : this.showCommentButtons} 
                         onKeyPress={null}
-                        // value={this.state.body}
+                        value={this.state.body}
 
                         onChange={this.update("body")}
                     />
-
-                    {/* <label for="top-comment-text">
-                        Add a public comment...
-                    </label> */}
 
                 </div>
                     <div className={this.state.topClicked ? "comment-buttons" : "comment-buttons-hidden"}>
