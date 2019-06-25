@@ -21,7 +21,6 @@ end
     end
 end
 
-
 # json.authors do
 #     json.array! @videos do |video|
 #         json.set! video.author_id do 

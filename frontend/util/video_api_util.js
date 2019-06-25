@@ -25,7 +25,6 @@ export const createVideo = formData => {
 };
 
 export const createComment = ({body, video_id}) => {
-    debugger
     return $.ajax({
         method: 'POST',
         url: `api/videos/${video_id}/comments`,

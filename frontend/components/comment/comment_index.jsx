@@ -43,8 +43,14 @@ class CommentIndex extends React.Component {
         }
     }
 
-    userLogo () {
-        if (this.props.currentUser) {
+    userLogo (username) {
+        if (username) {
+            <div className="author-thumbnail" >
+                <p>{username[0].toUpperCase()}</p>
+
+            </div>
+
+        } else if (this.props.currentUser) {
             return (
                 <div className="author-thumbnail" >
                     <p>{this.props.currentUser.username[0].toUpperCase()}</p> 
@@ -61,12 +67,20 @@ class CommentIndex extends React.Component {
         }
     }
 
-    handleSubmit(e) {
+    updateTopHeight() {
+        if (document.getElementById('top-comment-text')) {
+            debugger
+            document.getElementById('top-comment-text').style.height = document.getElementById('top-comment-text').scrollHeight + 'px';
+        }
+    }
+
+
+    handleSubmit(e, parentCommentId) {
         e.preventDefault();
         var videoId = this.props.location.pathname.split('/');
         videoId = parseInt(videoId[videoId.length - 1])
         const body = this.state.body;
-        const comment = merge({}, {body: body, video_id: videoId})
+        const comment = merge({}, {body: body, video_id: videoId, parent_comment_id: parentCommentId})
 
         this.props.createComment(comment);
     }
@@ -77,11 +91,40 @@ class CommentIndex extends React.Component {
 
     render () {
 
+        const comments = this.props.comments.map(comment => {
+            return (
+                <li key={comment.id} id="comment-container">
+                    <div id="comment-author-info">
+                        <div id="comment-author-username">{/* {this.userLogo(comment.author.username)} */}</div>
+                        <div id="comment-date">{comment.created_at}</div>
+                    </div>
+                    <div id="comment-body">{comment.body}</div>
+                    <div id="like-reply">
+
+                        <button id="reply">
+                            REPLY
+                        </button>
+                    </div>
+                    {/* {comment.child_comments.length > 0 ? 
+                    <button id="expand-replies">
+                        <div>View Replies</div> <i className="material-icons">keyboard_arrow_down</i>
+                        
+                    </button> : <> </>} */}
+                </li>
+            )
+        })
+
         return (
+            <>
             <div className="top-comment-form">
                 <div className="text-container">
                     {this.userLogo()}
-                    <input type="text" placeholder="Add a public comment..."
+                    {/* <textarea name="" id="" cols="10" rows="10"></textarea> */}
+                        {/* <input type="text" */}
+                        <textarea
+                        rows="1"
+                        onInput={this.updateTopHeight}
+                        placeholder="Add a public comment..."
                         id="top-comment-text" 
                         onClick={this.state.topClicked ? null : this.showCommentButtons} 
                         onKeyPress={null}
@@ -110,6 +153,11 @@ class CommentIndex extends React.Component {
 
 
             </div>
+
+            <ul className="comments">
+                {comments}
+            </ul>
+            </>
         )
     }
 }

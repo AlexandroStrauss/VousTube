@@ -18,7 +18,6 @@ export const allVideos = () => dispatch => APIUtil.fetchVideos()
     , err => dispatch(receiveErrors(err.responseJSON)));
 
 export const createComment = comment => dispatch => {
-    debugger
     return(
     APIUtil.createComment(comment).then(comment => (
         dispatch(receiveComment(comment))
@@ -41,12 +40,11 @@ const receiveAllVideos = ({videos, authors}) => ({
     authors
 })
 
-const receiveComment = (comment) => {
-    debugger
+const receiveComment = ({comment, author}) => {
     return {
     type: RECEIVE_COMMENT,
     comment,
-    author,
+    author: comment.author,
 }};
 
 const receiveErrors = errors => {

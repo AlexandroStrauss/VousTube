@@ -11,7 +11,8 @@ class Api::CommentsController < ApplicationController
         @comment.author_id = current_user.id
 
         if @comment.save 
-            redirect_to "/api/videos/#{@comment.video_id}"
+            render :show
+            # redirect_to "/api/videos/#{@comment.video_id}" 
         else
             render json: @comment.errors.full_messages, status: :unprocessable_entity
         end

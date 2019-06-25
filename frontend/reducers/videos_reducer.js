@@ -15,8 +15,7 @@ export default (state = {}, action) => {
         case RECEIVE_COMMENT: 
             const comment = action.comment;
             const anotherNewState = merge({}, state);
-            debugger
-            anotherNewState[comment.video_id].commentIds.push(comment.id);
+            // anotherNewState[comment.video_id].commentIds.push(comment.id);
             return anotherNewState;
         default:
             return state;
