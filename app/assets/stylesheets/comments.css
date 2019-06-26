@@ -162,7 +162,7 @@
     color: #909090;
 }
 
-#everything-comment {
+#everything-comment, #reply-comment {
     display: flex;
     flex-direction: row;
     align-items: top;
@@ -172,7 +172,44 @@
     padding: 0 0 0 0;
 }
 
-#reply-container, .reply-form, #replies-container {
+#reply-container, #replies-container {
     margin: 0 0 0 56px;
+    list-style: none;
 }
 
+.author-thumbnail-small {
+    background-color: #0288d1;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 24px;
+    /* padding: 0px 18px; */
+    margin: 0 16px 0 0;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reply-container {
+    padding: 0;
+    margin: 0;
+}
+
+#all-comment-text {
+    width: 100%;
+}
+
+.reply-form {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: 0;
+}
+
+#reply-input-and-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

@@ -3,18 +3,27 @@ import React from 'react';
 class IndividualReplies extends React.Component {
     constructor(props) {
         super(props);
-        debugger
+    }
+
+    userLogo(username) {
+        if (username) {
+            return (
+                <div className="author-thumbnail-small" >
+                    <p>{username[0].toUpperCase()}</p>
+
+                </div>
+            )
+        } 
     }
 
     render () {
-        debugger
         const comment = this.props.comment
         const author = this.props.users[comment.author_id]
 
         return (
             <li key={comment.id} id="reply-container">
                 <div id="reply-comment">
-                    {/* <div id="reply-author-logo">{this.props.userLogo(author.username)}</div> */}
+                    <div id="reply-author-logo">{this.userLogo(author.username)}</div>
 
                     <div id="all-comment-text">
                         <div id="comment-author-info">

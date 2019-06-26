@@ -82,6 +82,18 @@ class CommentAndReplies extends React.Component {
         }
     }
 
+    userLogoSmall(username) {
+        if (username) {
+            return (
+                <div className="author-thumbnail-small" >
+                    <p>{username[0].toUpperCase()}</p>
+
+                </div>
+            )
+        }
+    }
+
+
     render() {
         const comment = this.props.comment
         const author = this.props.users[comment.author_id]
@@ -116,10 +128,11 @@ class CommentAndReplies extends React.Component {
                                 REPLY
                             </button>
                         </div>
-                    </div>
 
                 {this.state.showReplyForm ? 
                 (<div className="reply-form">
+                    {this.userLogoSmall(this.props.currentUser.username)}
+                    <div id="reply-input-and-buttons">
                     <div className="reply-text-container">
                         <textarea
                             rows={this.calculateRows()}
@@ -133,6 +146,7 @@ class CommentAndReplies extends React.Component {
                         />
 
                     </div>
+
                     <div className={this.state.topClicked ? "comment-buttons" : "comment-buttons-hidden"}>
                         <button id="comment-cancel"
                             onClick={this.cancelReply.bind(this)}
@@ -144,7 +158,9 @@ class CommentAndReplies extends React.Component {
                             onClick={this.state.body === '' ? null : this.handleSubmit.bind(this)} value="REPLY">
                         </input>
                     </div>
+                    </div>
                 </div>) : null }
+                    </div>
 
                 </div>
                 <div id="replies-container">
