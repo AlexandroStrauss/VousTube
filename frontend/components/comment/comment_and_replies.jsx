@@ -56,7 +56,7 @@ class CommentAndReplies extends React.Component {
     }
 
     // showReplies() {
-    //     debugger
+    //     
     //     this.props.comment.child_comments.forEach(reply => {
     //         return(
     //             <IndividualRepliesContainer id={reply.id}/> 
@@ -103,7 +103,6 @@ class CommentAndReplies extends React.Component {
                 <IndividualRepliesContainer id={reply.id} />
             )
         })
-        debugger
         return (
         <li key={comment.id} id="comment-container">
             <div id="everything-comment">
