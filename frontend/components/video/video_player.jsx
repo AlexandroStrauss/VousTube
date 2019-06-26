@@ -358,6 +358,29 @@ class VideoPlayer extends React.Component {
                 <div id="video-info">
                     <div className="video-stats">
                         <div className="vid-title">{this.props.video.title}</div>
+                        <div className="vid-stats">
+                            <div className="views">
+                                0 views
+                            </div>
+
+                            <div className="like-bar-flex">
+
+                            <div className="likes-dislikes">
+                                <button id="vid-like">
+                                    <i className="material-icons">thumb_up</i>
+
+
+                                </button>
+
+                                <button id="vid-dislike">
+                                    <i className="material-icons">thumb_down</i>
+
+                                </button>
+                                </div>
+                                <div className="like-bar"></div>
+                                <div className="dislike-bar"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="author-stuff">

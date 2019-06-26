@@ -114,13 +114,15 @@
     flex-direction: row;
     align-items: center;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
     padding: 0;
     margin: 0;
 }
 
+
+
 #comment-author-info {
-        display: flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
 }
@@ -128,6 +130,13 @@
 #comment-date, #reply {
     color: #606060;
     font-size: 13px;
+    padding: 8px 16px;
+}
+
+#comment-author-username {
+    font-size: 13px; 
+    font-weight: bold;
+    margin: 0 4px 0 0;
 }
 
 #comment-body {
@@ -143,3 +152,27 @@
 .top-comment-form {
     margin: 24px 0 32px;
 }
+
+#like, #dislike {
+    padding: 8px;
+}
+
+#like i, #dislike i {
+    font-size: 16px;
+    color: #909090;
+}
+
+#everything-comment {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+.comments, #replies {
+    padding: 0 0 0 0;
+}
+
+#reply-container, .reply-form, #replies-container {
+    margin: 0 0 0 56px;
+}
+

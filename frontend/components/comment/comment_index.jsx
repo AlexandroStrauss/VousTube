@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 import { merge } from 'lodash';
+import CommentAndRepliesContainer from './comment_and_replies_container';
 
 class CommentIndex extends React.Component {
     constructor(props) {
@@ -18,10 +19,6 @@ class CommentIndex extends React.Component {
         this.commentLength = this.commentLength.bind(this);
     }
 
-    componentDidMount() {
-
-    }
-
     update(field) {
         return(e) => {
             this.setState({ [field]: e.target.value })
@@ -32,7 +29,6 @@ class CommentIndex extends React.Component {
         if (!this.props.currentUser) {
             this.props.history.push('/login')
         }
-
     }
     
     showCommentButtons () {
@@ -46,10 +42,12 @@ class CommentIndex extends React.Component {
 
     userLogo (username) {
         if (username) {
+            return(
             <div className="author-thumbnail" >
                 <p>{username[0].toUpperCase()}</p>
 
             </div>
+            )
         } else if (this.props.currentUser) {
             return (
                 <div className="author-thumbnail" >
@@ -67,19 +65,12 @@ class CommentIndex extends React.Component {
         }
     }
 
-    updateTopHeight() {
-        if (document.getElementById('top-comment-text')) {
-            document.getElementById('top-comment-text').style.height = document.getElementById('top-comment-text').scrollHeight + 'px';
-        }
-    }
-
-
-    handleSubmit(e, parentCommentId) {
+    handleSubmit(e) {
         e.preventDefault();
         var videoId = this.props.location.pathname.split('/');
         videoId = parseInt(videoId[videoId.length - 1])
         const body = this.state.body;
-        const comment = merge({}, {body: body, video_id: videoId, parent_comment_id: parentCommentId})
+        const comment = merge({}, {body: body, video_id: videoId, parent_comment_id: null})
 
         this.props.createComment(comment).then(this.setState({body: ''}));
     }
@@ -112,29 +103,21 @@ class CommentIndex extends React.Component {
 
 
     render () {
-        const comments = this.props.comments.map(comment => {
+        const top_comments = this.props.comments.filter(comment => {
+            return comment.parent_comment_id === null;
+        })
+        
+        const comments = top_comments.map(comment => {
             var author = this.props.users[comment.author_id]
 
             return (
-                <li key={comment.id} id="comment-container">
-                    <div id="comment-author-info">
-                        <div id="comment-author-logo">{this.userLogo(author.username)}</div>
-                        <div id="comment-author-username">{author.username}</div>
-                        <div id="comment-date">{comment.created_at}</div>
-                    </div>
-                    <div id="comment-body">{comment.body}</div>
-                    <div id="like-reply">
-
-                        <button id="reply">
-                            REPLY
-                        </button>
-                    </div>
-                    {/* {comment.child_comments.length > 0 ? 
-                    <button id="expand-replies">
-                        <div>View Replies</div> <i className="material-icons">keyboard_arrow_down</i>
-                        
-                    </button> : <> </>} */}
-                </li>
+                    <CommentAndRepliesContainer 
+                        id={comment.id} 
+                        userLogo={this.userLogo} 
+                        redirectIfNotLoggedIn={this.redirectIfNotLoggedIn}
+                        commentLength={this.commentLength}
+                        showCommentButtons={this.showCommentButtons}
+                    />
             )
         })
 
@@ -144,14 +127,11 @@ class CommentIndex extends React.Component {
             <div className="top-comment-form">
                 <div className="text-container">
                     {this.userLogo()}
-                    {/* <textarea name="" id="" cols="10" rows="10"></textarea> */}
-                        {/* <input type="text" */}
                         <textarea
                         rows={this.calculateRows()}
-                        // onInput={this.updateTopHeight}
                         placeholder="Add a public comment..."
                         id="top-comment-text" 
-                        onClick={this.state.topClicked ? null : this.showCommentButtons} 
+                        onClick={this.showCommentButtons} 
                         onKeyPress={null}
                         value={this.state.body}
 

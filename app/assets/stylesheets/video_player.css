@@ -64,12 +64,16 @@ video-containter:hover + {
     width: 100%;
     position: relative;
     bottom: 50px;
+    /* padding: 0 0 16px 0;
+        border-bottom: 1px solid #e5e5e5; */
+
 }
 
 .video-stats {
     width: 100%;
-    padding: 20px 0 8px;
-    border-bottom: 1px solid #e5e5e5;
+    padding: 12px 0 8px;
+            border-bottom: 1px solid #e5e5e5;
+
 }
 
 .vid-title {
@@ -93,7 +97,7 @@ video-containter:hover + {
 
 .vid-description {
     font-size: 14px;
-    margin: 24px 0 0 64px;
+    margin: 24px 0 0 56px;
 }
 
 .author-stuff{
@@ -250,4 +254,24 @@ input[type=range]::-webkit-slider-runnable-track {
     top: -42px;
     cursor: pointer;
 
+}
+
+.vid-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.likes-dislikes button {
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+
+.views {
+    color: #606060;
+}
+
+.vid-stats {
+    margin: 18px 0 0 0;
 }

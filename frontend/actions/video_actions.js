@@ -26,11 +26,19 @@ export const createComment = comment => dispatch => {
     }
 
 const receiveVideo = ({video, comments, author}) => {
+    var commentsThemselves, commentAuthors;
+    if (comments) {
+        commentsThemselves = comments.comments;
+        commentAuthors = comments.authors;
+    } else {
+        commentsThemselves = [];
+        commentAuthors = [];
+    }
     return {
         type: RECEIVE_VIDEO,
         video,
-        comments: comments.comments,
-        commentAuthors: comments.authors,
+        comments: commentsThemselves,
+        commentAuthors: commentAuthors,
         author
     }
 }
@@ -42,7 +50,6 @@ const receiveAllVideos = ({videos, authors}) => ({
 })
 
 const receiveComment = ({comment, author}) => {
-    debugger
     return {
     type: RECEIVE_COMMENT,
     comment,
