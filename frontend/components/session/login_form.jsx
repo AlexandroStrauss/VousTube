@@ -125,6 +125,9 @@ class LoginForm extends React.Component {
                 <div className={this.state.phase ? "login-phase2" : "login-phase1"}>
 
                     <div className="form-identifier">
+
+                        <div id="vousgle-centerer" ><img id="vousgle" src={window.vousgle} /></div>
+
                         <p className="welcoming">Sign in</p>
                         <p className="continue">to continue to VousTube</p>
 
@@ -166,6 +169,8 @@ class LoginForm extends React.Component {
                     </div>
 
                     <div className="form-password">
+                        <div id="vousgle-centerer" ><img id="vousgle" src={window.vousgle} /></div>
+
                         <p className="welcoming">Welcome</p>
                         <button className="identifier-info" onClick={() => this.flipBack()}>
                             <i className="material-icons md-16">account_circle</i>

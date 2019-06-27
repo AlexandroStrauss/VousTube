@@ -9,6 +9,9 @@ class Video < ApplicationRecord
         class_name: :User
 
     has_many :comments
+
+    has_many :likes, as :likeable
+
     
     has_one_attached :video
     has_many_attached :thumbnails

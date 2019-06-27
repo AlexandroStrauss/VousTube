@@ -13,13 +13,13 @@
 }
 
 .welcoming {
-    padding: 24px 0 0 0;
+    padding: 0 0 8px 0;
     margin: 0;
     font-size: 24px;
 }
 
 .continue {
-    padding: 16px 0 0 0;
+    padding: 0px 0 0 0;
     margin: 0;
     font-size: 16px;
 }
@@ -212,7 +212,7 @@ float: right;
 }
 
 .form-identifier .continue {
-    padding: 8px 0 24px 0;
+    padding: 0px 0 24px 0;
 }
 
 .space-maker {
@@ -251,4 +251,17 @@ float: right;
 .toplevel-login, .toplevel-signup {
     position: relative;
     top: 104px;
+}
+
+#vousgle, #vousgle-login {
+    width: 74px;
+    height: auto;
+}
+
+#vousgle-login {
+    margin: 0 auto;
+}
+
+#vousgle-centerer {
+    text-align: center;
 }

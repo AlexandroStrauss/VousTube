@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
 
     belongs_to :video
 
+    has_many :likes, as :likeable
+
     belongs_to :author,
         primary_key: :id, 
         foreign_key: :author_id,

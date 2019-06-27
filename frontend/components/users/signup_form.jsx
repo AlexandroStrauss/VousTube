@@ -77,6 +77,7 @@ class SignupForm extends React.Component {
             <div className="toplevel-signup">
             <div className="signup-form">
                 
+                <img id="vousgle" src={window.vousgle} />
                 <p className="welcoming">Create your VousTube Account</p>
                 <p className="continue">to continue to VousTube</p>
                 <form onSubmit={this.handleSubmit} >
