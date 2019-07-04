@@ -2,7 +2,7 @@ import * as APIUtil from "../util/like_api_util";
 
 export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
-export const DELETE_LIKE = "DELETE_LIKE";
+export const REMOVE_LIKE = "REMOVE_LIKE";
 
 export const receiveLikes = likes => ({
     type: RECEIVE_LIKES,
@@ -16,8 +16,8 @@ export const receiveLike = (likeable_type, likeable_id, value) => ({
     value
 })
 
-export const deleteLike = () => ({
-    type: DELETE_LIKE,
+export const removeLike = () => ({
+    type: REMOVE_LIKE,
 })
 
 export const createLike = like => dispatch => (
@@ -29,5 +29,5 @@ export const updateLike = like => dispatch => (
 )
 
 export const deleteLike = like => dispatch => (
-    APIUtil.deleteLike(like).then(() => dispatch(deleteLike()))
+    APIUtil.deleteLike(like).then(() => dispatch(removeLike()))
 )

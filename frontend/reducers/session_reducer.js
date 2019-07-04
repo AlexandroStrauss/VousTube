@@ -14,6 +14,8 @@ export default (state = defaultSession, action) => {
         case LOGOUT_CURRENT_USER:
             const nullState = {id: null};
             return Object.assign({}, nullState);
+        // case RECEIVE_ERRORS:
+        //     return state;
         default: 
             return state;
     }

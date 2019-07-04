@@ -1,5 +1,6 @@
 import { merge } from 'lodash';
 import { RECEIVE_VIDEO, RECEIVE_ALL_VIDEOS, RECEIVE_COMMENT } from '../actions/video_actions';
+import { RECEIVE_LIKE, RECEIVE_LIKES } from '../actions/like_actions';
 
 export default (state = {}, action) => {
     Object.freeze(state);
