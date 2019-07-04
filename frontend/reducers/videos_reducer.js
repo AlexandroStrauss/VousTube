@@ -6,6 +6,7 @@ export default (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_ALL_VIDEOS:
+            debugger
             const newState = {};
             Object.values(action.videos).forEach(video => {
                 newState[video.id] = video;

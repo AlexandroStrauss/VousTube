@@ -10,7 +10,7 @@ class Video < ApplicationRecord
 
     has_many :comments
 
-    has_many :likes, as :likeable
+    has_many :likes, as: :likeable
 
     
     has_one_attached :video
