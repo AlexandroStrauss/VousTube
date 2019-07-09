@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
     video: state.entities.videos[ownProps.match.params.id],
     users: state.entities.users,
     // author: state.entities.users[state.entities.videos[ownProps.match.params.id].author_id]
-
 }
 }
 

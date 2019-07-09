@@ -29,17 +29,19 @@ class VideoPlayer extends React.Component {
         this.calculateTime = this.calculateTime.bind(this);
         this.setTime = this.setTime.bind(this);
             
-        // the following line gets the video controls working but kills cmd + R page refreshes
+        // allows keyboard controls for video player
         window.addEventListener("keydown", this.buttonPresses);
+
+        debugger
     }
 
     componentDidMount() {
-        this.props.fetchVideo(this.props.match.params.id)
-            .then(response => {
-                this.setState({url: response.video.videoUrl, author: response.user})
-            });
+        debugger
+        let that = this;
+        this.props.fetchVideo(this.props.match.params.id).then(response => 
+                that.setState({url: response.video.videoUrl, author: response.user})
+            );
         window.scrollTo(0, 0)
-
     }
 
     componentDidUpdate(prevProps) {

@@ -10,8 +10,6 @@ const commentsReducer = (state = {}, action) => {
             return merge({}, state, { [comment.id]: comment})
         case RECEIVE_VIDEO:
             return merge({}, state, action.comments)
-        case RECEIVE_LIKE: 
-            return merge({}, state, action.like)
         default:
             return state;
     }

@@ -7,6 +7,14 @@ json.author do
     json.partial! 'api/users/user', user: video.author
 end
 
+# json.likes do 
+#     video.likes.each do |like|
+#         json.set! like.id do 
+#             json.partial! 'api/likes/like', like: like
+#         end
+#     end
+# end
+
 json.comments do 
     json.comments do 
         video.comments.each do |comment|
@@ -23,4 +31,14 @@ json.comments do
             end 
         end
     end
+
+    # json.likes do 
+    #     video.comments.each do |comment|
+    #         comment.likes.each do |like|
+    #             json.set! like.id do 
+    #                 json.partial! 'api/likes/like', like: like
+    #             end
+    #         end
+    #     end
+    # end
 end

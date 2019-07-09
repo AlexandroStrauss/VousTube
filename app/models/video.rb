@@ -22,9 +22,7 @@ class Video < ApplicationRecord
         end
     end
 
-
     # def change
     #     add_column :video_views, :count, :integer, default: 0
     # end
-
 end

@@ -10,8 +10,9 @@ export const create = newVideo => dispatch => APIUtil.createVideo(newVideo)
     ), err => dispatch(receiveErrors(err.responseJSON)));
 
 export const fetch = videoId => dispatch => APIUtil.fetchVideo(videoId)
-    .then(payload => (dispatch(receiveVideo(payload))
-    ), err => dispatch(receiveErrors(err.responseJSON)));
+    .then(payload =>
+        dispatch(receiveVideo(payload))
+    , err => dispatch(receiveErrors(err.responseJSON)));
 
 export const allVideos = () => dispatch => APIUtil.fetchVideos()
     .then(payload => (dispatch(receiveAllVideos(payload)))

@@ -5,7 +5,7 @@ export const fetchVideos = () => {
     })
 };
 
-export const fetchVideo = (id) => {
+export const fetchVideo = id => {
     debugger
     return $.ajax({
         method: 'GET',
