@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentIndexContainer from '../comment/comment_index_container';
 import { Switch, Route, Link } from 'react-router-dom';
+import * as likeFunctions from '../util/like_functions';
 
 class VideoPlayer extends React.Component {
     constructor(props) {
@@ -14,6 +15,8 @@ class VideoPlayer extends React.Component {
             fullscreen: <i className="material-icons">fullscreen</i>,
             volume: 1,
         }
+
+        //search in foreign keys for match: possible?
 
         this.buttonPresses = this.buttonPresses.bind(this);
         this.playPause = this.playPause.bind(this);
@@ -281,7 +284,6 @@ class VideoPlayer extends React.Component {
             case 32:
                 if (e.target === document.body) {
                 e.preventDefault();
-
                     this.swapPlayPause();
                 }
                 break;
@@ -291,6 +293,24 @@ class VideoPlayer extends React.Component {
                 this.swapMute();
                 break;
         }
+    }
+
+    likeVideo(e) {
+        e.preventDefault;
+        const like = ({value: 1, likeable_type: "video", likeable_id: this.props.video.id, user_id: this.props.currentUser.id})
+
+        likeFunctions.likeSplitter(like, this.props.oldLike);
+    }
+
+    dislikeVideo(e) {
+        e.preventDefault;
+        const like = ({ value: -1, likeable_type: "video", likeable_id: this.props.video.id, user_id: this.props.currentUser.id })
+        
+        likeFunctions.likeSplitter(like, this.props.oldLike);
+    }
+
+    sendLike(like) {
+        this.props.createLike(like)
     }
 
     render() {
@@ -368,7 +388,7 @@ class VideoPlayer extends React.Component {
                             <div className="like-bar-flex">
 
                             <div className="likes-dislikes">
-                                <button id="vid-like">
+                                <button id="vid-like" onClick={this.likeVideo}>
                                     <i className="material-icons">thumb_up</i>
 
 
