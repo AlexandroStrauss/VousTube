@@ -38,7 +38,7 @@ class VideoPlayer extends React.Component {
         this.likeVideo = this.likeVideo.bind(this);
         this.dislikeVideo = this.dislikeVideo.bind(this);
         this.likeSplitter = this.likeSplitter.bind(this);
-            
+        this.setOldLike = this.setOldLike.bind(this);
         // allows keyboard controls for video player
         window.addEventListener("keydown", this.buttonPresses);
     }
@@ -49,9 +49,23 @@ class VideoPlayer extends React.Component {
                 that.setState({url: response.video.videoUrl, author: response.user})
             );
         this.props.fetchLikes("Video", this.props.match.params.id).then(response => 
-            this.setState({likes: response.likes}))
+            this.setState({likes: response.likes})).then(this.setOldLike)
 
         window.scrollTo(0, 0)
+    }
+
+    setOldLike () {
+        var currentUser = this.props.currentUser
+        var likedObjects = {}
+        currentUser.liked_objects.forEach(like => {
+            likedObjects[like.id] = true
+        })
+
+        var oldLike = Object.values(this.state.likes).filter(like =>
+            (like.user_id === currentUser.id && likedObjects[like.id])
+        )
+
+        this.setState({oldLike: oldLike[0]})
     }
 
     componentDidUpdate(prevProps) {
@@ -302,29 +316,25 @@ class VideoPlayer extends React.Component {
     }
 
     likeSplitter (newLike)  {
-        var currentUser = this.props.currentUser
-        var likedObjects = {}
-        currentUser.liked_objects.forEach(like => {
-            likedObjects[like.id] = true
-        })
 
-        var oldLike = Object.values(this.state.likes).filter(like => 
-            (like.user_id === currentUser.id && likedObjects[like.id])
-        )
-        
-        oldLike = oldLike[0]
+        const oldLike = this.state.oldLike;
+        debugger
 
         if (oldLike && newLike.value === oldLike.value) {
             debugger
-            this.props.deleteLike(oldLike)
+            this.props.deleteLike(oldLike).then(this.setState({oldLike: null}))
         }
         else if (oldLike) {
+            var updatedLike = oldLike
+            updatedLike.value = -updatedLike.value
+            
             debugger
-            this.props.updateLike(oldLike)
+
+            this.props.updateLike(oldLike).then(this.setState({oldLike: updatedLike}))
         }
         else {
             debugger
-            this.props.createLike(newLike)
+            this.props.createLike(newLike).then(this.setState({ oldLike: newLike }))
         }
     }
 
@@ -411,23 +421,23 @@ class VideoPlayer extends React.Component {
                             <div className="like-bar-flex">
 
                             <div className="likes-dislikes">
-                                <button id={this.state.alreadyLiked ? "vid-like" : "vid-dislike"} onClick={this.likeVideo}>
+                                <button id={(this.state.oldLike && this.state.oldLike.value === 1) ? "vid-like-selected" : "vid-like"} onClick={this.likeVideo}>
                                     <i className="material-icons">thumb_up</i>
 
                                 </button>
 
                                 <div id="like-counter">
-                                    0
-                                    {/* {likeFunctions.videoLikeValue.upvotes} */}
+                                    {/* 0 */}
+                                    {likeFunctions.videoLikeValue(this.state.likes).upvotes}
                                 </div>
 
-                                <button id={this.state.alreadyDisliked ? "vid-dislike-selected" : "vid-dislike"} onClick={this.dislikeVideo}>
+                                    <button id={(this.state.oldLike && this.state.oldLike.value === -1) ? "vid-dislike-selected" : "vid-dislike"} onClick={this.dislikeVideo}>
                                     <i className="material-icons">thumb_down</i>
 
                                 </button>
                                     <div id="like-counter">
-                                        0
-                                        {/* {likeFunctions.videoLikeValue.downvotes} */}
+                                        {/* 0 */}
+                                        {likeFunctions.videoLikeValue(this.state.likes).downvotes}
                                     </div>
 
                                 </div>

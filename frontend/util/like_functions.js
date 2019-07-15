@@ -37,13 +37,15 @@ export const videoLikeValue = likes => {
     var totalLikes = 0;
     var likeTotal = 0;
     var dislikeTotal = 0;
-    likes.forEach(like => {
-        sum += like.value;
-        if (like.value === 1) {
-            likeTotal += like.value
-        } else if (like.value === -1) {
-            dislikeTotal += like.value
-        }
-    })
+    if (likes) {
+        Object.values(likes).forEach(like => {
+            totalLikes += 1;
+            if (like.value === 1) {
+                likeTotal += like.value
+            } else if (like.value === -1) {
+                dislikeTotal -= like.value
+            }
+        })
+    }
     return {totalLikes: totalLikes, upvotes: likeTotal, downvotes: dislikeTotal}
 }
