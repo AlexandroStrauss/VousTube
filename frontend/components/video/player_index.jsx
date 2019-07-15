@@ -39,6 +39,7 @@ class PlayerIndex extends React.Component {
 
     render() {
         const videos = this.props.videos ? this.props.videos.map(video => {
+            // debugger
             return (
                 <li className="video" key={video.id}>
                     <a className="video-tile" href={`/#/videos/${video.id}`}>

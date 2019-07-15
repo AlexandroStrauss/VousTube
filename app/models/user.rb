@@ -15,6 +15,11 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         class_name: :Comment 
 
+    has_many :liked_objects,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Like
+
     after_initialize :ensure_session_token
 
     def self.find_by_credentials(identifier, password)

@@ -1,18 +1,22 @@
-import * as LikeActions from "../util/like_actions";
+import { updateLike, createLike, deleteLike } from "../actions/like_actions";
 
-export default likeSplitter = (newLike, oldLike) => {
+export const likeSplitter = (newLike, oldLike) => {
+    debugger
     if (oldLike && newLike.value === oldLike.value) {
-        LikeActions.deleteLike(oldLike)
+        debugger
+        deleteLike(oldLike.id)
     } 
     else if (oldLike) {
-        LikeActions.updateLike(newLike)
+        debugger
+        updateLike(oldLike.id)
     }
     else {
-        LikeActions.createLike(newLike)
+        debugger
+        createLike(newLike)
     }
 }
 
-export default likedOrDisliked = like => {
+export const likedOrDisliked = like => {
     if (like.value === 1) {
         return 'liked'
     } else {
@@ -20,7 +24,7 @@ export default likedOrDisliked = like => {
     }
 }
 
-export default commentLikeValue = likes => {
+export const commentLikeValue = likes => {
     var sum = 0; 
     likes.forEach(like => {
         sum += like.value;
@@ -29,7 +33,7 @@ export default commentLikeValue = likes => {
     else {return null}
 }
 
-export default videoLikeValue = likes => {
+export const videoLikeValue = likes => {
     var totalLikes = 0;
     var likeTotal = 0;
     var dislikeTotal = 0;

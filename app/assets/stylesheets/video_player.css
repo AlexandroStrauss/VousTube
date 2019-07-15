@@ -262,10 +262,17 @@ input[type=range]::-webkit-slider-runnable-track {
     justify-content: space-between;
 }
 
+.likes-dislikes {
+    display: flex;
+    flex-direction: row;
+}
 .likes-dislikes button {
     border: none;
     outline: none;
     background-color: inherit;
+    cursor: pointer;
+        color: #909090;
+
 }
 
 .views {
