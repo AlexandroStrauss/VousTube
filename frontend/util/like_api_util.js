@@ -1,5 +1,4 @@
 export const createLike = ({value, likeable_type, likeable_id}) => {
-    debugger
     return $.ajax({
         method: 'POST',
         url: `api/${likeable_type.toLowerCase()}s/${likeable_id}/likes`,
@@ -14,7 +13,6 @@ export const createLike = ({value, likeable_type, likeable_id}) => {
 }
 
 export const updateLike = (value, likeable_id, likeable_type, id) => {
-    debugger
     return $.ajax({
         method: 'PATCH',
         url: `api/${likeable_type.toLowerCase()}s/${likeable_id}/likes/${id}`,
@@ -29,7 +27,6 @@ export const updateLike = (value, likeable_id, likeable_type, id) => {
 }
 
 export const deleteLike = like => {
-    debugger
     return $.ajax({
         method: 'DELETE',
         url: `api/${like.likeable_type.toLowerCase()}s/${like.likeable_id}/likes/${like.id}`

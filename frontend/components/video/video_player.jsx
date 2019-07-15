@@ -61,11 +61,14 @@ class VideoPlayer extends React.Component {
             likedObjects[like.id] = true
         })
 
-        var oldLike = Object.values(this.state.likes).filter(like =>
+        debugger
+        const likes = this.state.likes ? this.state.likes : {}
+        var oldLike = Object.values(likes).filter(like =>
             (like.user_id === currentUser.id && likedObjects[like.id])
         )
 
         this.setState({oldLike: oldLike[0]})
+        debugger
     }
 
     componentDidUpdate(prevProps) {
@@ -321,20 +324,19 @@ class VideoPlayer extends React.Component {
         debugger
 
         if (oldLike && newLike.value === oldLike.value) {
-            debugger
-            this.props.deleteLike(oldLike).then(this.setState({oldLike: null}))
+            this.props.deleteLike(oldLike).then(delete(this.state.likes[oldLike.id])).then(this.setState({oldLike: null}))
         }
         else if (oldLike) {
             var updatedLike = oldLike
             updatedLike.value = -updatedLike.value
             
-            debugger
 
             this.props.updateLike(oldLike).then(this.setState({oldLike: updatedLike}))
         }
         else {
-            debugger
-            this.props.createLike(newLike).then(this.setState({ oldLike: newLike }))
+            this.props.createLike(newLike).then(this.setState({ oldLike: newLike })).then(this.props.fetchLikes("Video", this.props.match.params.id)).then(response =>
+                this.setState({ likes: response.likes })).then(this.setOldLike)
+                // .then(document.getElementById("like-counter").innerHTML = likeFunctions.videoLikeValue(this.state.likes).upvotes)
         }
     }
 
@@ -344,11 +346,7 @@ class VideoPlayer extends React.Component {
         
         this.likeSplitter(like);
     }
-
-    sendLike(like) {
-        this.props.createLike(like)
-    }
-
+    
     render() {
         if (!this.state.url || !this.props.video) {
             return null;
@@ -423,33 +421,29 @@ class VideoPlayer extends React.Component {
                             <div className="likes-dislikes">
                                 <button id={(this.state.oldLike && this.state.oldLike.value === 1) ? "vid-like-selected" : "vid-like"} onClick={this.likeVideo}>
                                     <i className="material-icons">thumb_up</i>
-
+                                        <div id="like-counter">
+                                            {/* 0 */}
+                                            {likeFunctions.videoLikeValue(this.state.likes).upvotes}
+                                        </div>
+ 
                                 </button>
 
-                                <div id="like-counter">
-                                    {/* 0 */}
-                                    {likeFunctions.videoLikeValue(this.state.likes).upvotes}
-                                </div>
 
-                                    <button id={(this.state.oldLike && this.state.oldLike.value === -1) ? "vid-dislike-selected" : "vid-dislike"} onClick={this.dislikeVideo}>
+                                <button id={(this.state.oldLike && this.state.oldLike.value === -1) ? "vid-dislike-selected" : "vid-dislike"} onClick={this.dislikeVideo}>
                                     <i className="material-icons">thumb_down</i>
+                                        <div id="dislike-counter">
+                                            {/* 0 */}
+                                            {likeFunctions.videoLikeValue(this.state.likes).downvotes}
+                                        </div>
+
 
                                 </button>
-                                    <div id="like-counter">
-                                        {/* 0 */}
-                                        {likeFunctions.videoLikeValue(this.state.likes).downvotes}
-                                    </div>
-
                                 </div>
                                     <div className="sentiment-bar">
                                     <div className={this.state.oldLike ? "like-bar-liked" : "like-bar"} style={{ width: (likeFunctions.videoLikeValue(this.state.likes).totalLikes === 0 ? "50%" : ((likeFunctions.videoLikeValue(this.state.likes).upvotes / likeFunctions.videoLikeValue(this.state.likes).totalLikes) * 100) + "%") }}>
 
-                                    </div>
-
-                                
+                                    </div>                                
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -469,9 +463,7 @@ class VideoPlayer extends React.Component {
                 </div>
                 
                 <Route 
-                // path={`videos/${this.props.video.id}`}
                     component={CommentIndexContainer}
-                // comments={this.state.comments}
                 />
 
             </figure>

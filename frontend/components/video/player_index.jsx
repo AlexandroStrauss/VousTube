@@ -13,7 +13,7 @@ class PlayerIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchVideos();
+        this.props.fetchVideos().then(this.randomize(this.props.videos));
     }
 
     timestamp(time) {
@@ -39,7 +39,6 @@ class PlayerIndex extends React.Component {
 
     render() {
         const videos = this.props.videos ? this.props.videos.map(video => {
-            // debugger
             return (
                 <li className="video" key={video.id}>
                     <a className="video-tile" href={`/#/videos/${video.id}`}>
@@ -54,8 +53,8 @@ class PlayerIndex extends React.Component {
                 </li>
             )
         }) : []
-        const randVideos = this.randomize(videos);
-
+        // const randVideos = this.randomize(videos);
+        const randVideos = videos;
         return (
             <ul className="player-idx">
                 <p>Up next</p>

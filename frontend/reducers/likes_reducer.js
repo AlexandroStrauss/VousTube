@@ -7,14 +7,13 @@ const likesReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_LIKE:
-            debugger
             // const {like} = action.like
-
 
             return merge({}, state, { [action.like.id]: action.like })
 
         case RECEIVE_LIKES:
 
+        debugger
             // const newState = {};
             // Object.values(action.likes).forEach(like => {
             //     newState[like.id] = like;

@@ -253,7 +253,6 @@ input[type=range]::-webkit-slider-runnable-track {
     position: relative;
     top: -42px;
     cursor: pointer;
-
 }
 
 .vid-stats {
@@ -269,7 +268,7 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .likes-dislikes button {
     border: none;
-    outline: none;
+    /* outline: none; */
     background-color: inherit;
     cursor: pointer;
         color: #909090;
@@ -307,4 +306,16 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .like-bar-flex {
     width: 128px;
+}
+
+#vid-dislike, #vid-dislike-selected, #vid-like, #vid-like-selected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#like-counter, #dislike-counter{
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0 0 0 8px; 
 }

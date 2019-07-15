@@ -19,7 +19,7 @@ export default (state = {}, action) => {
             // anotherNewState[comment.video_id].commentIds.push(comment.id);
             return anotherNewState;
         case RECEIVE_LIKE:
-            return merge({}, state, action.like)
+            return merge({}, state)
         default:
             return state;
     }
