@@ -71,7 +71,7 @@ video-containter:hover + {
 
 .video-stats {
     width: 100%;
-    padding: 12px 0 8px;
+    padding: 12px 0 0px;
             border-bottom: 1px solid #e5e5e5;
 
 }
@@ -266,6 +266,7 @@ input[type=range]::-webkit-slider-runnable-track {
     display: flex;
     flex-direction: row;
 }
+
 .likes-dislikes button {
     border: none;
     outline: none;
@@ -285,4 +286,25 @@ input[type=range]::-webkit-slider-runnable-track {
 
 #vid-like-selected, #vid-dislike-selected {
     color: #055fd4;
+}
+
+.sentiment-bar {
+    width: 128px;
+    height: 2px;
+    background-color: #cccccc;
+}
+
+.like-bar-liked {
+    height: 2px;
+    background-color: #055fd4;
+}
+
+.like-bar {
+    height: 2px;
+    background-color: #909090;
+
+}
+
+.like-bar-flex {
+    width: 128px;
 }

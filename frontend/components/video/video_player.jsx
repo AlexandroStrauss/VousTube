@@ -441,8 +441,15 @@ class VideoPlayer extends React.Component {
                                     </div>
 
                                 </div>
-                                <div className="like-bar"></div>
-                                <div className="dislike-bar"></div>
+                                    <div className="sentiment-bar">
+                                    <div className={this.state.oldLike ? "like-bar-liked" : "like-bar"} style={{ width: (likeFunctions.videoLikeValue(this.state.likes).totalLikes === 0 ? "50%" : ((likeFunctions.videoLikeValue(this.state.likes).upvotes / likeFunctions.videoLikeValue(this.state.likes).totalLikes) * 100) + "%") }}>
+
+                                    </div>
+
+                                
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
