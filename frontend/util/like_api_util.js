@@ -12,7 +12,7 @@ export const createLike = ({value, likeable_type, likeable_id}) => {
     })
 }
 
-export const updateLike = (value, likeable_id, likeable_type, id) => {
+export const updateLike = ({value, likeable_id, likeable_type, id}) => {
     return $.ajax({
         method: 'PATCH',
         url: `api/${likeable_type.toLowerCase()}s/${likeable_id}/likes/${id}`,

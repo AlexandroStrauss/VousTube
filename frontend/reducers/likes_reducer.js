@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import {RECEIVE_LIKE, RECEIVE_LIKES } from '../actions/like_actions';
+import {RECEIVE_LIKE, RECEIVE_LIKES, REMOVE_LIKE } from '../actions/like_actions';
 import { RECEIVE_VIDEO, RECEIVE_COMMENT } from '../actions/video_actions';
 
 
@@ -11,9 +11,11 @@ const likesReducer = (state = {}, action) => {
 
             return merge({}, state, { [action.like.id]: action.like })
 
+        case REMOVE_LIKE: 
+            return merge({}, state)
+
         case RECEIVE_LIKES:
 
-        debugger
             // const newState = {};
             // Object.values(action.likes).forEach(like => {
             //     newState[like.id] = like;

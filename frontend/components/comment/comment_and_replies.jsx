@@ -56,15 +56,6 @@ class CommentAndReplies extends React.Component {
         this.props.createComment(comment).then(this.setState({ body: '' }));
     }
 
-    // showReplies() {
-    //     
-    //     this.props.comment.child_comments.forEach(reply => {
-    //         return(
-    //             <IndividualRepliesContainer id={reply.id}/> 
-    //         )
-    //     })
-    // }
-
     showReplyButtons() {
         if (!this.state.topClicked) {
             this.setState({
@@ -121,14 +112,18 @@ class CommentAndReplies extends React.Component {
                         <div id="comment-date">{comment.created_at}</div>
                     </div>
                         <div id="comment-body">{comment.body}</div>
-                        <div id="like-reply">
-                            <button id="comment-like">
-                                <i className="material-icons">thumb_up</i>
-                            </button>
 
-                            <button id="comment-dislike">
-                                <i className="material-icons">thumb_down</i>
-                            </button>
+                        <CommentLikesInterface comment={comment} currentUser={this.props.currentUser} /> 
+                        <div id="like-reply">
+                            {/* <div id="comment-like-interface">
+                                <button id="comment-like">
+                                    <i className="material-icons">thumb_up</i>
+                                </button>
+
+                                <button id="comment-dislike">
+                                    <i className="material-icons">thumb_down</i>
+                                </button>
+                            </div> */}
 
                             <button id="reply" onClick={this.showReplyForm.bind(this)}>
                                 REPLY
