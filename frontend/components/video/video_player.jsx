@@ -1,6 +1,6 @@
 import React from 'react';
 import CommentIndexContainer from '../comment/comment_index_container';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import * as likeFunctions from '../../util/like_functions';
 
 class VideoPlayer extends React.Component {
@@ -19,8 +19,6 @@ class VideoPlayer extends React.Component {
             alreadyDisliked: false,
             alreadyLiked: false
         }
-
-        //search in foreign keys for match: possible?
 
         this.buttonPresses = this.buttonPresses.bind(this);
         this.playPause = this.playPause.bind(this);
@@ -61,14 +59,12 @@ class VideoPlayer extends React.Component {
             likedObjects[like.id] = true
         })
 
-        debugger
         const likes = this.state.likes ? this.state.likes : {}
         var oldLike = Object.values(likes).filter(like =>
             (like.user_id === currentUser.id && likedObjects[like.id])
         )
 
         this.setState({oldLike: oldLike[0]})
-        debugger
     }
 
     componentDidUpdate(prevProps) {
@@ -126,8 +122,8 @@ class VideoPlayer extends React.Component {
                 this.setState({ play_icon: "play_arrow" })
             } else {
                 this.setState({ play_icon: "pause" })
+            }
         }
-    }
     }
 
     swapMute () {
@@ -145,7 +141,6 @@ class VideoPlayer extends React.Component {
             volBar.value = 0;
         }
     }
-
 
     swapFullscreen () {
         let video = document.getElementById('video');
@@ -311,17 +306,13 @@ class VideoPlayer extends React.Component {
 
     likeVideo(e) {
         e.preventDefault;
-        const like = ({value: 1, likeable_type: "Video", likeable_id: this.props.video.id, 
-            // user_id: this.props.currentUser.id
-        })
+        const like = ({value: 1, likeable_type: "Video", likeable_id: this.props.video.id })
 
         this.likeSplitter(like);
     }
 
     likeSplitter (newLike)  {
-
         const oldLike = this.state.oldLike;
-        debugger
 
         if (oldLike && newLike.value === oldLike.value) {
             this.props.deleteLike(oldLike).then(delete(this.state.likes[oldLike.id])).then(this.setState({oldLike: null}))
@@ -330,8 +321,8 @@ class VideoPlayer extends React.Component {
             var updatedLike = oldLike
             updatedLike.value = -updatedLike.value
             
-
-            this.props.updateLike(oldLike).then(this.setState({oldLike: updatedLike}))
+            this.props.updateLike(oldLike)
+            // .then(this.setState({oldLike: updatedLike}))
         }
         else {
             this.props.createLike(newLike).then(this.setState({ oldLike: newLike })).then(this.props.fetchLikes("Video", this.props.match.params.id)).then(response =>
@@ -343,14 +334,11 @@ class VideoPlayer extends React.Component {
     dislikeVideo(e) {
         e.preventDefault;
         const like = ({ value: -1, likeable_type: "Video", likeable_id: this.props.video.id, user_id: this.props.currentUser.id })
-        
         this.likeSplitter(like);
     }
     
     render() {
-        if (!this.state.url || !this.props.video) {
-            return null;
-        }
+        if (!this.state.url || !this.props.video) {return null;}
 
         const author = this.props.users[this.props.video.author_id]
         return (
@@ -363,13 +351,11 @@ class VideoPlayer extends React.Component {
 
                 <div id="seek-bar-played"
                     // onKeyDown={this.buttonPresses}
-
                     onClick={this.setTime}
                     >
                 </div>
                 <div id="seek-bar-buffered" 
                     // onKeyDown={this.buttonPresses}
-
                     onClick={this.setTime}
                     >
 
@@ -425,9 +411,7 @@ class VideoPlayer extends React.Component {
                                             {/* 0 */}
                                             {likeFunctions.videoLikeValue(this.state.likes).upvotes}
                                         </div>
- 
                                 </button>
-
 
                                 <button id={(this.state.oldLike && this.state.oldLike.value === -1) ? "vid-dislike-selected" : "vid-dislike"} onClick={this.dislikeVideo}>
                                     <i className="material-icons">thumb_down</i>
@@ -435,7 +419,6 @@ class VideoPlayer extends React.Component {
                                             {/* 0 */}
                                             {likeFunctions.videoLikeValue(this.state.likes).downvotes}
                                         </div>
-
 
                                 </button>
                                 </div>
@@ -462,9 +445,7 @@ class VideoPlayer extends React.Component {
                     <div className="vid-description">{this.props.video.description}</div>
                 </div>
                 
-                <Route 
-                    component={CommentIndexContainer}
-                />
+                <Route component={CommentIndexContainer}/>
 
             </figure>
         )

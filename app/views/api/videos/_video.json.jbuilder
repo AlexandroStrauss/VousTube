@@ -18,6 +18,9 @@ end
 json.comments do 
     json.comments do 
         video.comments.each do |comment|
+            comment.likes.each do |like|
+                 json.partial! 'api/likes/like', like: like
+            end
             json.set! comment.id do
                 json.partial! 'api/comments/comment', comment: comment
             end

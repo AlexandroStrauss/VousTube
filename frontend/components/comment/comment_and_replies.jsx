@@ -16,6 +16,7 @@ class CommentAndReplies extends React.Component {
         this.showReplyButtons = this.showReplyButtons.bind(this);
         this.repliesLength = this.repliesLength.bind(this);
         this.toggleExpand = this.toggleExpand.bind(this);
+
     }
 
     update(field) {
@@ -95,12 +96,18 @@ class CommentAndReplies extends React.Component {
 
 
     render() {
+        var likedObjects = {}
+        this.props.currentUser.liked_objects.forEach(like => {
+            likedObjects[like.id] = true
+        })
+
+
         const comment = this.props.comment
         const author = this.props.users[comment.author_id]
 
         const replies = comment.child_comments.map(reply => {
             return (
-                <IndividualRepliesContainer id={reply.id} />
+                <IndividualRepliesContainer id={reply.id} likedObjects={likedObjects} />
             )
         })
         return (
@@ -115,11 +122,11 @@ class CommentAndReplies extends React.Component {
                     </div>
                         <div id="comment-body">{comment.body}</div>
                         <div id="like-reply">
-                            <button id="like">
+                            <button id="comment-like">
                                 <i className="material-icons">thumb_up</i>
                             </button>
 
-                            <button id="dislike">
+                            <button id="comment-dislike">
                                 <i className="material-icons">thumb_down</i>
                             </button>
 

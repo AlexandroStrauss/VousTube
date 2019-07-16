@@ -16,8 +16,6 @@ const mapStateToProps = (state, ownProps) => {
         replies,
         users: state.entities.users,
         currentUser: state.entities.users[state.session.id],
-
-
     }
 }
 

@@ -1,6 +1,6 @@
 #top-comment-text {
     outline: none;
-        resize: none;
+    resize: none;
     border: none;
     border-radius: 0;
     background-color: inherit;
@@ -153,13 +153,17 @@
     margin: 24px 0 32px;
 }
 
-#like, #dislike {
+#commment-like, #comment-dislike {
     padding: 8px;
 }
 
-#like i, #dislike i {
+#comment-like i, #comment-dislike i {
     font-size: 16px;
     color: #909090;
+}
+
+#comment-like i:hover, #comment-dislike i:hover {
+    color: #606060;
 }
 
 #everything-comment, #reply-comment {

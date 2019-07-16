@@ -32,11 +32,11 @@ class IndividualReplies extends React.Component {
                         </div>
                         <div id="comment-body">{comment.body}</div>
                         <div id="like-reply">
-                            <button id="like">
+                            <button id="comment-like">
                                 <i className="material-icons">thumb_up</i>
                             </button>
 
-                            <button id="dislike">
+                            <button id="comment-dislike">
                                 <i className="material-icons">thumb_down</i>
                             </button>
 
