@@ -29,17 +29,15 @@ class VideoLikeInterface extends React.Component {
     setOldLike() {
         var currentUser = this.props.currentUser
         var likedObjects = {}
-        debugger
         currentUser.liked_objects.forEach(like => {
             likedObjects[like.id] = true
         })
 
         const likes = this.state.likes ? this.state.likes : {}
         var oldLike = Object.values(likes).filter(like =>
-            (like.user_id === currentUser.id && likedObjects[like.id])
+            (like.user_id === currentUser.id && likedObjects[like.id] && like.likeable_type === "Video")
         )
 
-        debugger
         this.setState({ oldLike: oldLike[0] })
     }
 

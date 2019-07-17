@@ -153,17 +153,20 @@
     margin: 24px 0 32px;
 }
 
-#commment-like, #comment-dislike {
+#commment-like, #comment-dislike, #comment-like-selected, #comment-dislike-selected {
     padding: 8px;
+    cursor: pointer;
+
 }
 
-#comment-like i, #comment-dislike i {
+#comment-like i, #comment-like-selected i, #comment-dislike i, #comment-dislike-selected i {
     font-size: 16px;
     color: #909090;
 }
 
-#comment-like i:hover, #comment-dislike i:hover {
+#comment-like i:hover, #comment-like-selected i:hover, #comment-dislike i:hover, #comment-dislike-selected i:hover {
     color: #606060;
+
 }
 
 #everything-comment, #reply-comment {
@@ -186,7 +189,6 @@
     color: #ffffff;
     border-radius: 50%;
     font-size: 24px;
-    /* padding: 0px 18px; */
     margin: 0 16px 0 0;
     width: 24px;
     min-width: 24px;
@@ -217,3 +219,15 @@
     flex-direction: column;
     width: 100%;
 }
+
+#comment-like-selected i, #comment-dislike-selected i {
+    color: #055fd4;
+}
+
+/* #comment-like-interface button:hover {
+    color: #606060;
+}
+
+#comment-like-interface button {
+    cursor: pointer;
+} */

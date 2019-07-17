@@ -1,6 +1,7 @@
 import React from 'react';
 import { merge } from 'lodash';
 import IndividualRepliesContainer from './individual_replies_container';
+import CommentLikeInterfaceContainer from './comment_like_interface_container';
 
 class CommentAndReplies extends React.Component {
     constructor (props) {
@@ -112,9 +113,10 @@ class CommentAndReplies extends React.Component {
                         <div id="comment-date">{comment.created_at}</div>
                     </div>
                         <div id="comment-body">{comment.body}</div>
-
-                        <CommentLikesInterface comment={comment} currentUser={this.props.currentUser} /> 
+                        
                         <div id="like-reply">
+
+                        <CommentLikeInterfaceContainer comment={comment} /> 
                             {/* <div id="comment-like-interface">
                                 <button id="comment-like">
                                     <i className="material-icons">thumb_up</i>

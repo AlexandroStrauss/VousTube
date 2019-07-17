@@ -8,6 +8,12 @@ class CommentLikeInterface extends React.Component {
             oldLike: null,
             likes: null,
         }
+
+        this.refreshLikeValues = this.refreshLikeValues.bind(this);
+        this.setOldLike = this.setOldLike.bind(this);
+        this.likeComment = this.likeComment.bind(this);
+        this.dislikeComment = this.dislikeComment.bind(this);
+        this.likeSplitter = this.likeSplitter.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +36,7 @@ class CommentLikeInterface extends React.Component {
 
         const likes = this.state.likes ? this.state.likes : {}
         var oldLike = Object.values(likes).filter(like =>
-            (like.user_id === currentUser.id && likedObjects[like.id])
+            (like.user_id === currentUser.id && likedObjects[like.id] && like.likeable_type === "Comment")
         )
 
         debugger
@@ -68,21 +74,23 @@ class CommentLikeInterface extends React.Component {
             this.props.updateLike(oldLike)
         }
         else {
+            debugger
             this.props.createLike(newLike).then(this.refreshLikeValues)
         }
     }
 
     render() {
+        debugger
         return (
             <div id="comment-like-interface">
-                <button id="comment-like" onClick={this.likeComment}>
+                <button id={this.state.oldLike && this.state.oldLike.value === 1 ? "comment-like-selected" : "comment-like"} onClick={this.likeComment}>
                     <i className="material-icons">thumb_up</i>
                     <div id="comment-like-counter">
                         {likeFunctions.commentLikeValue(this.state.likes)}
                     </div>
                 </button>
 
-                <button id="comment-dislike" onClick={this.dislikeComment}>
+                <button id={this.state.oldLike && this.state.oldLike.value === -1 ? "comment-dislike-selected" : "comment-dislike"} onClick={this.dislikeComment}>
                     <i className="material-icons">thumb_down</i>
                 </button>
             </div>

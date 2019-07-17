@@ -34,7 +34,6 @@ export default (state = {}, action) => {
 
         // case RECEIVE_LIKES: 
         //     const novoEstado = {} 
-        //     debugger
         //     Object.values(action.likes).forEach(like => {
         //         novoEstado[like.id] = like;
         //     })
