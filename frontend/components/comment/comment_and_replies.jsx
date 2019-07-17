@@ -2,6 +2,7 @@ import React from 'react';
 import { merge } from 'lodash';
 import IndividualRepliesContainer from './individual_replies_container';
 import CommentLikeInterfaceContainer from './comment_like_interface_container';
+import { Route } from 'react-router-dom';
 
 class CommentAndReplies extends React.Component {
     constructor (props) {
@@ -89,9 +90,11 @@ class CommentAndReplies extends React.Component {
 
     render() {
         var likedObjects = {}
-        this.props.currentUser.liked_objects.forEach(like => {
-            likedObjects[like.id] = true
-        })
+        if(this.props.currentUser) {
+            this.props.currentUser.liked_objects.forEach(like => {
+                likedObjects[like.id] = true
+            })
+        }
 
 
         const comment = this.props.comment
@@ -115,8 +118,10 @@ class CommentAndReplies extends React.Component {
                         <div id="comment-body">{comment.body}</div>
                         
                         <div id="like-reply">
+                            
+                        <Route render={(props) => <CommentLikeInterfaceContainer {...props} comment={comment} />} />
 
-                        <CommentLikeInterfaceContainer comment={comment} /> 
+                        {/* <Route component={CommentLikeInterfaceContainer} props={{comment: comment}} />  */}
                             {/* <div id="comment-like-interface">
                                 <button id="comment-like">
                                     <i className="material-icons">thumb_up</i>

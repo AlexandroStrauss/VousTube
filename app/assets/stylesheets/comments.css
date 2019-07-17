@@ -156,6 +156,7 @@
 #commment-like, #comment-dislike, #comment-like-selected, #comment-dislike-selected {
     padding: 8px;
     cursor: pointer;
+    outline: default;
 
 }
 

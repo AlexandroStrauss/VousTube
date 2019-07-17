@@ -27,18 +27,20 @@ class VideoLikeInterface extends React.Component {
     }
 
     setOldLike() {
-        var currentUser = this.props.currentUser
-        var likedObjects = {}
-        currentUser.liked_objects.forEach(like => {
-            likedObjects[like.id] = true
-        })
+        if (this.props.currentUser) {
+            const currentUser = this.props.currentUser
+            var likedObjects = {}
+            currentUser.liked_objects.forEach(like => {
+                likedObjects[like.id] = true
+            })
 
-        const likes = this.state.likes ? this.state.likes : {}
-        var oldLike = Object.values(likes).filter(like =>
-            (like.user_id === currentUser.id && likedObjects[like.id] && like.likeable_type === "Video")
-        )
+            const likes = this.state.likes ? this.state.likes : {}
+            var oldLike = Object.values(likes).filter(like =>
+                (like.user_id === currentUser.id && likedObjects[like.id] && like.likeable_type === "Video")
+            )
 
-        this.setState({ oldLike: oldLike[0] })
+            this.setState({ oldLike: oldLike[0] })
+        }
     }
 
     likeVideo(e) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Redirect, Route, withRouter } from 'react-router-dom';
 import { merge } from 'lodash';
 import CommentAndRepliesContainer from './comment_and_replies_container';
+import { Route } from 'react-router-dom';
 
 class CommentIndex extends React.Component {
     constructor(props) {

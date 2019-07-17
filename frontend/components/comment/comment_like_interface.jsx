@@ -14,9 +14,12 @@ class CommentLikeInterface extends React.Component {
         this.likeComment = this.likeComment.bind(this);
         this.dislikeComment = this.dislikeComment.bind(this);
         this.likeSplitter = this.likeSplitter.bind(this);
+        this.redirectIfNotLoggedIn = this.redirectIfNotLoggedIn.bind(this);
+        debugger
     }
 
     componentDidMount() {
+        debugger
         this.props.fetchLikes("Comment", this.props.comment.id).then(response =>
             this.setState({ likes: response.likes })).then(this.setOldLike)
     }
@@ -27,24 +30,32 @@ class CommentLikeInterface extends React.Component {
     }
 
     setOldLike() {
-        var currentUser = this.props.currentUser
-        var likedObjects = {}
-        debugger
-        currentUser.liked_objects.forEach(like => {
-            likedObjects[like.id] = true
-        })
+        if (this.props.currentUser) {
+            var currentUser = this.props.currentUser
+            var likedObjects = {}
 
-        const likes = this.state.likes ? this.state.likes : {}
-        var oldLike = Object.values(likes).filter(like =>
-            (like.user_id === currentUser.id && likedObjects[like.id] && like.likeable_type === "Comment")
-        )
+            currentUser.liked_objects.forEach(like => {
+                likedObjects[like.id] = true
+            })
 
-        debugger
-        this.setState({ oldLike: oldLike[0] })
+            const likes = this.state.likes ? this.state.likes : {}
+            var oldLike = Object.values(likes).filter(like =>
+                (like.user_id === currentUser.id && likedObjects[like.id] && like.likeable_type === "Comment")
+            )
+
+            this.setState({ oldLike: oldLike[0] })
+        }
+    }
+
+    redirectIfNotLoggedIn() {
+        if (!this.props.currentUser) {
+            this.props.history.push('/login')
+        }
     }
 
     likeComment(e) {
         e.preventDefault;
+        this.redirectIfNotLoggedIn();
         const like = ({ value: 1, likeable_type: "Comment", likeable_id: this.props.comment.id })
 
         this.likeSplitter(like);
@@ -52,6 +63,7 @@ class CommentLikeInterface extends React.Component {
 
     dislikeComment(e) {
         e.preventDefault;
+        this.redirectIfNotLoggedIn();
         const like = ({ value: -1, likeable_type: "Comment", likeable_id: this.props.comment.id })
 
         this.likeSplitter(like);

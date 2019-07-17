@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentLikeInterfaceContainer from './comment_like_interface_container';
+import { Route } from 'react-router-dom';
 
 class IndividualReplies extends React.Component {
     constructor(props) {
@@ -34,7 +35,8 @@ class IndividualReplies extends React.Component {
                         <div id="comment-body">{comment.body}</div>
                         <div id="like-reply">
                             
-                            <CommentLikeInterfaceContainer comment={comment} /> 
+                            <Route render={props => <CommentLikeInterfaceContainer {...props} comment={comment} />} />
+                            {/* <Route component={CommentLikeInterfaceContainer} props={{comment: comment}}/>  */}
                             {/* <button id="comment-like">
                                 <i className="material-icons">thumb_up</i>
                             </button>
