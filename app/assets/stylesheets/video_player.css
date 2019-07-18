@@ -264,6 +264,7 @@ input[type=range]::-webkit-slider-runnable-track {
 .likes-dislikes {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .likes-dislikes button {
@@ -318,4 +319,58 @@ input[type=range]::-webkit-slider-runnable-track {
     font-size: 13px;
     font-weight: bold;
     margin: 0 0 0 8px; 
+}
+
+#like-sign-in-popup, #dislike-sign-in-popup {
+    min-width: 380px; 
+    min-height: 175px;
+    position: absolute;
+    top: 76px;
+    z-index: 14;
+    background-color: #ffffff;
+
+    box-shadow: 0px 5px 25px 2px #909090; 
+}
+
+#like-sign-in-popup {
+
+}
+
+#dislike-sign-in_popup {
+    left: 80px;
+}
+
+#sign-in-popup-hidden {
+    display: none;
+}
+
+#you-like {
+    padding: 0px 24px;
+    margin: 24px 0 16px; 
+    color: #0d0d0d;
+    font-size: 16px;
+}
+
+#so-sign-in {
+    font-size: 14px;
+    padding: 0px 24px;
+    margin: 4px 0 32px; 
+    color: #686868;
+}
+
+#redirect-to-sign-in {
+    padding: 8px 8px 8px 8px;
+    border-top: 1px solid #e5e5e5;
+}
+
+#redirect-to-sign-in button {
+    padding: 10px 16px;
+    color: #055fd4;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#redirect-to-sign-in button:focus {
+    background-color: #e5e5e5;
+    outline: none;
 }

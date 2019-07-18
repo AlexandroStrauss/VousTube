@@ -349,7 +349,7 @@ class VideoPlayer extends React.Component {
                                 0 views
                             </div>
 
-                            <VideoLikeInterfaceContainer video={this.props.video}/>
+                            <Route render={props => <VideoLikeInterfaceContainer {...props} video={this.props.video} />} /> 
                         </div>
                     </div>
 

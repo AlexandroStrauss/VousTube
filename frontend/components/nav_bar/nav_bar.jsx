@@ -16,6 +16,7 @@ class NavBar extends React.Component {
         this.state = {
             clicked: false,
             open: false,
+            loggedIn: false
         }
         this.videoClick = this.videoClick.bind(this)
         this.sidebarClick = this.sidebarClick.bind(this)

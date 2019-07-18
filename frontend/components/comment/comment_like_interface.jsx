@@ -15,11 +15,9 @@ class CommentLikeInterface extends React.Component {
         this.dislikeComment = this.dislikeComment.bind(this);
         this.likeSplitter = this.likeSplitter.bind(this);
         this.redirectIfNotLoggedIn = this.redirectIfNotLoggedIn.bind(this);
-        debugger
     }
 
     componentDidMount() {
-        debugger
         this.props.fetchLikes("Comment", this.props.comment.id).then(response =>
             this.setState({ likes: response.likes })).then(this.setOldLike)
     }
@@ -86,13 +84,11 @@ class CommentLikeInterface extends React.Component {
             this.props.updateLike(oldLike)
         }
         else {
-            debugger
             this.props.createLike(newLike).then(this.refreshLikeValues)
         }
     }
 
     render() {
-        debugger
         return (
             <div id="comment-like-interface">
                 <button id={this.state.oldLike && this.state.oldLike.value === 1 ? "comment-like-selected" : "comment-like"} onClick={this.likeComment}>

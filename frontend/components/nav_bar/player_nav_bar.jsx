@@ -68,7 +68,7 @@ class PlayerNavBar extends React.Component {
                     <div className="nav-right-side">
                         <div className="nav-btns">
                             <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
-                            <div className={this.state.clicked ? "vid-upload" : "vid-upload-hidden"}>
+                            <div className={this.state.clicked ? (this.props.currentUser ? "vid-upload" : "vid-upload-shifted") : "vid-upload-hidden"}>
                                 <Link to={this.loginPath()}>
                                     <i className="material-icons">cloud_upload</i>
                                     <p>Upload video</p>
