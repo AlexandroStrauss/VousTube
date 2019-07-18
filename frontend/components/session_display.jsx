@@ -48,7 +48,7 @@ class SessionDisplay extends React.Component{
                             </div>
                         </div>
                         <br></br>
-                        <button onClick={() => this.props.logout()}>
+                        <button onClick={() => this.props.logout().then(location.reload())}>
                             <FontAwesomeIcon icon={faSignOutAlt} />
                             <p>Sign Out</p>
                         </button>
