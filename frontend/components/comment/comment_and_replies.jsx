@@ -89,13 +89,13 @@ class CommentAndReplies extends React.Component {
 
 
     render() {
+        debugger
         var likedObjects = {}
         if(this.props.currentUser) {
             this.props.currentUser.liked_objects.forEach(like => {
                 likedObjects[like.id] = true
             })
         }
-
 
         const comment = this.props.comment
         const author = this.props.users[comment.author_id]
@@ -120,17 +120,6 @@ class CommentAndReplies extends React.Component {
                         <div id="like-reply">
                             
                         <Route render={(props) => <CommentLikeInterfaceContainer {...props} comment={comment} />} />
-
-                        {/* <Route component={CommentLikeInterfaceContainer} props={{comment: comment}} />  */}
-                            {/* <div id="comment-like-interface">
-                                <button id="comment-like">
-                                    <i className="material-icons">thumb_up</i>
-                                </button>
-
-                                <button id="comment-dislike">
-                                    <i className="material-icons">thumb_down</i>
-                                </button>
-                            </div> */}
 
                             <button id="reply" onClick={this.showReplyForm.bind(this)}>
                                 REPLY

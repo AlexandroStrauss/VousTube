@@ -178,40 +178,6 @@ class VideoForm extends React.Component {
             <div className="vid-form-background">
                 {this.twoPages()}
             </div>
-            // <div className="vid-form">
-            //     <form className="video-form">
-            //         {/* <label htmlFor="title" placeholder="Title"> */}
-            //                 <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
-
-            //             </input>
-            //         {/* </label> */}
-
-            //             {/* <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>
-            //                 <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
-            //                 <label for="pwd">Password</label>
-
-            //                 {this.passwordError()}
-            //             </div> */}
-
-
-            //         <label htmlFor="description" >
-            //                 <textarea id="description" placeholder="Description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>
-
-            //             </textarea>
-            //         </label> 
-
-
-            //         {/* <label>Choose A Thumbnail
-            //             <input type="file"
-            //                 onChange={this.handleFile.bind(this)}
-            //                 accept="image/*"
-            //             />
-            //         </label> */}
-
-            //         <input type="submit" className="submit" onClick={this.handleSubmit} value="Publish" />
-            //     </form>
-            // </div>
-            // </div>
         )
     }
 }

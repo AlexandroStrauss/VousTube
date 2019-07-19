@@ -3,25 +3,46 @@
     height: 100%;
     width: 100vw;
     display: flex;
-    flex-direction: row;
     width: 80vw;
     justify-content: space-between;
 }
 
-@media only screen and (max-width: 1000px) {
-    #player-container {
+@media only screen and (max-width: 1300px) {
+    /* .player-idx {
+        position: default;
+    } */
+    
+    #player-background {
+        display: flex;
         flex-direction: column;
     }
+
+    /* #video-container {
+        width: 100%;
+    }
+
+    .player-idx {
+        width: 100%;
+    } */
 }
 
 #player-background {
     background-color: #ffffff;
     width: 100vw;
-    height: 100%;
+    height: auto;
 }
 
+/* #video-container {
+    float: left;
+    width: 71.4%; 
+} */
+
+#player-container:after {
+    content: "";
+  display: table;
+  clear: both;
+}
 #video-container {
-    /* position: absolute; */
     left: 0px;  
     margin: 16px 40px 16px 48px;  
     height: 71.4%;
