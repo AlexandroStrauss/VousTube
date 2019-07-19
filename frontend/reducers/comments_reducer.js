@@ -7,6 +7,11 @@ const commentsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_COMMENT:
             const {comment} = action;
+            // debugger
+            const parentComment = state[comment.parent_comment_id]
+            if (parentComment) {
+                parentComment.child_comments.push(comment)
+            }
             return merge({}, state, { [comment.id]: comment})
         case RECEIVE_VIDEO:
             return merge({}, state, action.comments)

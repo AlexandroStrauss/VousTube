@@ -18,7 +18,6 @@ class CommentAndReplies extends React.Component {
         this.showReplyButtons = this.showReplyButtons.bind(this);
         this.repliesLength = this.repliesLength.bind(this);
         this.toggleExpand = this.toggleExpand.bind(this);
-
     }
 
     update(field) {
@@ -89,7 +88,6 @@ class CommentAndReplies extends React.Component {
 
 
     render() {
-        debugger
         var likedObjects = {}
         if(this.props.currentUser) {
             this.props.currentUser.liked_objects.forEach(like => {
