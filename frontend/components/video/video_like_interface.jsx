@@ -81,7 +81,6 @@ class VideoLikeInterface extends React.Component {
     }
 
     hidePopups(e) {
-        debugger
         // e.preventDefault();
         this.setState({ displayDislikePopup: false, displayLikePopup: false })        
     }
