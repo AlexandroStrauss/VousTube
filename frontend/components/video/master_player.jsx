@@ -17,11 +17,13 @@ class MasterPlayer extends React.Component {
 
     render() {
         return (
+            <div id="player-background">
             <div id="player-container">
                 {/* <PlayerNavBarContainer /> */}
 
                 <VideoPlayerContainer />
                 <PlayerIndexContainer />
+            </div>
             </div>
         )
     }

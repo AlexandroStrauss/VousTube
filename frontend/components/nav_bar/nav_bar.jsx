@@ -74,9 +74,9 @@ class NavBar extends React.Component {
                                 <p>Upload video</p>
                                 </Link>
                             </div>
-                        <button><FontAwesomeIcon icon={faTh} /></button>
-                        <button><FontAwesomeIcon icon={faComment} /></button>
-                        <button>{this.bellMore()}</button>
+                        <button id="not-clickable"><FontAwesomeIcon icon={faTh} /></button>
+                        <button id="not-clickable"><FontAwesomeIcon icon={faComment} /></button>
+                        <button id="not-clickable">{this.bellMore()}</button>
                     </div>
 
 

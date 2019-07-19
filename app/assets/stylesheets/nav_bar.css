@@ -345,3 +345,8 @@
     display: none;
     padding: none;
 }
+
+/* indicate that "only-for-show" buttons are not clickable */
+#not-clickable {
+    cursor: not-allowed;
+}

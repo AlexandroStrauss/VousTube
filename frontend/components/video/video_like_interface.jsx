@@ -25,6 +25,10 @@ class VideoLikeInterface extends React.Component {
             this.setState({ likes: response.likes })).then(this.setOldLike)
     }
 
+    componentDidUpdate() {
+
+    }
+
     refreshLikeValues() {
         this.props.fetchLikes("Video", this.props.video.id).then(response =>
             this.setState({ likes: response.likes })).then(this.setOldLike)
@@ -60,7 +64,7 @@ class VideoLikeInterface extends React.Component {
             this.likeSplitter(like);
         } else {
             this.setState({ displayDislikePopup: false, displayLikePopup: !this.state.displayLikePopup })
-                .then(document.getElementById('like-sign-in-popup').focus())
+            (document.getElementById('like-sign-in-popup').focus())
         }
     }
 
@@ -71,15 +75,15 @@ class VideoLikeInterface extends React.Component {
             this.likeSplitter(like);
         } else {
             this.setState({ displayDislikePopup: !this.state.displayDislikePopup, displayLikePopup: false})
-                .then(document.getElementById('disike-sign-in-popup').focus())
+            (document.getElementById('disike-sign-in-popup').focus())
 
         }
     }
 
     hidePopups(e) {
-        e.preventDefault;
-        this.setState({ displayDislikePopup: false, displayLikePopup: false })
-            
+        debugger
+        // e.preventDefault();
+        this.setState({ displayDislikePopup: false, displayLikePopup: false })        
     }
 
     displayLikeSignInPopup() {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
+// this class deals solely with the Sign In button when not logged in, and the user display when logged in
 class SessionDisplay extends React.Component{
     constructor(props) {
         super(props);
@@ -48,7 +49,9 @@ class SessionDisplay extends React.Component{
                             </div>
                         </div>
                         <br></br>
-                        <button onClick={() => this.props.logout().then(location.reload())}>
+
+                        {/* when you click the logout button, it reloads your currrent page so that all props that rely on currentUser are up to date  */}
+                        <button onClick={() => this.props.logout().then(location.reload(true))}>
                             <FontAwesomeIcon icon={faSignOutAlt} />
                             <p>Sign Out</p>
                         </button>
