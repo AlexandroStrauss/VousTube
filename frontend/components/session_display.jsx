@@ -7,12 +7,12 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 class SessionDisplay extends React.Component{
     constructor(props) {
         super(props);
-        // this.state = this.props.currentUser;
         this.state = {
             clicked: false,
+            logoutClicked: false,
         }
-        // this.clicked = false;
         this.buttonClick = this.buttonClick.bind(this);
+        this.logout = this.logout.bind(this);
     }
     
     componentDidMount() {
@@ -23,6 +23,9 @@ class SessionDisplay extends React.Component{
         this.setState({ clicked: !this.state.clicked })
     }
 
+    logout() {
+        this.props.logout().then(this.setState({ logoutClicked: true }))
+    }
 
     render() {
         if (this.props.currentUser) {
@@ -51,7 +54,7 @@ class SessionDisplay extends React.Component{
                         <br></br>
 
                         {/* when you click the logout button, it reloads your currrent page so that all props that rely on currentUser are up to date  */}
-                        <button onClick={() => this.props.logout().then(location.reload(true))}>
+                        <button onClick={this.logout}>
                             <FontAwesomeIcon icon={faSignOutAlt} />
                             <p>Sign Out</p>
                         </button>

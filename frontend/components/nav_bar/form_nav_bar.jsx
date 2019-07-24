@@ -44,7 +44,7 @@ class FormNavBar extends React.Component {
         return (
             <header className='form-header'>
 
-                <div class="left-nav-bar">
+                <div className="left-nav-bar">
                     <button><FontAwesomeIcon icon={faBars} /></button>
                     <Link to="/"><img src={window.logo} width="101" height="25" /></Link>
 
@@ -57,7 +57,7 @@ class FormNavBar extends React.Component {
                         <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
                         <div className={this.state.clicked ? "vid-upload" : "vid-upload-hidden"}>
                             <Link to={this.loginPath()}>
-                                <i class="material-icons">cloud_upload</i>
+                                <i className="material-icons">cloud_upload</i>
                                 <p>Upload video</p>
                             </Link>
                         </div>

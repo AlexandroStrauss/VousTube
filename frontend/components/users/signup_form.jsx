@@ -28,7 +28,8 @@ class SignupForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(this.setState({submitted: true}));
-        <Redirect to={`/users/${user.id}`} />
+        this.props.history.goBack();
+        // <Redirect to={`/users/${user.id}`} />
     }
 
     isEmpty(string) {

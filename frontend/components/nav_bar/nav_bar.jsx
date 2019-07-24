@@ -35,9 +35,12 @@ class NavBar extends React.Component {
     }
 
     loginPath() {
+        debugger
         if (this.props.currentUser) {
+            debugger
             return '/videos/new'
         } else {
+            debugger
             return '/login'
         }
     }
@@ -54,31 +57,26 @@ class NavBar extends React.Component {
         return (
             <>
             <header>
-
                 <div className="left-nav-bar">
                     <button onClick={this.sidebarClick}><FontAwesomeIcon icon={faBars} /></button>
-                    {/* <div className="youtube-icon"><FontAwesomeIcon icon={faYoutube} /></div> */}
                     <Link to="/"><img src={window.logo} width="101" height="25"/></Link>
-                    {/* <Link to="/"><h1>VousTube</h1></Link> */}
-
                 </div>
 
-                    <SearchBarContainer />
+                <SearchBarContainer />
 
                 <div className="nav-right-side">
                     <div className="nav-btns">
                         <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
                             <div className={this.state.clicked ? (this.props.currentUser ? "vid-upload" : "vid-upload-shifted") : "vid-upload-hidden"}>
                                 <Link to={this.loginPath()}>
-                                <i className="material-icons">cloud_upload</i>
-                                <p>Upload video</p>
+                                    <i className="material-icons">cloud_upload</i>
+                                    <p>Upload video</p>
                                 </Link>
                             </div>
                         <button id="not-clickable"><FontAwesomeIcon icon={faTh} /></button>
                         <button id="not-clickable"><FontAwesomeIcon icon={faComment} /></button>
                         <button id="not-clickable">{this.bellMore()}</button>
                     </div>
-
 
                     <SessionDisplayContainer />
                 </div>
@@ -90,8 +88,6 @@ class NavBar extends React.Component {
                     <SideBar />
                 </section>
 
-    
-    
                 <VideoIndexContainer />
             </div>
             </>

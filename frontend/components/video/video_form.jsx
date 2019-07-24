@@ -7,24 +7,30 @@ class VideoForm extends React.Component {
             title: "",
             description: "",
             videoFile: null,
-            video: [],
+            videoUrl: null,
             images: [],
             imageFile: null,
             imageUrl: null,
             firstPage: true,
             videoReady: false,
             uploadProgress: 0,
+            titleError: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.handleImageFile = this.handleImageFile.bind(this);
         this.twoPages = this.twoPages.bind(this);
+        this.renderThumbnail = this.renderThumbnail.bind(this);
     }
+
+    //as user types in video title or description, this changes relevant value in state
     update(field) {
         return(e) => {
             this.setState({ [field]: e.target.value })
         }
     }
+
+    //handle video file submission
     handleFile(e) {
         this.setState({ firstPage: false })
 
@@ -34,16 +40,18 @@ class VideoForm extends React.Component {
         //     this.setState({uploadProgress: pc})
         // }, false);
 
-
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
             // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
-            this.setState({ videoFile: file, videoReady: true})
+            this.setState({
+                videoFile: file, videoReady: true, videoUrl: URL.createObjectURL(file)})
+            this.renderThumbnail();
         }
         if (file) {
             fileReader.readAsDataURL(file);
         }
+
     }
 
     // progressHandler(e) {
@@ -51,11 +59,10 @@ class VideoForm extends React.Component {
     //     this.setState({ uploadProgress: Math.round(percent)}) 
     // }
 
+    //self-explanatory
     handleImageFile(file) {
         const fileReader = new FileReader();
-        fileReader.onloadend = () => {
-            
-            // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
+        fileReader.onloadend = () => {            
             this.setState({ imageFile: file, imageUrl: fileReader.result})
         }
         if (file) {
@@ -63,43 +70,69 @@ class VideoForm extends React.Component {
         }
     }
 
+    //attempt to render preview thumbnail
+    renderThumbnail () {
+        const vid  = this.refs.thumbPreview;
+        const canvas = this.refs.canvas;
+        const context = canvas.getContext('2d');
+
+        debugger
+        context.drawImage(vid, 0, 0, 196, 100);
+        // var dataURI = canvas.toDataURL('image/jpeg');
+        debugger
+
+    }
+
+    //upon clicking "publish"...
     handleSubmit(e) {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('video[title]', this.state.title)
-        formData.append('video[description]', this.state.description)
-        if (this.state.videoFile) {
-            formData.append('video[video]', this.state.videoFile)
+
+        //will not upload if there is no title
+        if (this.state.title === "") {
+            this.setState({titleError: true})
+        } else {
+            const formData = new FormData();
+            formData.append('video[title]', this.state.title)
+            formData.append('video[description]', this.state.description)
+            if (this.state.videoFile) {
+                formData.append('video[video]', this.state.videoFile)
+            }
+
+            //technically the user can upload many images for a thumbnail
+            //(I found this was easier to work with)
+            //but only the first one they chose will be used
+            if (this.state.images[0]) {
+                formData.append('video[thumbnails][]', this.state.images[0])
+            }
+            // formData.append('video[thumbnail]', this.state.thumbUrl)
+            $.ajax({
+                url: '/api/videos',
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false
+            }).then(
+                response => {
+                    //redirects to newly-uploaded video!
+                    this.props.history.push(`/videos/${response.video.id}`)            },
+            )
         }
-        if (this.state.images[0]) {
-            formData.append('video[thumbnails][]', this.state.images[0])
-        }
-        // formData.append('video[thumbnail]', this.state.thumbUrl)
-        $.ajax({
-            url: '/api/videos',
-            method: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false
-        }).then(
-            response => {
-                this.props.history.push(`/videos/${response.video.id}`)            },
-        )
     }
 
     // titleErrors() {
     //     if (this.state.title === "" )
     // }
 
+    //the video form functions across two distinct pages depending on whether or not
+    //a video has been uploaded; this switches between them
     twoPages() {
-        
         if(this.state.firstPage === true) {
             return (
                 // <div className="vid-form-background">
                     <div className="upload-form">
 
                         <label>
-                        <i class="material-icons">cloud_upload</i>
+                        <i className="material-icons">cloud_upload</i>
 
                             Select file to upload
                             <p>Or drag and drop video files</p>
@@ -114,16 +147,18 @@ class VideoForm extends React.Component {
             if (this.state.images[0]) {
                 this.handleImageFile(this.state.images[0])
             }
-            const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : <img src={window.defaultImg} />
+            // const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : this.renderThumbnail
             const previewText = this.state.imageUrl ? "Your thumbnail" : "Default thumbnail"
             
             return (
                 <div className="vid-form">
                     <div className="thumbnail-sidebar">
-                        {preview}
-                    <div className="previewTxt">{previewText}</div>
+                        <canvas ref="canvas" width={196} height={100} ></canvas>
+                        <video ref="thumbPreview" src={this.state.videoUrl} controls={false} className="hidden">
+                        </video>
 
-                        
+                        {/* {preview} */}
+                    <div className="previewTxt">{previewText}</div>
                 </div>
 
                     <div className="main-column">
@@ -134,14 +169,7 @@ class VideoForm extends React.Component {
                         <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
 
                         </input>
-
-                        {/* <div className={this.passwordShort() ? "floating-label-error" : "floating-label"}>
-                            <input id="pwd" type={this.state.showPwd ? "text" : "password"} value={this.state.password} onChange={this.update('password')} />
-                            <label for="pwd">Password</label>
-
-                            {this.passwordError()}
-                        </div> */}
-
+                            {this.state.titleError ? <div className="title-error">Need a title</div>: <></>}
 
                         <label htmlFor="description" >
                             <textarea id="description" placeholder="Description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>
@@ -156,14 +184,6 @@ class VideoForm extends React.Component {
                                 accept="image/*" 
                                 multiple/>
                         </label>
-
-
-                        {/* <label>Choose A Thumbnail
-                        <input type="file"
-                            onChange={this.handleFile.bind(this)}
-                            accept="image/*"
-                        />
-                    </label> */}
 
                         <input type="submit" className="submit" onClick={this.handleSubmit} value="Publish" />
                     </form>

@@ -12,7 +12,7 @@
 
 .thumbnail-sidebar {
     width: 196px;
-    height: 100%;
+    height: 100;
 }
 
 .thumbnail-sidebar > img {
@@ -182,4 +182,24 @@
     font-size: 14px;
     margin: 0;
 
+}
+
+.title-error {
+    position: relative;
+    top: -12px; 
+    color: #ff0000;
+    font-size: 13px;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    width: 196px;
+    height: auto;
+    max-height: 100px;
+
+    /* display: none; */
 }

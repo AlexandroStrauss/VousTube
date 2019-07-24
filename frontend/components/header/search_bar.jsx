@@ -67,8 +67,7 @@ class SearchBar extends React.Component {
         if (this.state.search != "") {
             this.props.history.push({pathname: `/results/${this.state.search}`,
                 state: {videos: this.state.videoResults}}
-            )
-        
+            ).then(window.location.reload)
         } 
     }
 
@@ -80,17 +79,26 @@ class SearchBar extends React.Component {
     //         })
     //     }
     // }
+
+    goToResult(searchTerm) {
+        this.props.history.push({
+            pathname: `/results/${searchTerm}`,
+        })
+    }
     
     render () {
-        const results = this.searchResults().map((result, i) => {
+        const results = this.searchResults().map((result) => {
             return (
 
-                <li key={result.id} onClick={(e) => {
-                    e.preventDefault();
-                }}>
-                    <Link to={`/results/${result.title}`}>
+                <li key={result.id} onClick={
+                    (e) => {
+                        e.preventDefault();
+                        this.goToResult(result.title);
+                    }
+                }>
+                    {/* <Link to={`/results/${result.title}`}> */}
                     {result.title}
-                    </Link>
+                    {/* </Link> */}
 
                 </li>
             )
