@@ -8,6 +8,11 @@
                 json.imageUrl url_for(video.thumbnails[0])
             else
                 json.imageUrl false
+                # if (video.default_thumb)
+                #     json.default_thumb video.default_thumb
+                # else
+                #     json.default_thumb false
+                # end
             end
         end
     end

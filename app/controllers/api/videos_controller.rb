@@ -5,6 +5,7 @@ class Api::VideosController < ApplicationController
     end
 
     def create
+        debugger
         @video = Video.new(video_params)
         @video.author_id = current_user.id
         if @video.save

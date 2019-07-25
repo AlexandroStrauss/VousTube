@@ -1,4 +1,6 @@
 import React from 'react';
+import VideoThumbnail from 'react-video-thumbnail';
+import ReImg from 'reimg';
 
 class VideoForm extends React.Component {
     constructor(props) {
@@ -9,6 +11,7 @@ class VideoForm extends React.Component {
             videoFile: null,
             videoUrl: null,
             images: [],
+            defaultThumb: null,
             imageFile: null,
             imageUrl: null,
             firstPage: true,
@@ -43,10 +46,8 @@ class VideoForm extends React.Component {
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-            // this.setState({ videoFile: e.currentTarget.files[0], thumbUrl: fileReader.result })
             this.setState({
                 videoFile: file, videoReady: true, videoUrl: URL.createObjectURL(file)})
-            this.renderThumbnail();
         }
         if (file) {
             fileReader.readAsDataURL(file);
@@ -70,23 +71,11 @@ class VideoForm extends React.Component {
         }
     }
 
-    //attempt to render preview thumbnail
-    renderThumbnail () {
-        const vid  = this.refs.thumbPreview;
-        const canvas = this.refs.canvas;
-        const context = canvas.getContext('2d');
-
-        debugger
-        context.drawImage(vid, 0, 0, 196, 100);
-        // var dataURI = canvas.toDataURL('image/jpeg');
-        debugger
-
-    }
-
     //upon clicking "publish"...
     handleSubmit(e) {
         e.preventDefault();
 
+        debugger
         //will not upload if there is no title
         if (this.state.title === "") {
             this.setState({titleError: true})
@@ -103,8 +92,24 @@ class VideoForm extends React.Component {
             //but only the first one they chose will be used
             if (this.state.images[0]) {
                 formData.append('video[thumbnails][]', this.state.images[0])
+            } else {
+                // var thumb = reImg.fromCanvas(this.refs.canvas)
+
+                // var thumb = this.state.defaultThumb.split(',')[1];
+
+                // var thumb_blob = new Blob([window.atob(thumb)], { type: 'image/png', encoding: 'utf-8' });
+
+                // var fr = new FileReader();
+                // // fr.onload = function (oFREvent) {
+                // //     var v = oFREvent.target.result.split(',')[1]; // encoding is messed up here, so we fix it
+                // //     v = atob(v);
+                // //     var good_b64 = btoa(decodeURIComponent(escape(v)));
+                // //     document.getElementById("uploadPreview").src = "data:image/png;base64," + good_b64;
+                // // };
+                // // var defaultThumb = fr.readAsDataURL(thumb_blob)
+
+                // formData.append('video[thumbnails][]', fr.readAsText(thumb_blob, 'utf-8'))
             }
-            // formData.append('video[thumbnail]', this.state.thumbUrl)
             $.ajax({
                 url: '/api/videos',
                 method: 'POST',
@@ -113,10 +118,27 @@ class VideoForm extends React.Component {
                 processData: false
             }).then(
                 response => {
+                    debugger
                     //redirects to newly-uploaded video!
                     this.props.history.push(`/videos/${response.video.id}`)            },
             )
         }
+    }
+
+    renderThumbnail () {
+        if (this.state.videoUrl) {
+            const canvas = this.refs.thumb
+            const ctx = canvas.getContext("2d")
+            const vid = this.refs.vid
+
+            vid.onload = () => {
+                const canvas = this.refs.thumb
+                const ctx = canvas.getContext("2d")
+
+                ctx.drawImage(vid, 0, 0)
+            }
+        }
+
     }
 
     // titleErrors() {
@@ -147,19 +169,52 @@ class VideoForm extends React.Component {
             if (this.state.images[0]) {
                 this.handleImageFile(this.state.images[0])
             }
-            // const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : this.renderThumbnail
+
+            // var preview;
+            //     thumb = (<VideoThumbnail
+            //         videoUrl={this.state.videoUrl}
+            //         thumbnailHandler={(thumbnail) => this.setState({ defaultThumb: thumbnail })}
+            //     />)
+            // }
+
+            var thumb;
+            if (this.state.videoUrl) {
+                thumb = (
+                <>
+                    <video ref="vid" src={this.state.videoUrl} controls={false} className="hidden" />
+                    <canvas ref="thumb" width={196} height={100}></canvas>
+                </>
+                )
+            }
+
+            const vid = this.refs.vid
+
+            if (vid) {
+                vid.onload = () => {
+                    const canvas = this.refs.thumb
+                    const ctx = canvas.getContext("2d")
+
+                    ctx.drawImage(vid, 0, 0)
+                }
+            }
+
+            const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : thumb
+
             const previewText = this.state.imageUrl ? "Your thumbnail" : "Default thumbnail"
             
             return (
                 <div className="vid-form">
                     <div className="thumbnail-sidebar">
-                        <canvas ref="canvas" width={196} height={100} ></canvas>
-                        <video ref="thumbPreview" src={this.state.videoUrl} controls={false} className="hidden">
-                        </video>
+                        {preview}
 
-                        {/* {preview} */}
-                    <div className="previewTxt">{previewText}</div>
-                </div>
+                        <div className="previewTxt">
+                            {previewText}
+                        </div>
+
+                        <div className="hidden">
+                        {thumb}
+                        </div>
+                    </div>
 
                     <div className="main-column">
                         <div className="progress-bar">
@@ -167,9 +222,9 @@ class VideoForm extends React.Component {
                         </div>
                     <form className="video-form">
                         <input type="text" id="title" placeholder="Title" value={this.state.title} onChange={this.update('title')}>
-
                         </input>
-                            {this.state.titleError ? <div className="title-error">Need a title</div>: <></>}
+
+                        {this.state.titleError ? <div className="title-error">Need a title</div>: <></>}
 
                         <label htmlFor="description" >
                             <textarea id="description" placeholder="Description" name="" cols="30" rows="10" value={this.state.description} onChange={this.update('description')}>

@@ -43,7 +43,10 @@ class VideoIndex extends React.Component {
             return(
             <li className="video">
                 <a className="video-tile" href={`/#/videos/${video.id}`}>
-                        <img src={video.imageUrl ? video.imageUrl : window.defaultImg} />
+                        <img src={video.imageUrl ? video.imageUrl : 
+                        // (video.default_thumb ? video.default_thumb : 
+                            window.defaultImg} 
+                        />
                     <div className="vid-info">
                         <div className="duration">{video.duration}</div>
                         <div className="title">{video.title}</div>     
