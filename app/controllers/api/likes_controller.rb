@@ -17,7 +17,6 @@ class Api::LikesController < ApplicationController
         else 
             render json: @like.errors.full_messages
         end
-
     end
 
     def index 

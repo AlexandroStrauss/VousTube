@@ -1,6 +1,5 @@
 import React from 'react';
-import VideoThumbnail from 'react-video-thumbnail';
-import ReImg from 'reimg';
+import ReImg from '../../util/thumbnail_images/reimg'
 
 class VideoForm extends React.Component {
     constructor(props) {
@@ -37,6 +36,8 @@ class VideoForm extends React.Component {
 
     //handle video file submission
     handleFile(e) {
+        e.preventDefault();
+
         this.setState({ firstPage: false })
 
         // var xhr = new XMLHttpRequest();
@@ -93,8 +94,10 @@ class VideoForm extends React.Component {
             //(I found this was easier to work with)
             //but only the first one they chose will be used
             if (this.state.images[0]) {
+                debugger
                 formData.append('video[thumbnails][]', this.state.images[0])
             } else {
+                debugger
                 formData.append('video[thumbnails][]', this.state.defaultThumb)
 
                 // var thumb = reImg.fromCanvas(this.refs.canvas)
@@ -122,13 +125,14 @@ class VideoForm extends React.Component {
                 processData: false
             }).then(
                 response => {
-                    debugger
                     //redirects to newly-uploaded video!
                     this.props.history.push(`/videos/${response.video.id}`)            },
             )
         }
     }
 
+    //this lets us both put a preview thumbnail on the page (replaced by any custom thumb the user uploads)
+    //and save that thumb in a format that can be easily stored on the S3 server
     renderThumbnail () {
         const vid = this.videoRef.current
         const canvas = this.canvasRef.current
@@ -136,33 +140,22 @@ class VideoForm extends React.Component {
 
         ctx.drawImage(vid, 0, 0, canvas.width, canvas.height)
 
-        const snapshot = reImg.fromCanvas(canvas).toPng();
-        this.setState({defaultThumb: snapshot})
-
+        // ReImg.fromCanvas(canvas).downloadPng();
+        // var snapshot = ReImg.fromCanvas(canvas).toPng();
         // debugger
-        // vid.addEventListener('load', () => {
-        //     ctx.moveTo(0, 0);
-        //     ctx.lineTo(200, 100);
-        //     ctx.stroke();
 
-        //     debugger
-        //     ctx.drawImage(vid, 0, 0, canvas.width, canvas.height)
-        // })
+        var dataurl = canvas.toDataURL();
 
+        debugger
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        var file = new File([u8arr], { type: mime });
 
-        // if (this.state.videoUrl) {
-        //     const canvas = this.refs.thumb
-        //     const ctx = canvas.getContext("2d")
-        //     const vid = this.refs.vid
-
-        //     vid.onload = () => {
-        //         const canvas = this.refs.thumb
-        //         const ctx = canvas.getContext("2d")
-
-        //         ctx.drawImage(vid, 0, 0)
-        //     }
-        // }
-
+        debugger
+        this.setState({ defaultThumb: file})
     }
 
     // titleErrors() {
@@ -181,7 +174,8 @@ class VideoForm extends React.Component {
                         <i className="material-icons">cloud_upload</i>
 
                             Select file to upload
-                            <p>Or drag and drop video files</p>
+                            {/* <p>Or drag and drop video files</p> */}
+                            <p>Any MP4 file will do</p>
                             <input type="file"
                                 onChange={this.handleFile}
                                 accept="video/*" />
@@ -211,17 +205,6 @@ class VideoForm extends React.Component {
                 )
             }
 
-            // const vid = this.refs.vid
-            debugger
-
-            // if (vid) {
-            //     vid.onload = () => {
-            //         const canvas = this.refs.thumb
-            //         const ctx = canvas.getContext("2d")
-
-            //         ctx.drawImage(vid, 0, 0)
-            //     }
-            // }
 
             const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : thumb
 
@@ -236,9 +219,6 @@ class VideoForm extends React.Component {
                             {previewText}
                         </div>
 
-                        {/* <div className="hidden">
-                        {thumb}
-                        </div> */}
                     </div>
 
                     <div className="main-column">
