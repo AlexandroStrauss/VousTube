@@ -24,6 +24,8 @@ class VideoForm extends React.Component {
         this.handleImageFile = this.handleImageFile.bind(this);
         this.twoPages = this.twoPages.bind(this);
         this.renderThumbnail = this.renderThumbnail.bind(this);
+        this.canvasRef = React.createRef();
+        this.videoRef = React.createRef();
     }
 
     //as user types in video title or description, this changes relevant value in state
@@ -93,6 +95,8 @@ class VideoForm extends React.Component {
             if (this.state.images[0]) {
                 formData.append('video[thumbnails][]', this.state.images[0])
             } else {
+                formData.append('video[thumbnails][]', this.state.defaultThumb)
+
                 // var thumb = reImg.fromCanvas(this.refs.canvas)
 
                 // var thumb = this.state.defaultThumb.split(',')[1];
@@ -126,18 +130,38 @@ class VideoForm extends React.Component {
     }
 
     renderThumbnail () {
-        if (this.state.videoUrl) {
-            const canvas = this.refs.thumb
-            const ctx = canvas.getContext("2d")
-            const vid = this.refs.vid
+        const vid = this.videoRef.current
+        const canvas = this.canvasRef.current
+        const ctx = canvas.getContext("2d");
 
-            vid.onload = () => {
-                const canvas = this.refs.thumb
-                const ctx = canvas.getContext("2d")
+        ctx.drawImage(vid, 0, 0, canvas.width, canvas.height)
 
-                ctx.drawImage(vid, 0, 0)
-            }
-        }
+        const snapshot = reImg.fromCanvas(canvas).toPng();
+        this.setState({defaultThumb: snapshot})
+
+        // debugger
+        // vid.addEventListener('load', () => {
+        //     ctx.moveTo(0, 0);
+        //     ctx.lineTo(200, 100);
+        //     ctx.stroke();
+
+        //     debugger
+        //     ctx.drawImage(vid, 0, 0, canvas.width, canvas.height)
+        // })
+
+
+        // if (this.state.videoUrl) {
+        //     const canvas = this.refs.thumb
+        //     const ctx = canvas.getContext("2d")
+        //     const vid = this.refs.vid
+
+        //     vid.onload = () => {
+        //         const canvas = this.refs.thumb
+        //         const ctx = canvas.getContext("2d")
+
+        //         ctx.drawImage(vid, 0, 0)
+        //     }
+        // }
 
     }
 
@@ -181,22 +205,23 @@ class VideoForm extends React.Component {
             if (this.state.videoUrl) {
                 thumb = (
                 <>
-                    <video ref="vid" src={this.state.videoUrl} controls={false} className="hidden" />
-                    <canvas ref="thumb" width={196} height={100}></canvas>
+                    <video ref={this.videoRef} src={this.state.videoUrl} controls={false} className="hidden" onCanPlay={this.renderThumbnail}/>
+                    <canvas ref={this.canvasRef} width={196} height={100}></canvas>
                 </>
                 )
             }
 
-            const vid = this.refs.vid
+            // const vid = this.refs.vid
+            debugger
 
-            if (vid) {
-                vid.onload = () => {
-                    const canvas = this.refs.thumb
-                    const ctx = canvas.getContext("2d")
+            // if (vid) {
+            //     vid.onload = () => {
+            //         const canvas = this.refs.thumb
+            //         const ctx = canvas.getContext("2d")
 
-                    ctx.drawImage(vid, 0, 0)
-                }
-            }
+            //         ctx.drawImage(vid, 0, 0)
+            //     }
+            // }
 
             const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : thumb
 
@@ -211,9 +236,9 @@ class VideoForm extends React.Component {
                             {previewText}
                         </div>
 
-                        <div className="hidden">
+                        {/* <div className="hidden">
                         {thumb}
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="main-column">
