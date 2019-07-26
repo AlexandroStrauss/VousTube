@@ -15,7 +15,7 @@ user1 = User.create!({username: 'demo', email: 'demouser@demosite.com', password
 user2 = User.create!({username: 'testaccount', email: 'test@tester.com', password: 'password' })
 user3 = User.create!({username: 'The Content Creator', email: 'content', password: 'password' })
 
-video1 = Video.new({title: 'every time I ask my PM for help', description: 'this happens a lot', author_id: User.first.id})
+video1 = Video.new({title: 'when my code doesn\'t work and I need help', description: 'this happens a lot', author_id: User.first.id})
 vidfile1 = open('https://voustube-seed.s3.amazonaws.com/im_not_sure_where_to_start.mp4')
 imgfile1 = open('https://voustube-seed.s3.amazonaws.com/inception.png')
 video1.video.attach(io: vidfile1, filename:'im_not_sure_where_to_start.mp4')
@@ -29,7 +29,7 @@ video2.video.attach(io: vidfile2, filename:'This_Is_Amerika.mp4')
 video2.thumbnails.attach(io: imgfile2, filename:'america_screenshot.png')
 video2.save
 
-video3 = Video.new({title: 'this one has no thumbnail', description: 'you can do this!', author_id: User.second.id})
+video3 = Video.new({title: 'This video\'s thumbnail has nothing to do with its content', description: 'you can do this!', author_id: User.second.id})
 vidfile3 = open('https://voustube-seed.s3.amazonaws.com/what_make_of_man.mp4')
 # imgfile3 = open('https://voustube-seed.s3.amazonaws.com/inception.png')
 video3.video.attach(io: vidfile3, filename:'what_make_of_man.mp4')
@@ -50,7 +50,7 @@ video5.video.attach(io: vidfile5, filename:'next_ones_coming_faster.mp4')
 # video5.thumbnails.attach(io: imgfile1, filename:'inception.png')
 video5.save
 
-video6 = Video.new({title: 'W H A T U P P P P', description: 'Jeremy Davies (born Jeremy Boring; October 8, 1969) is an American film and television actor.', author_id: User.third.id})
+video6 = Video.new({title: 'The best line from "Justified"', description: 'Jeremy Davies (born Jeremy Boring; October 8, 1969) is an American film and television actor.', author_id: User.third.id})
 vidfile6 = open('https://voustube-seed.s3.amazonaws.com/WHAT_UP_PIMPS.mp4')
 imgfile6 = open('https://voustube-seed.s3.amazonaws.com/lojackscreen.jpg')
 video6.video.attach(io: vidfile6, filename:'WHAT_UP_PIMPS.mp4')
