@@ -35,12 +35,9 @@ class NavBar extends React.Component {
     }
 
     loginPath() {
-        // debugger
         if (this.props.currentUser) {
-            // debugger
             return '/videos/new'
         } else {
-            // debugger
             return '/login'
         }
     }
