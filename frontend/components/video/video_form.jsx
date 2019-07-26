@@ -146,7 +146,6 @@ class VideoForm extends React.Component {
 
         var dataurl = canvas.toDataURL();
 
-        debugger
         var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
         while (n--) {
@@ -154,7 +153,6 @@ class VideoForm extends React.Component {
         }
         var file = new File([u8arr], { type: mime });
 
-        debugger
         this.setState({ defaultThumb: file})
     }
 

@@ -43,12 +43,12 @@ video4.video.attach(io: vidfile4, filename:'coconut_head_sad.mp4')
 video4.thumbnails.attach(io: imgfile4, filename:'neds_declassified.png')
 video4.save
 
-video5 = Video.new({title: 'one more without a thumbnail and also with a really long name so yall can see how this app handles text overflows which I will admit is not a perfect solution but it is good enough for now', description: 'descriptions are another shortcoming', author_id: User.first.id})
-vidfile5 = open('https://voustube-seed.s3.amazonaws.com/next_ones_coming_faster.mp4')
-# imgfile5 = open('https://voustube-seed.s3.amazonaws.com/inception.png')
-video5.video.attach(io: vidfile5, filename:'next_ones_coming_faster.mp4')
-# video5.thumbnails.attach(io: imgfile1, filename:'inception.png')
-video5.save
+# video5 = Video.new({title: 'one more without a thumbnail and also with a really long name so yall can see how this app handles text overflows which I will admit is not a perfect solution but it is good enough for now', description: 'descriptions are another shortcoming', author_id: User.first.id})
+# vidfile5 = open('https://voustube-seed.s3.amazonaws.com/next_ones_coming_faster.mp4')
+# # imgfile5 = open('https://voustube-seed.s3.amazonaws.com/inception.png')
+# video5.video.attach(io: vidfile5, filename:'next_ones_coming_faster.mp4')
+# # video5.thumbnails.attach(io: imgfile1, filename:'inception.png')
+# video5.save
 
 video6 = Video.new({title: 'The best line from "Justified"', description: 'Jeremy Davies (born Jeremy Boring; October 8, 1969) is an American film and television actor.', author_id: User.third.id})
 vidfile6 = open('https://voustube-seed.s3.amazonaws.com/WHAT_UP_PIMPS.mp4')
