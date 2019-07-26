@@ -78,7 +78,6 @@ class VideoForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        debugger
         //will not upload if there is no title
         if (this.state.title === "") {
             this.setState({titleError: true})
@@ -94,28 +93,9 @@ class VideoForm extends React.Component {
             //(I found this was easier to work with)
             //but only the first one they chose will be used
             if (this.state.images[0]) {
-                debugger
                 formData.append('video[thumbnails][]', this.state.images[0])
             } else {
-                debugger
                 formData.append('video[thumbnails][]', this.state.defaultThumb)
-
-                // var thumb = reImg.fromCanvas(this.refs.canvas)
-
-                // var thumb = this.state.defaultThumb.split(',')[1];
-
-                // var thumb_blob = new Blob([window.atob(thumb)], { type: 'image/png', encoding: 'utf-8' });
-
-                // var fr = new FileReader();
-                // // fr.onload = function (oFREvent) {
-                // //     var v = oFREvent.target.result.split(',')[1]; // encoding is messed up here, so we fix it
-                // //     v = atob(v);
-                // //     var good_b64 = btoa(decodeURIComponent(escape(v)));
-                // //     document.getElementById("uploadPreview").src = "data:image/png;base64," + good_b64;
-                // // };
-                // // var defaultThumb = fr.readAsDataURL(thumb_blob)
-
-                // formData.append('video[thumbnails][]', fr.readAsText(thumb_blob, 'utf-8'))
             }
             $.ajax({
                 url: '/api/videos',
@@ -139,10 +119,6 @@ class VideoForm extends React.Component {
         const ctx = canvas.getContext("2d");
 
         ctx.drawImage(vid, 0, 0, canvas.width, canvas.height)
-
-        // ReImg.fromCanvas(canvas).downloadPng();
-        // var snapshot = ReImg.fromCanvas(canvas).toPng();
-        // debugger
 
         var dataurl = canvas.toDataURL();
 
