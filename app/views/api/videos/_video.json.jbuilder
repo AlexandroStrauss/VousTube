@@ -1,6 +1,10 @@
 json.video do
-    json.extract! video, :title, :description, :thumbnail_img, :id, :author_id
+    json.extract! video, :title, :description, :views, :id, :author_id, :created_at
     json.videoUrl url_for(video.video)
+    json.created_year video.created_at.year
+    json.created_month video.created_at.month
+    json.created_day video.created_at.day
+    # json.readableTime video.created_at.strftime("%B %d %Y")}
 end
 
 json.author do 

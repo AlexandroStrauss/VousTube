@@ -1,6 +1,6 @@
 import React from 'react';
 import timeago from 'timeago.js';
-import { Link } from 'react-router-dom';
+import videoAge from '../../util/date_parsers/video_age'
 
 class VideoIndex extends React.Component {
     constructor (props) {
@@ -50,8 +50,12 @@ class VideoIndex extends React.Component {
                     <div className="vid-info">
                         <div className="duration">{video.duration}</div>
                         <div className="title">{video.title}</div>     
-                        <div className="author">{this.props.authors[video.author_id].username}</div>     
-                        {/* <div className="timestamp">{this.timestamp(video.created_at)}</div>*/}
+                        <div className="author">{this.props.authors[video.author_id].username}</div>
+                        <div className="views-time">
+                            <div>
+                                {video.views + (video.views === 1 ? " view" : " views") + " • " + videoAge(video.time_since_creation)}
+                            </div>
+                        </div>     
                     </div>
                 </a>
             </li>

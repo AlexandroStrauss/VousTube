@@ -51,7 +51,12 @@ video {
 .author {
   font-size: 13px;
   color: #606060;
-  padding: 14px 0 0 0;
+  padding: 10px 0 0 0;
+}
+
+.views-time {
+  font-size: 13px;
+  color: #606060;
 }
 
 .title {
@@ -127,6 +132,7 @@ video {
 
 .vid-info {
   padding: 0 24px 0 0;
+  margin: 0;
 }
 
 #idx-shell {

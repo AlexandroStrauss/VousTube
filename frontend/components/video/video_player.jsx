@@ -1,9 +1,8 @@
 import React from 'react';
 import CommentIndexContainer from '../comment/comment_index_container';
 import { Route } from 'react-router-dom';
-import * as likeFunctions from '../../util/like_functions';
-import VideoLikeInterface from './video_like_interface'
 import VideoLikeInterfaceContainer from './video_like_interface_container';
+import currentDate from '../../util/date_parsers/current_date'
 
 class VideoPlayer extends React.Component {
     constructor(props) {
@@ -346,8 +345,9 @@ class VideoPlayer extends React.Component {
                         <div className="vid-title">{this.props.video.title}</div>
                         <div className="vid-stats">
                             <div className="views">
-                                0 views
+                                {this.props.video.views + (this.props.video.views === 1 ? " view" : " views")}
                             </div>
+
 
                             <Route render={props => <VideoLikeInterfaceContainer {...props} video={this.props.video} />} /> 
                         </div>
@@ -360,7 +360,9 @@ class VideoPlayer extends React.Component {
 
                         <div className="author-publish">
                             <div className="vid-author">{author.username}</div>
-                            <div className="publish-date">Published on {this.props.video.created_at}</div>
+                            <div className="publish-date">Published on {currentDate(this.props.video.created_month, this.props.video.created_day, this.props.video.created_year)}
+                            
+                            </div>
                         </div>
                     </div>
 
