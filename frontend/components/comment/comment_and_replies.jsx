@@ -3,6 +3,8 @@ import { merge } from 'lodash';
 import IndividualRepliesContainer from './individual_replies_container';
 import CommentLikeInterfaceContainer from './comment_like_interface_container';
 import { Route } from 'react-router-dom';
+import videoAge from '../../util/date_parsers/video_age'
+
 
 class CommentAndReplies extends React.Component {
     constructor (props) {
@@ -111,7 +113,7 @@ class CommentAndReplies extends React.Component {
                 <div id="all-comment-text">
                     <div id="comment-author-info">
                         <div id="comment-author-username">{author.username}</div>
-                        <div id="comment-date">{comment.created_at}</div>
+                        <div id="comment-date">{videoAge(comment.time_since_creation)}</div>
                     </div>
                         <div id="comment-body">{comment.body}</div>
                         

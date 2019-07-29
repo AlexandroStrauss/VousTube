@@ -127,10 +127,16 @@
     align-items: center;
 }
 
-#comment-date, #reply {
+#reply {
     color: #606060;
     font-size: 13px;
     padding: 8px 16px;
+}
+
+#comment-date {
+        color: #606060;
+    font-size: 13px;
+    margin: 1px 0 0 0;
 }
 
 #comment-author-username {

@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentLikeInterfaceContainer from './comment_like_interface_container';
 import { Route } from 'react-router-dom';
+import videoAge from '../../util/date_parsers/video_age'
 
 class IndividualReplies extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class IndividualReplies extends React.Component {
                     <div id="all-comment-text">
                         <div id="comment-author-info">
                             <div id="comment-author-username">{author.username}</div>
-                            <div id="comment-date">{comment.created_at}</div>
+                            <div id="comment-date">{videoAge(comment.time_since_creation)}</div>
                         </div>
                         <div id="comment-body">{comment.body}</div>
                         <div id="like-reply">
