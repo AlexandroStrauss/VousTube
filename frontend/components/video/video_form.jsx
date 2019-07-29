@@ -1,5 +1,4 @@
 import React from 'react';
-import ReImg from '../../util/thumbnail_images/reimg'
 
 class VideoForm extends React.Component {
     constructor(props) {
@@ -17,6 +16,7 @@ class VideoForm extends React.Component {
             videoReady: false,
             uploadProgress: 0,
             titleError: false,
+            descriptionError: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -79,8 +79,12 @@ class VideoForm extends React.Component {
         e.preventDefault();
 
         //will not upload if there is no title
-        if (this.state.title === "") {
-            this.setState({titleError: true})
+        if (this.state.title === "" || this.state.description === "") {
+            if (this.state.title === "") 
+                {this.setState({titleError: true})}
+            if (this.state.description === "") {
+                this.setState({descriptionError: true})
+            }
         } else {
             const formData = new FormData();
             formData.append('video[title]', this.state.title)
@@ -210,6 +214,8 @@ class VideoForm extends React.Component {
 
                             </textarea>
                         </label>
+                            {this.state.titleError ? <div className="title-error">Need a description</div> : <></>}
+
 
                         <label>Select a thumbnail for your video
                             <p>If you don't, it will be given a default thumbnail</p>

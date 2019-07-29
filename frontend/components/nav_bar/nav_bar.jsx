@@ -1,14 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faVideo, faBell, faComment, faTh, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import SearchBar from '../header/search_bar';
 import { Route, Link } from 'react-router-dom';
 import SessionDisplayContainer from '../session_display_container';
 import SideBar from '../side_bar/side_bar';
 import VideoIndexContainer from '../video/video_index_container';
 import SearchBarContainer from '../header/search_bar_container';
-import CommentIndexContainer from '../comment/comment_index_container';
-
+// import Dropdown from '../../util/dropdowns/dropdown'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -20,10 +18,20 @@ class NavBar extends React.Component {
         }
         this.videoClick = this.videoClick.bind(this)
         this.sidebarClick = this.sidebarClick.bind(this)
+        this.hideForm = this.hideForm.bind(this);
+        this.node = React.createRef();
     }
 
     componentDidMount() {
         this.props.currentUser;
+    }
+
+    componentWillMount () {
+        document.addEventListener('mousedown', this.hideForm, false)
+    }
+
+    componentWillUnmount () {
+        document.removeEventListener('mousedown', this.hideForm, false)
     }
 
     bellMore() {
@@ -49,8 +57,26 @@ class NavBar extends React.Component {
     sidebarClick() {
         this.setState({ open: !this.state.open })
     }
+
+    hideForm (e) {
+        if (this.state.clicked) {
+            if (this.node.current.contains(e.target)) {
+            }
+            else {
+                this.setState({clicked: false})
+            }
+        }
+    }
     
     render () {
+        // const [button, setButton] = useState(undefined);
+        // const btn = (<div>
+        //     <Link to={this.loginPath()}>
+        //         <i className="material-icons">cloud_upload</i>
+        //         <p>Upload video</p>
+        //     </Link>
+        // </div>)
+
         return (
             <>
             <header>
@@ -63,8 +89,13 @@ class NavBar extends React.Component {
 
                 <div className="nav-right-side">
                     <div className="nav-btns">
+                            {/* <Dropdown placeholder={<FontAwesomeIcon icon={faVideo} />} 
+                                value={button}
+                                onChange={v => setButton(v)}
+                                options={[btn]}
+                            /> */}
                         <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
-                            <div className={this.state.clicked ? (this.props.currentUser ? "vid-upload" : "vid-upload-shifted") : "vid-upload-hidden"}>
+                            <div className={this.state.clicked ? (this.props.currentUser ? "vid-upload" : "vid-upload-shifted") : "vid-upload-hidden"} ref={this.node}>
                                 <Link to={this.loginPath()}>
                                     <i className="material-icons">cloud_upload</i>
                                     <p>Upload video</p>

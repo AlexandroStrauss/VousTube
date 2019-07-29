@@ -18,6 +18,8 @@ class VideoLikeInterface extends React.Component {
         this.refreshLikeValues = this.refreshLikeValues.bind(this);
         this.hidePopups = this.hidePopups.bind(this);
         this.goToSignIn = this.goToSignIn.bind(this);
+        this.likeModal = React.createRef();
+        this.dislikeModal = React.createRef();
     }
 
     componentDidMount() {
@@ -25,8 +27,12 @@ class VideoLikeInterface extends React.Component {
             this.setState({ likes: response.likes })).then(this.setOldLike)
     }
 
-    componentDidUpdate() {
+    componentWillMount() {
+        document.addEventListener('mousedown', this.hidePopups)
+    }
 
+    componentWillUnmount() {
+        document.addEventListener('mousedown', this.hidePopups)
     }
 
     refreshLikeValues() {
@@ -81,13 +87,18 @@ class VideoLikeInterface extends React.Component {
     }
 
     hidePopups(e) {
-        // e.preventDefault();
-        this.setState({ displayDislikePopup: false, displayLikePopup: false })        
+        if (!this.likeModal.current.contains(e.target) && this.state.displayLikePopup) {
+            this.setState({displayLikePopup: false})
+        } 
+        else if (!this.dislikeModal.current.contains(e.target) && this.state.displayDislikePopup)
+        {
+            this.setState({ displayDislikePopup: false})      
+        }
     }
 
     displayLikeSignInPopup() {
         return (
-            <div id="like-sign-in-popup">
+            <div id="like-sign-in-popup" >
                 <div id="you-like">
                     Like this video?
                 </div>
@@ -136,7 +147,7 @@ class VideoLikeInterface extends React.Component {
                         </div>
                     </button>
 
-                    <div id={this.state.displayLikePopup ? "like-sign-in-popup" : "sign-in-popup-hidden"} onBlur={this.hidePopups}>
+                    <div id={this.state.displayLikePopup ? "like-sign-in-popup" : "sign-in-popup-hidden"} ref={this.likeModal}>
                         <div id="you-like">
                             Like this video?
                         </div>
@@ -162,7 +173,7 @@ class VideoLikeInterface extends React.Component {
 
                     </button>
 
-                    <div id={this.state.displayDislikePopup ? "dislike-sign-in-popup" : "sign-in-popup-hidden"} onBlur={this.hidePopups}>
+                    <div id={this.state.displayDislikePopup ? "dislike-sign-in-popup" : "sign-in-popup-hidden"} ref={this.dislikeModal}>
                         <div id="you-like">
                             Don't like this video?
                         </div>
