@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
 
     demoLogin(e) {
         e.preventDefault();
-        this.props.processForm({ identifier: "demo", password: "password" }).then(() => <Redirect to={`/users/${user.id}`} />, err => this.setState({ pwdError: true, submitted: true }));
+        this.props.processForm({ identifier: "demo", password: "password" }).then(() => this.props.history.goBack(), err => this.setState({ pwdError: true, submitted: true }));
     }
 
     handleCheckSubmit(e) {
