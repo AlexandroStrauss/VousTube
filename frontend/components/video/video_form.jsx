@@ -126,6 +126,7 @@ class VideoForm extends React.Component {
 
         var dataurl = canvas.toDataURL();
 
+        //convert from 64-bit to 8-bit and make a File object from the results
         var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
         while (n--) {
