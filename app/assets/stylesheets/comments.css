@@ -1,4 +1,4 @@
-#top-comment-text {
+#top-comment-text, #top-reply-text {
     outline: none;
     resize: none;
     border: none;
@@ -9,14 +9,21 @@
     margin: 10px 0 4px 0px; 
     padding: 0 0 6px 0;
     font-weight: 400;
-
     border-bottom: 1px solid #eeeeee;
     transform-origin: center;
 }
 
+#reply-text-container {
+    width: 100%;
+}
+
+
+
 /* solution for border transition effect by giana: https://codepen.io/giana/pen/yYBpVY/ */
   #top-comment-text::before,
-  #top-comment-text::after {
+  #top-comment-text::after,
+    #top-reply-text::before,
+  #top-reply-text::after {
     top: 0;
     left: 0;
     height: 100%;
@@ -25,7 +32,7 @@
     /* // Ensure scaling is done from the center (expands outwards) */
   }
 
-  #top-comment-text::before {
+  #top-comment-text::before, #top-reply-text::before {
     border-bottom: 2px solid #6f6f6f;
     transform: scale3d(0,1,1); 
     /* // Shrink only width */
@@ -33,12 +40,14 @@
 
 
  #top-comment-text:focus::before,
-  #top-comment-text:focus::after {
+  #top-comment-text:focus::after,
+   #top-reply-text:focus::before,
+  #top-reply-text:focus::after {
     transform: scale3d(1,1,1);
     transition: transform 0.5s;
 }
 
-#top-comment-text:focus {
+#top-comment-text:focus, #top-reply-text:focus {
     border-bottom: 2px solid #6f6f6f;
 }
 
@@ -50,7 +59,7 @@
 }
 
 .comment-buttons {
-    display: inline-block;
+    /* display: inline-block; */
     float: right;
     height: 36px;
     padding: 0px 0 0 0;
@@ -75,7 +84,7 @@
     width: 104px;
 }
 
-#top-comment-text:valid + #comment-submit {
+#top-comment-text:valid + #comment-submit, #top-reply-text:valid + #comment-submit {
     background-color: #055fd4;
     cursor: pointer;
 }
@@ -160,16 +169,26 @@
 }
 
 #commment-like, #comment-dislike, #comment-like-selected, #comment-dislike-selected {
-    padding: 8px;
+    /* padding: 8px; */
     cursor: pointer;
     outline: default;
-    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
+#like-reply {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 #comment-like i, #comment-like-selected i, #comment-dislike i, #comment-dislike-selected i {
-    font-size: 16px;
+    font-size: 18px;
     color: #909090;
+    padding: 8px;
 }
 
 #comment-like i:hover, #comment-like-selected i:hover, #comment-dislike i:hover, #comment-dislike-selected i:hover {
@@ -222,6 +241,12 @@
     padding: 0;
 }
 
+#reply {
+    font: 13px Roboto;
+    color: #909090;
+    font-weight: 600;
+}
+
 #reply-input-and-buttons {
     display: flex;
     flex-direction: column;
@@ -232,10 +257,13 @@
     color: #055fd4;
 }
 
-/* #comment-like-interface button:hover {
-    color: #606060;
+#comment-like-interface {
+    display: flex;
+    flex-direction: row;
 }
 
-#comment-like-interface button {
-    cursor: pointer;
-} */
+#comment-like-counter {
+    font-family: Roboto;
+    font-size: 13px;
+    color: #909090;
+}

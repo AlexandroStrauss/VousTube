@@ -134,7 +134,7 @@ class CommentAndReplies extends React.Component {
                         <textarea
                             rows={this.calculateRows()}
                             placeholder="Add a public comment..."
-                            id="top-comment-text"
+                            id="top-reply-text"
                             onClick={this.showReplyButtons}
                             onKeyPress={null}
                             value={this.state.body}
