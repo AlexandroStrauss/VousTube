@@ -13,10 +13,31 @@ class SessionDisplay extends React.Component{
         }
         this.buttonClick = this.buttonClick.bind(this);
         this.logout = this.logout.bind(this);
+        this.hideForm = this.hideForm.bind(this);
+        this.node = React.createRef();
+
     }
     
     componentDidMount() {
         this.props.currentUser;
+    }
+
+    componentWillMount() {
+        document.addEventListener('mousedown', this.hideForm, false)
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.hideForm, false)
+    }
+
+    hideForm(e) {
+        if (this.state.clicked) {
+            if (this.node.current.contains(e.target)) {
+            }
+            else {
+                this.setState({ clicked: false })
+            }
+        }
     }
 
     buttonClick() {
@@ -41,7 +62,7 @@ class SessionDisplay extends React.Component{
                     {userCircle}
                 </button>
 
-                    <div className={this.state.clicked ? "user-dropdown" : "user-dropdown-hidden"}>
+                    <div className={this.state.clicked ? "user-dropdown" : "user-dropdown-hidden"} ref={this.node}>
                         <div className="user-info">
                             <div className="user-pic">
                             {userCircle}
