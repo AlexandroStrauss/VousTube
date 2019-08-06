@@ -17,9 +17,9 @@ class CommentAndReplies extends React.Component {
         }
 
         this.update = this.update.bind(this);
-        this.showReplyButtons = this.showReplyButtons.bind(this);
         this.repliesLength = this.repliesLength.bind(this);
         this.toggleExpand = this.toggleExpand.bind(this);
+        this.node = React.createRef();
     }
 
     update(field) {
@@ -31,13 +31,14 @@ class CommentAndReplies extends React.Component {
     showReplyForm() {
         this.props.redirectIfNotLoggedIn();
         if (!this.state.showReplyForm) {
-            this.setState({showReplyForm: true})
+            this.setState({ showReplyForm: true, topClicked: true }, () => {
+                this.node.current.focus();
+            })
         }
     }
 
     cancelReply(e) {
         e.preventDefault();
-
         this.setState({ body: '', showReplyForm: false });
     }
 
@@ -57,14 +58,6 @@ class CommentAndReplies extends React.Component {
         const body = this.state.body;
         const comment = merge({}, { body: body, video_id: videoId, parent_comment_id: parentId })
         this.props.createComment(comment).then(this.setState({ body: '' }));
-    }
-
-    showReplyButtons() {
-        if (!this.state.topClicked) {
-            this.setState({
-                topClicked: true
-            })
-        }
     }
 
     repliesLength() {
@@ -135,16 +128,15 @@ class CommentAndReplies extends React.Component {
                             rows={this.calculateRows()}
                             placeholder="Add a public comment..."
                             id="top-reply-text"
-                            onClick={this.showReplyButtons}
                             onKeyPress={null}
                             value={this.state.body}
+                            ref={this.node}
 
                             onChange={this.update("body").bind(this)}
                         />
-
                     </div>
 
-                    <div className={this.state.topClicked ? "comment-buttons" : "comment-buttons-hidden"}>
+                    <div className={this.state.topClicked ? "reply-buttons" : "comment-buttons-hidden"}>
                         <button id="comment-cancel"
                             onClick={this.cancelReply.bind(this)}
                         >
@@ -170,14 +162,12 @@ class CommentAndReplies extends React.Component {
                             }
                         </button> : <> </>}
 
-
                     {this.state.expanded ?
                         <ul id="replies">
                             {replies}
                         </ul> : null
                     }
                 </div>
-
             </li>
         )
     }

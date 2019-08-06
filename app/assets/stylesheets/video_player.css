@@ -45,8 +45,8 @@
 
 #player-container:after {
     content: "";
-  display: table;
-  clear: both;
+    display: table;
+    clear: both;
 }
 
 
