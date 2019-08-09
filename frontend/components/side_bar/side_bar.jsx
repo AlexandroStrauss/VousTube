@@ -20,7 +20,6 @@ class SideBar extends React.Component {
                 <div className="sidebar-holder">
                 <Link to="/" >
                 <button 
-                autoFocus 
                 id="home">
                     <i className="material-icons">home</i>
                     <p>Home</p>

@@ -26,7 +26,6 @@ class VideoIndex extends React.Component {
         var currentIndex = clone.length, temporaryValue, randomIndex;
 
         while (0 !== currentIndex) {
-
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
 
@@ -41,7 +40,7 @@ class VideoIndex extends React.Component {
     render () {
         const videos = this.props.videos ? this.props.videos.map(video => {
             return(
-            <li className="video">
+            <li className="video" key={video.id}>
                 <a className="video-tile" href={`/#/videos/${video.id}`}>
                         <img src={video.imageUrl ? video.imageUrl : 
                         // (video.default_thumb ? video.default_thumb : 
@@ -80,7 +79,6 @@ class VideoIndex extends React.Component {
                 <ul className="video-idx">
                     {randVideos2}
                 </ul>
-
             </div>
         )
     }

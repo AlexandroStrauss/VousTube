@@ -9,10 +9,9 @@ class SearchBar extends React.Component {
         super(props);
         this.state = {
             search: '',
-            focused: false,
-            videoResults: null,
+            videoResults: [],
         }
-        this.updateFocus = this.updateFocus.bind(this);
+        // this.updateFocus = this.updateFocus.bind(this);
         this.goSearch = this.goSearch.bind(this);
         this.parseKey = this.parseKey.bind(this);
         this.update = this.update.bind(this);
@@ -24,14 +23,13 @@ class SearchBar extends React.Component {
 
     update(field) {
         return (e) => {
-            this.setState({ [field]: e.target.value }, () => {
-            })
+            this.setState({ [field]: e.target.value })
         }
     }
 
     searchResults() {
         let searchTitles = [];
-        this.state.videoResults = [];
+        const videoResults = this.state.videoResults;
         if (this.state.search != '') {
             this.props.videos.forEach((film) => {
                 if (film.title.toLowerCase().startsWith(this.state.search.toLowerCase())
@@ -42,19 +40,20 @@ class SearchBar extends React.Component {
                 if (film.title.toLowerCase().startsWith(this.state.search.toLowerCase())
                     || film.description.includes(this.state.search)) 
                     {
-                        this.state.videoResults.push(film)
+                        videoResults.push(film)
                     }
             })
         }
+        this.setState((prevState) => {videoResults: videoResults})
         return searchTitles;
     }
 
-    updateFocus() {
-        let newBool;
-        if (this.state.focused) {newBool = false} else {newBool = true}
-        this.setState({focused: newBool}, () => {
-         })
-    }
+    // updateFocus() {
+    //     let newBool;
+    //     if (this.state.focused) {newBool = false} else {newBool = true}
+    //     this.setState({focused: newBool}, () => {
+    //      })
+    // }
 
     parseKey(e) {
         if(e.key === "Enter") {
@@ -74,7 +73,6 @@ class SearchBar extends React.Component {
         debugger
         console.log(searchTerm);
         this.props.history.push({ pathname: `/results/${searchTerm}`})
-        // debugger
         // this.setState({ search: searchTerm }, () => {this.goSearch()});
     }
     
@@ -87,18 +85,18 @@ class SearchBar extends React.Component {
             }
         })
 
-        const results = searchResults.map((result) => {
+        const results = this.searchResults().map((result) => {
             return (
                 <li 
-                // key={indexOf(result)} 
+                key={result.id} 
                 onClick={
-                    (e) => {
+                    function(e) {
                         e.preventDefault();
                         this.goToResult(result)
-                    }
+                    }.bind(this)
                 }
                 >
-                    {result}
+                    {result.title}
                 </li>
             )
         })        
@@ -108,17 +106,18 @@ class SearchBar extends React.Component {
             <div className="search-bar">
                 <input type="text" placeholder="Search" id="search-input"
                 onChange={this.update('search')}
-                onFocus={this.updateFocus}
+                // onFocus={this.updateFocus}
                 // onBlur={this.updateFocus}
                 onKeyPress={this.parseKey}
                 />
 
                 <div className="search-results">
                     <ul 
+                    // className = "results-list"
                     className={results[0] ? "results-list" :"results-hidden"}
                     >
                     {results}
-                </ul>
+                    </ul>
                 </div>
 
                 <button className="searcher" onClick={this.goSearch}>

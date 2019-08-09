@@ -69,14 +69,6 @@ class NavBar extends React.Component {
     }
     
     render () {
-        // const [button, setButton] = useState(undefined);
-        // const btn = (<div>
-        //     <Link to={this.loginPath()}>
-        //         <i className="material-icons">cloud_upload</i>
-        //         <p>Upload video</p>
-        //     </Link>
-        // </div>)
-
         return (
             <>
             <header>
@@ -89,11 +81,6 @@ class NavBar extends React.Component {
 
                 <div className="nav-right-side">
                     <div className="nav-btns">
-                            {/* <Dropdown placeholder={<FontAwesomeIcon icon={faVideo} />} 
-                                value={button}
-                                onChange={v => setButton(v)}
-                                options={[btn]}
-                            /> */}
                         <button onClick={this.videoClick}><FontAwesomeIcon icon={faVideo} /></button>
                             <div className={this.state.clicked ? (this.props.currentUser ? "vid-upload" : "vid-upload-shifted") : "vid-upload-hidden"} ref={this.node}>
                                 <Link to={this.loginPath()}>
