@@ -42,10 +42,12 @@ class VideoPlayer extends React.Component {
         this.props.fetchVideo(this.props.match.params.id).then(response => 
                 that.setState({url: response.video.videoUrl, author: response.user})
             );
-
+        
+        // ensures that the view is reset to the top if the page is refreshed or a new video selected
         window.scrollTo(0, 0)
     }
 
+    // ensures that clicking on a new video actually loads that video
     componentDidUpdate(prevProps) {
         if (prevProps.video && (prevProps.video.id != this.props.video.id)) {
             this.props.fetchVideo(this.props.match.params.id)
@@ -64,20 +66,7 @@ class VideoPlayer extends React.Component {
         return (this.video)
     }
 
-    setVolume() {
-        let video = document.getElementById('video');
-
-        let volBar = document.getElementById('volume-bar');
-
-        if (!volBar.value) { volBar.value = 1 }
-        
-        video.volume = volBar.value;
-        
-        this.setState({ volume: video.volume })
-
-        this.volumeButton()
-    }
-
+    // controls functioning of pausing/unpausing video
     swapPlayPause() {
         let video = document.getElementById('video');
         if (video.paused || video.ended) {
@@ -91,6 +80,7 @@ class VideoPlayer extends React.Component {
         }
     }
 
+    // deals entirely with play/pause/replay icons
     playPause() {
         let video = document.getElementById('video');
 
@@ -105,6 +95,7 @@ class VideoPlayer extends React.Component {
         }
     }
 
+    // mutes or unmutes video
     swapMute () {
         let video = document.getElementById('video');
         let volBar = document.getElementById('volume-bar');
@@ -121,6 +112,7 @@ class VideoPlayer extends React.Component {
         }
     }
 
+    // Enters fullscreen. Uses the default HTML5 fullscreen player, unaltered
     swapFullscreen () {
         let video = document.getElementById('video');
 
@@ -134,6 +126,7 @@ class VideoPlayer extends React.Component {
         }
     }
 
+    // Displays time in video
     changeTime() {
         let video = document.getElementById('video');
         let seekBar = document.getElementById('seek-bar');
@@ -144,6 +137,7 @@ class VideoPlayer extends React.Component {
         this.calculateTime();
     }
 
+    // Adjusts size of seek bar divs to reflect how much of video has played
     calculateTime() {
         let video = document.getElementById('video');
         let seekBarPlayed = document.getElementById('seek-bar-played');
@@ -160,11 +154,11 @@ class VideoPlayer extends React.Component {
 
     setTime(e) {
         let video = document.getElementById('video');
-        // var parentPosition = getPosition(e.currentTarget);
         var newTime = video.duration * (e.clientX/video.style.width);
         video.currentTime = newTime;
     }
 
+    // Creates a string to display current time
     timer() {
         let video = document.getElementById('video');
         let seekBar = document.getElementById('seek-bar');
@@ -192,19 +186,19 @@ class VideoPlayer extends React.Component {
         this.playPause();
     }
 
+    // method to change video volume by sliding volume bar
     setVolume() {
         let video = document.getElementById('video');
-
         let volBar = document.getElementById('volume-bar');
 
-        if(!volBar.value) {volBar.value = 1}
-        
+        if (!volBar.value) { volBar.value = 1 }
+
         video.volume = volBar.value;
-        
-        this.setState({volume: video.volume})
-        this.volumeButton();
+        this.setState({ volume: video.volume })
+        this.volumeButton()
     }
 
+    // Handles rendering icons for volume button
     volumeButton() {
         this.video = document.getElementById('video');
 
@@ -231,6 +225,7 @@ class VideoPlayer extends React.Component {
         video.play();
     }
 
+    // Routes all keyboard inputs to appropriate methods
     buttonPresses(e) {
         let video = document.getElementById('video');
         let volBar = document.getElementById('volume-bar');
@@ -296,20 +291,17 @@ class VideoPlayer extends React.Component {
                 </div>
 
                 <div id="seek-bar-played"
-                    // onKeyDown={this.buttonPresses}
                     onClick={this.setTime}
                     >
                 </div>
                 <div id="seek-bar-buffered" 
-                    // onKeyDown={this.buttonPresses}
                     onClick={this.setTime}
                     >
 
                 </div>
                 <div id="seek-bar-background"
-                    // onKeyDown={this.buttonPresses}
-
                 ></div>
+
                 <input type="range" id="seek-bar"
                     onChange={this.changeTime}
                     // onClick={this.setTime}

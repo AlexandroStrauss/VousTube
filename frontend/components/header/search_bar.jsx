@@ -16,7 +16,6 @@ class SearchBar extends React.Component {
         this.goSearch = this.goSearch.bind(this);
         this.parseKey = this.parseKey.bind(this);
         this.update = this.update.bind(this);
-        // this.titleSearch = this.titleSearch.bind(this);
     }
 
     componentDidMount() {
@@ -66,40 +65,40 @@ class SearchBar extends React.Component {
     goSearch(e) {
         if (this.state.search != "") {
             this.props.history.push({pathname: `/results/${this.state.search}`,
-                state: {videos: this.state.videoResults}}
-            ).then(window.location.reload)
+                state: {videos: this.state.videoResults}}, () => {window.location.reload()}
+            )
         } 
     }
 
-    // titleSearch(title) {
-    //     return () => {
-    //         this.props.history.push({
-    //             pathname: `/results/${title}`,
-    //             state: { result: title }
-    //         })
-    //     }
-    // }
-
     goToResult(searchTerm) {
-        this.props.history.push({
-            pathname: `/results/${searchTerm}`,
-        })
+        debugger
+        console.log(searchTerm);
+        this.props.history.push({ pathname: `/results/${searchTerm}`})
+        // debugger
+        // this.setState({ search: searchTerm }, () => {this.goSearch()});
     }
     
     render () {
-        const results = this.searchResults().map((result) => {
-            return (
+        const searchResults = []
 
-                <li key={result.id} onClick={
+        this.searchResults().forEach(result => {
+            if (!searchResults.includes(result.title)) {
+                searchResults.push(result.title)
+            }
+        })
+
+        const results = searchResults.map((result) => {
+            return (
+                <li 
+                // key={indexOf(result)} 
+                onClick={
                     (e) => {
                         e.preventDefault();
-                        this.goToResult(result.title);
+                        this.goToResult(result)
                     }
-                }>
-                    {/* <Link to={`/results/${result.title}`}> */}
-                    {result.title}
-                    {/* </Link> */}
-
+                }
+                >
+                    {result}
                 </li>
             )
         })        
