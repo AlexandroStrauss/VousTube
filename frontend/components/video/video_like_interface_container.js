@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { createLike, updateLike, deleteLike, fetchLikes } from '../../actions/like_actions';
 import VideoLikeInterface from './video_like_interface';
 

@@ -41,6 +41,7 @@ class VideoLikeInterface extends React.Component {
     }
 
     goToSignIn(e) {
+        debugger
         e.preventDefault();
         this.props.history.push('/login')
     }
@@ -63,6 +64,7 @@ class VideoLikeInterface extends React.Component {
     }
 
     likeVideo(e) {
+        debugger
         e.preventDefault;
         if (this.props.currentUser) {
             const like = ({ value: 1, likeable_type: "Video", likeable_id: this.props.video.id })
@@ -75,6 +77,7 @@ class VideoLikeInterface extends React.Component {
     }
 
     dislikeVideo(e) {
+        debugger
         e.preventDefault;
         if (this.props.currentUser) {
             const like = ({ value: -1, likeable_type: "Video", likeable_id: this.props.video.id, user_id: this.props.currentUser.id })

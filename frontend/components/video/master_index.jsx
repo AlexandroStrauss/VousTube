@@ -6,6 +6,7 @@ class MasterIndex extends React.Component {
 
     render() {
         return (
+            <>
             <NavBarContainer />
 
             <div id="index-container">
@@ -16,7 +17,8 @@ class MasterIndex extends React.Component {
                 <VideoIndexContainer />
 
             </div>
-        )
+            </>
+        );
     }
 }
 

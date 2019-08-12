@@ -42,10 +42,12 @@ class PlayerNavBar extends React.Component {
     }
 
     videoClick() {
+        debugger
         this.setState({ clicked: !this.state.clicked })
     }
 
     sidebarClick() {
+        debugger
         this.setState({ open: !this.state.open })
     }
 

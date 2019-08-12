@@ -15,6 +15,7 @@ class SearchBar extends React.Component {
         this.goSearch = this.goSearch.bind(this);
         this.parseKey = this.parseKey.bind(this);
         this.update = this.update.bind(this);
+        this.goToResult = this.goToResult.bind(this);
     }
 
     componentDidMount() {
@@ -62,6 +63,7 @@ class SearchBar extends React.Component {
     }
 
     goSearch(e) {
+        debugger
         if (this.state.search != "") {
             this.props.history.push({pathname: `/results/${this.state.search}`,
                 state: {videos: this.state.videoResults}}, () => {window.location.reload()}
@@ -69,37 +71,29 @@ class SearchBar extends React.Component {
         } 
     }
 
-    goToResult(searchTerm) {
+    goToResult(e) {
         debugger
-        console.log(searchTerm);
-        this.props.history.push({ pathname: `/results/${searchTerm}`})
+        console.log(e.target);
+        // this.props.history.push({ pathname: `/results/${searchTerm}`})
         // this.setState({ search: searchTerm }, () => {this.goSearch()});
     }
     
     render () {
-        const searchResults = []
-
-        this.searchResults().forEach(result => {
-            if (!searchResults.includes(result.title)) {
-                searchResults.push(result.title)
-            }
-        })
+        function goToResult (searchTerm) {
+            debugger
+        }
 
         const results = this.searchResults().map((result) => {
             return (
-                <li 
-                key={result.id} 
-                onClick={
-                    function(e) {
-                        e.preventDefault();
-                        this.goToResult(result)
-                    }.bind(this)
-                }
+                <li
+                    key={result.id}
+                    onMouseDown={() => {goToResult(result.title)}
+                    }
                 >
                     {result.title}
                 </li>
             )
-        })        
+        })  
 
         return(
             <>
@@ -113,6 +107,7 @@ class SearchBar extends React.Component {
 
                 <div className="search-results">
                     <ul 
+                    // onClick={this.goToResult}
                     // className = "results-list"
                     className={results[0] ? "results-list" :"results-hidden"}
                     >
