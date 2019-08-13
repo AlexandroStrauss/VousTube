@@ -68,7 +68,6 @@ class VideoPlayer extends React.Component {
 
     // controls functioning of pausing/unpausing video
     swapPlayPause() {
-        debugger
         let video = document.getElementById('video');
         if (video.paused || video.ended) {
             video.play()
@@ -98,7 +97,6 @@ class VideoPlayer extends React.Component {
 
     // mutes or unmutes video
     swapMute () {
-        debugger
         let video = document.getElementById('video');
         let volBar = document.getElementById('volume-bar');
 
@@ -116,7 +114,6 @@ class VideoPlayer extends React.Component {
 
     // Enters fullscreen. Uses the default HTML5 fullscreen player, unaltered
     swapFullscreen () {
-        debugger
         let video = document.getElementById('video');
 
         //method from Matt West at teamtreehouse.com
@@ -131,7 +128,6 @@ class VideoPlayer extends React.Component {
 
     // Displays time in video
     changeTime() {
-        debugger
         let video = document.getElementById('video');
         let seekBar = document.getElementById('seek-bar');
         
@@ -157,7 +153,6 @@ class VideoPlayer extends React.Component {
     }
 
     setTime(e) {
-        debugger
         let video = document.getElementById('video');
         var newTime = video.duration * (e.clientX/video.style.width);
         video.currentTime = newTime;

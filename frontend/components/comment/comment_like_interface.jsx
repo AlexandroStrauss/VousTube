@@ -52,7 +52,6 @@ class CommentLikeInterface extends React.Component {
     }
 
     likeComment(e) {
-        debugger
         e.preventDefault;
         this.redirectIfNotLoggedIn();
         const like = ({ value: 1, likeable_type: "Comment", likeable_id: this.props.comment.id })
@@ -61,7 +60,6 @@ class CommentLikeInterface extends React.Component {
     }
 
     dislikeComment(e) {
-        debugger
         e.preventDefault;
         this.redirectIfNotLoggedIn();
         const like = ({ value: -1, likeable_type: "Comment", likeable_id: this.props.comment.id })

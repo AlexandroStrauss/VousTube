@@ -29,7 +29,6 @@ class CommentAndReplies extends React.Component {
     }
 
     showReplyForm() {
-        debugger
         this.props.redirectIfNotLoggedIn();
         if (!this.state.showReplyForm) {
             this.setState({ showReplyForm: true, topClicked: true }, () => {
@@ -39,7 +38,6 @@ class CommentAndReplies extends React.Component {
     }
 
     cancelReply(e) {
-        debugger
         e.preventDefault();
         this.setState({ body: '', showReplyForm: false });
     }
@@ -50,7 +48,6 @@ class CommentAndReplies extends React.Component {
     }
 
     toggleExpand() {
-        debugger
         this.setState({expanded: !this.state.expanded})
     }
 

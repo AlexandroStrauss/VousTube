@@ -41,12 +41,10 @@ class SessionDisplay extends React.Component{
     }
 
     buttonClick() {
-        debugger
         this.setState({ clicked: !this.state.clicked })
     }
 
     logout() {
-        debugger
         this.props.logout().then(this.setState({ logoutClicked: true }))
     }
 

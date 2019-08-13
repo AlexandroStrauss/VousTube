@@ -32,7 +32,6 @@ class CommentIndex extends React.Component {
     }
     
     showCommentButtons () {
-        debugger
         this.redirectIfNotLoggedIn();
         if(!this.state.topClicked) {
             this.setState({
@@ -77,7 +76,6 @@ class CommentIndex extends React.Component {
     }
 
     cancelComment () {
-        debugger
         this.setState({ body: '', topClicked: false});
     }
 

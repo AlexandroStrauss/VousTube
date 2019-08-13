@@ -37,7 +37,6 @@ class FormNavBar extends React.Component {
     }
 
     videoClick() {
-        debugger
         this.setState({ clicked: !this.state.clicked })
     }
 
