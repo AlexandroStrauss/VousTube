@@ -55,7 +55,7 @@ class SearchResults extends React.Component {
                 <li className="result-video">
                     <a className="result-video-tile" href={`/#/videos/${video.id}`}>
                         <img src={video.imageUrl ? video.imageUrl : window.defaultImg} />
-                        <div className="vid-info">
+                        <div id="vid-info">
                             <div className="duration">{video.duration}</div>
                             <div className="result-title">{video.title}</div>
                             <div className="result-author">{this.props.authors[video.author_id].username}</div>
