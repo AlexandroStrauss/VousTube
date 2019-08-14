@@ -1,27 +1,22 @@
-/* #video-results {
-    display: flex;
-    flex-direction: row;
-} */
-
-video-results {
+.video-results {
     border:none;
+    padding: 0 0 0 16px;
 }
 
-.result-shell {
+#result-shell {
+    min-width: 93vw;
     margin: 16px 0 0 0;
-    border-top: 1px solid #e1e1e1;
-
 }
+
 .result-video {
     height: 140px;
     list-style: none;
     cursor: pointer;
-    margin: 16px 0 0 0;
-    
+    margin: 16px 0 0 0;  
 }
 
 .result-video > a {
-        display: flex;
+    display: flex;
     flex-direction: row;
 }
 
@@ -84,23 +79,21 @@ video-results {
 
 #filter {
     width: 95%;
-    padding: 6px 16px;
+    margin: 6px 16px;
 
     border-bottom: 1px solid #e1e1e1;
 
 }
 
 #sub-filter {
-        display: flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
 
     font-size: 14px;
     font-weight: bold;
     color: #606060;
-
 }
-
 
 #sub-filter i {
     margin: 0 8px 0 0;

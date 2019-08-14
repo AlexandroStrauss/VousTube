@@ -102,9 +102,9 @@ class SearchResults extends React.Component {
 
                 <ul className="video-results">
                     {videos}
-                    <div id="line-container">
+                    {/* <div id="line-container">
 
-                    </div>
+                    </div> */}
                 </ul>
             </div>
         )
