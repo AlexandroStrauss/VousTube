@@ -45,7 +45,6 @@ class SearchBar extends React.Component {
                     }
             })
         }
-        debugger
         this.setState((prevState) => {videoResults: videoResults})
         return searchTitles;
     }
@@ -65,11 +64,11 @@ class SearchBar extends React.Component {
 
     goSearch(e) {
         if (this.state.search != "") {
-            var titles = this.searchResults();
+            // var titles = this.searchResults();
             debugger
             this.props.history.push({pathname: `/results/${this.state.search}`,
-                state: {videos: this.state.videoResults}}, () => {window.location.reload()}
-            )
+                // state: {videos: this.state.videoResults}}, () => {window.location.reload()
+                })
         } 
     }
 

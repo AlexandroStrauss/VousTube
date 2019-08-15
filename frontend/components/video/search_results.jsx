@@ -15,7 +15,7 @@ class SearchResults extends React.Component {
 
     componentDidMount() {
         if (!this.props.location) {
-            this.props.fetchVideos;
+            this.props.fetchVideos();
         }
     }
 
@@ -30,6 +30,7 @@ class SearchResults extends React.Component {
 
 
     searchResults() {
+        debugger
         let searchTitles = [];
         this.props.videos.forEach((film) => {
 
