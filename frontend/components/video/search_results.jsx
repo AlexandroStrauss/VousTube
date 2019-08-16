@@ -1,4 +1,5 @@
 import React from 'react';
+import videoAge from '../../util/date_parsers/video_age';
 
 
 class SearchResults extends React.Component {
@@ -28,12 +29,10 @@ class SearchResults extends React.Component {
         }
     }
 
-
     searchResults() {
         debugger
         let searchTitles = [];
         this.props.videos.forEach((film) => {
-
             if (film.title.toLowerCase().startsWith(this.state.search.toLowerCase())
                 || film.description.includes(this.state.search)) {
                 searchTitles.push(film)
@@ -41,7 +40,6 @@ class SearchResults extends React.Component {
         })
         return searchTitles;
     }
-
 
     render () {
         var searchResults;
@@ -59,21 +57,23 @@ class SearchResults extends React.Component {
                         <div id="vid-info">
                             <div className="duration">{video.duration}</div>
                             <div className="result-title">{video.title}</div>
-                            <div className="result-author">{this.props.authors[video.author_id].username}</div>
+                            <div className="result-author">{this.props.authors[video.author_id].username + " • " + video.views + (video.views === 1 ? " view" : " views") + " • " + videoAge(video.time_since_creation)}</div>
                             <div className="description">{video.description}</div>
                             {/* <div className="timestamp">{this.timestamp(video.created_at)}</div>*/}
+                            {/* <div className="views-time">
+                                <div>
+                                    {}
+                                </div>
+                            </div>      */}
                         </div>
                     </a>
                 </li>
             )
         })
+
         if (!videos[0]) {
             return (
                 <>
-
-
-
-
                 {/* // lifted the below image straight from YouTube */}
                 <div id="failure-msg">
                     <div id="filter">
