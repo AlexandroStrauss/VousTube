@@ -66,9 +66,9 @@ class SearchBar extends React.Component {
         if (this.state.search != "") {
             // var titles = this.searchResults();
             debugger
-            this.props.history.push({pathname: `/results/${this.state.search}`,
+            this.props.history.push({pathname: `/results/${this.state.search}`}).then(window.location.reload())
                 // state: {videos: this.state.videoResults}}, () => {window.location.reload()
-                })
+                
         } 
     }
 

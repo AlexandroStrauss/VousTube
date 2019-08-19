@@ -8,8 +8,9 @@ class SearchResults extends React.Component {
 
         //this may have to change for Heroku hosting
         const path = window.location.href.split('/');
+        var search = path.slice(-1)[0];
         this.state = {
-            search: path.slice(-1)[0],
+            search: search.split('%20').join(" "),
         }
         this.searchResults = this.searchResults.bind(this)
     }
@@ -25,12 +26,13 @@ class SearchResults extends React.Component {
         if (prevProps.searchResults && (prevProps.searchResults[0] != this.props.searchResults[0])) { //if route changes
             this.props.fetchVideos()
                 .then(
-                    window.location.reload()
+                    window.location.reload(true)
                 )
         }
     }
 
     searchResults() {
+        debugger
         let searchTitles = [];
         this.props.videos.forEach((film) => {
             if (film.title.toLowerCase().startsWith(this.state.search.toLowerCase())
