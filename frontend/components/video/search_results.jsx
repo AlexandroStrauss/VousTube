@@ -21,7 +21,8 @@ class SearchResults extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.searchResults && (prevProps.searchResults[0] != this.props.searchResults[0])) {
+        debugger
+        if (prevProps.searchResults && (prevProps.searchResults[0] != this.props.searchResults[0])) { //if route changes
             this.props.fetchVideos()
                 .then(
                     window.location.reload()
@@ -30,7 +31,6 @@ class SearchResults extends React.Component {
     }
 
     searchResults() {
-        debugger
         let searchTitles = [];
         this.props.videos.forEach((film) => {
             if (film.title.toLowerCase().startsWith(this.state.search.toLowerCase())
@@ -59,12 +59,6 @@ class SearchResults extends React.Component {
                             <div className="result-title">{video.title}</div>
                             <div className="result-author">{this.props.authors[video.author_id].username + " • " + video.views + (video.views === 1 ? " view" : " views") + " • " + videoAge(video.time_since_creation)}</div>
                             <div className="description">{video.description}</div>
-                            {/* <div className="timestamp">{this.timestamp(video.created_at)}</div>*/}
-                            {/* <div className="views-time">
-                                <div>
-                                    {}
-                                </div>
-                            </div>      */}
                         </div>
                     </a>
                 </li>

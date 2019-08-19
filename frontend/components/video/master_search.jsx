@@ -77,7 +77,7 @@ class MasterSearch extends React.Component {
                             <button>{this.bellMore()}</button>
                         </div>
 
-                        <SessionDisplayContainer />
+        <Route render={props => <SessionDisplayContainer {...props}/> } />
                     </div>
                 </header>
 
