@@ -13,7 +13,6 @@ class SearchResults extends React.Component {
             search: search.split('%20').join(" "),
         }
         this.searchResults = this.searchResults.bind(this)
-        debugger
     }
 
     componentDidMount() {
@@ -22,13 +21,11 @@ class SearchResults extends React.Component {
 
     componentDidUpdate(prevProps) {
         const path = window.location.href.split('/');
-        var search = path.slice(-1)[0];
-        debugger
+        var search = path.slice(-1)[0].split('%20').join(" ");
         if (this.state.search != search) {
             this.props.fetchVideos();
             this.setState({search: search})
         }
-        // debugger
         // if (prevProps.searchResults && (prevProps.searchResults[0] != this.props.searchResults[0])) { //if route changes
         //     this.props.fetchVideos()
         //         .then(
