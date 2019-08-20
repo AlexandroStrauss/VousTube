@@ -77,7 +77,7 @@ class MasterSearch extends React.Component {
                             <button>{this.bellMore()}</button>
                         </div>
 
-        <Route render={props => <SessionDisplayContainer {...props}/> } />
+                        <Route render={props => <SessionDisplayContainer {...props}/> } />
                     </div>
                 </header>
 
@@ -87,7 +87,7 @@ class MasterSearch extends React.Component {
                         <SideBar />
                     </section>
 
-                    <SearchResultsContainer />
+                <Route render={props =><SearchResultsContainer {...props}/> } />
                 </div>
             </>
         )

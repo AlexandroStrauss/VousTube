@@ -13,26 +13,31 @@ class SearchResults extends React.Component {
             search: search.split('%20').join(" "),
         }
         this.searchResults = this.searchResults.bind(this)
+        debugger
     }
 
     componentDidMount() {
-        if (!this.props.location) {
-            this.props.fetchVideos();
-        }
+        this.props.fetchVideos();
     }
 
     componentDidUpdate(prevProps) {
+        const path = window.location.href.split('/');
+        var search = path.slice(-1)[0];
         debugger
-        if (prevProps.searchResults && (prevProps.searchResults[0] != this.props.searchResults[0])) { //if route changes
-            this.props.fetchVideos()
-                .then(
-                    window.location.reload(true)
-                )
+        if (this.state.search != search) {
+            this.props.fetchVideos();
+            this.setState({search: search})
         }
+        // debugger
+        // if (prevProps.searchResults && (prevProps.searchResults[0] != this.props.searchResults[0])) { //if route changes
+        //     this.props.fetchVideos()
+        //         .then(
+        //             window.location.reload(true)
+        //         )
+        // }
     }
 
     searchResults() {
-        debugger
         let searchTitles = [];
         this.props.videos.forEach((film) => {
             if (film.title.toLowerCase().startsWith(this.state.search.toLowerCase())
@@ -45,15 +50,15 @@ class SearchResults extends React.Component {
 
     render () {
         var searchResults;
-        if(this.props.location) {
-            searchResults = this.props.location.state.videos;
-        } else {
-            searchResults = this.searchResults() 
-        }
+        // if(this.props.location) {
+        //     searchResults = this.props.location.state.videos;
+        // } else {
+            searchResults = this.searchResults();
+        // }
 
         const videos = searchResults.map(video => {
             return (
-                <li className="result-video">
+                <li className="result-video" key={video.id}>
                     <a className="result-video-tile" href={`/#/videos/${video.id}`}>
                         <img src={video.imageUrl ? video.imageUrl : window.defaultImg} />
                         <div id="vid-info">
@@ -70,7 +75,7 @@ class SearchResults extends React.Component {
         if (!videos[0]) {
             return (
                 <>
-                {/* // lifted the below image straight from YouTube */}
+                {/* // I lifted this "no results found" image straight from YouTube */}
                 <div id="failure-msg">
                     <div id="filter">
                         <div id="sub-filter">
@@ -99,9 +104,6 @@ class SearchResults extends React.Component {
 
                 <ul className="video-results">
                     {videos}
-                    {/* <div id="line-container">
-
-                    </div> */}
                 </ul>
             </div>
         )

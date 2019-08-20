@@ -29,7 +29,6 @@ const App = () => (
             <Route path="/results/" component={MasterSearch} />
             <Route exact path="/" component={NavBarContainer} />
 
-
             {/* <Route path="/" component={NavBarContainer} /> */}
         </Switch>
 

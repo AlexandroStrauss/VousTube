@@ -64,16 +64,15 @@ class SearchBar extends React.Component {
 
     goSearch(e) {
         if (this.state.search != "") {
-            // var titles = this.searchResults();
-            debugger
-            this.props.history.push({pathname: `/results/${this.state.search}`}).then(window.location.reload())
+            // return <Redirect to={`/results/${this.state.search}`} />
+            this.props.history.push({pathname: `/results/${this.state.search}`, state: {preload: this.state.search}})
+            // .then(window.location.reload())
                 // state: {videos: this.state.videoResults}}, () => {window.location.reload()
                 
         } 
     }
 
     goToResult(searchTerm) {
-        // this.props.history.push({ pathname: `/results/${searchTerm}`})
         this.setState({ search: searchTerm }, () => {this.goSearch()});
     }
     
